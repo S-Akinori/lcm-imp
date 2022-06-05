@@ -23,8 +23,8 @@ const Home: NextPage = () => {
   return (
     <Layout>
       <MV src='/videos/mv.mp4' title={`世界にたったひとつだけの\nウェディングムービー`} text="結婚式ムービーの「RING RING」" />
-      <AnimationTrigger animation='bg-rect active' rootMargin='-200px' triggerOnce>
-        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-200px' triggerOnce>
+      <AnimationTrigger animation='bg-rect active' rootMargin='-150px' triggerOnce>
+        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
           <section className='py-14 md:py-28'>
             <Container>
               <TextAndImage
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
           </section>
         </AnimationTrigger>
       </AnimationTrigger>
-      <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-200px' triggerOnce>
+      <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
         <section className='relative py-14 md:py-28'>
           <Container>
               <Title en={topMenuText.en} h2={topMenuText.h2} />
@@ -63,8 +63,8 @@ const Home: NextPage = () => {
           </div>
         </section>
       </AnimationTrigger>
-      <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-200px' triggerOnce>
-        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-200px' triggerOnce>
+      <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-150px' triggerOnce>
+        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
           <section className='py-14 md:py-28'>
             <Container>
               <div className='md:flex'>
@@ -102,8 +102,8 @@ const Home: NextPage = () => {
           </section>
         </AnimationTrigger>
       </AnimationTrigger>
-      <AnimationTrigger animation='bg-rect active' rootMargin='-200px' triggerOnce>
-        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-200px' triggerOnce>
+      <AnimationTrigger animation='bg-rect active' rootMargin='-150px' triggerOnce>
+        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
           <section className='py-14 md:py-28'>
             <Container>
               <Flex>
@@ -122,8 +122,8 @@ const Home: NextPage = () => {
           </section>
         </AnimationTrigger>
       </AnimationTrigger>
-      <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-200px' triggerOnce>
-        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-200px' triggerOnce>
+      <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-150px' triggerOnce>
+        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
           <section className='py-14 md:py-28'>
             <Container>
               <Flex>

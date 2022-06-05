@@ -6,13 +6,13 @@
   content: '';
   display: block;
   position: absolute;
-  bottom: 0.5rem;
+  bottom: 0.25rem;
   left: 0;
   background: var(--accent-color);
   width: 0;
   height: 3px;
   z-index: -1;
-  animation: growX 600ms cubic-bezier(.29,.7,.52,.99) 1s both;
+  animation: growX 1s ease 1s both;
 }
 .mv_text::before {
   content: '';
