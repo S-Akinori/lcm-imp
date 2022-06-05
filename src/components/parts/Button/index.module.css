@@ -1,0 +1,16 @@
+.btn::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: -1.5rem;
+  transform: translateY(-50%);
+  background: var(--base-text-color);
+  width: 3rem;
+  height: 1px;
+  transition: 300ms;
+}
+
+.btn:hover::after {
+  transform: translateX(.5rem);
+}

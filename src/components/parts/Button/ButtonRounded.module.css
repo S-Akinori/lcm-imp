@@ -1,0 +1,9 @@
+.btn {
+  border-radius: 100vh;
+  background: var(--base-background);
+  text-align: center;
+}
+
+.btn:hover::after {
+  transform: translateX(.5rem);
+}

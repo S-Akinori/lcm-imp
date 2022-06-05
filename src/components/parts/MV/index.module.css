@@ -1,0 +1,39 @@
+.mv_title span {
+  position: relative;
+  z-index: 1;
+}
+.mv_title span::before {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0;
+  background: var(--accent-color);
+  width: 0;
+  height: 3px;
+  z-index: -1;
+  animation: growX 600ms cubic-bezier(.29,.7,.52,.99) 1s both;
+}
+.mv_text::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background: var(--base-background);
+  width: 3rem;
+  height: 1px;
+}
+.mv_video {
+  height: 85vh;
+}
+
+@keyframes growX {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
