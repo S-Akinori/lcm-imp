@@ -19,6 +19,7 @@ import Link from 'next/link'
 import { contactContents, topContactText } from 'src/contents/contact'
 import AnimationTrigger from 'src/components/parts/AnimationTrigger'
 import PageLoading from 'src/components/parts/PageLoading'
+import Box from 'src/components/parts/Box'
 
 const Home: NextPage = () => {
   return (
@@ -103,6 +104,36 @@ const Home: NextPage = () => {
             </Container>
           </section>
         </AnimationTrigger>
+      </AnimationTrigger>
+      <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
+        <section className='py-14 md:py-28'>
+          <Container>
+            <div>
+              <Title en={topFlowText.en} h2={topFlowText.h2} />
+            </div>
+            <div>
+              {flowContents && flowContents.map(flow => (
+                <div className='relative my-24'>
+                  <div className='absolute left-0 -top-8 text-accent'>{flow.label}</div>
+                  <Box key={flow.id} className='md:flex'>
+                    <div className='p-4 md:w-60 shrink-0'>
+                      <Image 
+                        src={flow.src}
+                        width={600}
+                        height={400}
+                        alt={flow.title}
+                      />
+                    </div>
+                    <div className='p-4'>
+                      <div className='text-accent text-lg'>{flow.title}</div>
+                      <div className='whitespace-pre-wrap'>{flow.text}</div>
+                    </div>
+                  </Box>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
       </AnimationTrigger>
       <AnimationTrigger animation='bg-rect active' rootMargin='-150px' triggerOnce>
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
