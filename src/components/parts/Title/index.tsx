@@ -20,6 +20,11 @@ const Title = ({en, h2, h3}: Props) => {
           width: 1px;
           height: 2rem;
         }
+        @media(max-width: 768px) {
+          .wrapper::before {
+            height: 1.25rem;
+          }
+        }
       `}</style>
       <div className="relative pl-4 mb-8 wrapper">
         {en && <div className="title_en font_en leading-tight">{en}</div>}
