@@ -1,0 +1,52 @@
+.backgroundAnim {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  left: 0;
+  background: var(--main-color);
+  animation: slideOut 500ms ease-in-out 2.5s both;
+}
+.backgroundAnimTop {
+  top: 0;
+}
+.backgroundAnimBottom {
+  bottom: 0;
+}
+.borderAnim {
+  position: absolute;
+  top: 55%;
+  left: 0;
+  background: var(--accent-color);
+  height: 1px;
+  animation: growBorder 1.5s ease-in-out 300ms both, fadeOut 300ms ease-in-out 2.5s both;
+}
+.text {
+  animation: fadeOut 300ms ease-in-out 2.5s both;
+}
+
+@keyframes growBorder {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    height: 50%;
+  }
+  100% {
+    height: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

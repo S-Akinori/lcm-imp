@@ -21,7 +21,7 @@ const Title = ({en, h2, h3}: Props) => {
           height: 2rem;
         }
       `}</style>
-      <div className="relative pl-4 mb-12 wrapper">
+      <div className="relative pl-4 mb-8 wrapper">
         {en && <div className="title_en font_en leading-tight">{en}</div>}
         {h2 && <h2>{h2}</h2>}
         {h3 && <h3>{h3}</h3>}

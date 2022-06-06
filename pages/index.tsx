@@ -18,10 +18,12 @@ import { newsContents, topNewsText } from 'src/contents/news'
 import Link from 'next/link'
 import { contactContents, topContactText } from 'src/contents/contact'
 import AnimationTrigger from 'src/components/parts/AnimationTrigger'
+import PageLoading from 'src/components/parts/PageLoading'
 
 const Home: NextPage = () => {
   return (
     <Layout>
+      <PageLoading />
       <MV src='/videos/mv.mp4' title={`世界にたったひとつだけの\nウェディングムービー`} text="結婚式ムービーの「RING RING」" />
       <AnimationTrigger animation='bg-rect active' rootMargin='-150px' triggerOnce>
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
@@ -33,7 +35,7 @@ const Home: NextPage = () => {
                 col={2}
               >
                 <Title en={conceptData.en} h2={conceptData.h2} />
-                <div className='pl-4 whitespace-pre-wrap'>{conceptData.text}</div>
+                <div className='text'>{conceptData.text}</div>
               </TextAndImage>
             </Container>
           </section>
@@ -43,7 +45,7 @@ const Home: NextPage = () => {
         <section className='relative py-14 md:py-28'>
           <Container>
               <Title en={topMenuText.en} h2={topMenuText.h2} />
-              <div className='pl-4 whitespace-pre-wrap'>{topMenuText.text}</div>
+              <div className='text'>{topMenuText.text}</div>
           </Container>
           <div>
             {menus && menus.map((menu, index) => (
@@ -52,7 +54,7 @@ const Home: NextPage = () => {
                 key={menu.id}
                 rtl={index % 2 == 0 ? true : false}
               >
-                <div>
+                <div className='p-4 md:p-0'>
                   <h3 className='pb-0'>{menu.title}</h3>
                   <div className='mb-4'>{menu.price}</div>
                   <div>{menu.text}</div>
@@ -70,7 +72,7 @@ const Home: NextPage = () => {
               <div className='md:flex'>
                 <div className='mb-12 md:w-1/3'>
                   <Title en={topGalleryText.en} h2={topGalleryText.h2} />
-                  <div className='pl-4 whitespace-pre-wrap'>{topGalleryText.text}</div>
+                  <div className='text'>{topGalleryText.text}</div>
                   <div className='mt-12'><Button href={topGalleryText.href}>{topGalleryText.linkText}</Button></div>
                 </div>
                 <div className='md:w-2/3 md:pl-16'>
@@ -113,7 +115,7 @@ const Home: NextPage = () => {
                 <ul className='md:w-2/3 lg:w-3/4'>
                   {newsContents && newsContents.map(news => (
                     <li key={news.id} className="py-2 mb-2">
-                      <Link href={news.href}><a className='flex'><span className='mr-4 lg:mr-8'>{news.date}</span><span>{news.title}</span></a></Link>
+                      <Link href={news.href}><a className='flex flex-col md:flex-row md:justify-start'><span className='mr-4 lg:mr-8'>{news.date}</span><span>{news.title}</span></a></Link>
                     </li>
                   ))}
                 </ul>
