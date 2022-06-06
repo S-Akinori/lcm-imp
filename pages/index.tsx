@@ -113,9 +113,9 @@ const Home: NextPage = () => {
             </div>
             <div>
               {flowContents && flowContents.map(flow => (
-                <div className='relative my-24'>
+                <div key={flow.id} className='relative my-24'>
                   <div className='absolute left-0 -top-8 text-accent'>{flow.label}</div>
-                  <Box key={flow.id} className='md:flex'>
+                  <Box className='md:flex'>
                     <div className='p-4 md:w-60 shrink-0'>
                       <Image 
                         src={flow.src}
