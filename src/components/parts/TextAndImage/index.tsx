@@ -5,29 +5,37 @@ interface Props {
   src: string
   alt?: string
   rtl?: boolean
+  ttb?: boolean
   width?: number
   height?: number
   col?: number
   children: ReactNode
   className?: string
   style?: React.CSSProperties
+  classNames?: {
+    TextAndImage__image: string
+  }
+  styles?: {
+    TextAndImage__image: React.CSSProperties
+  }
 }
 
-const TextAndImage = ({src, alt, children, rtl = false, width = 600, height = 400, col, className = '', style}: Props) => {
-  const direction = rtl ? 'rtl md:flex-row-reverse' : 'md:flex-row';
+const TextAndImage = ({src, alt, children, rtl = false, ttb = false, width = 600, height = 400, col, className = '', classNames, style, styles}: Props) => {
+  const directionX = rtl ? 'rtl md:flex-row-reverse' : 'md:flex-row';
+  const directionY = ttb ? 'ttb flex-col-reverse' : 'flex-col'
   const colWidth = col ? `md:w-1/${col}` : ''
   return (
-      <div className={`md:flex ${direction} ${className}`} style={style}>
-        <div className={`p-4 mb-12 md:mb-0 ${colWidth}`}>{children}</div>
-        <div className={`p-4 ${colWidth}`}>
-          <Image
-            src={src}
-            width={width}
-            height={height}
-            alt={alt}
-          />
-        </div>
+    <div className={`flex ${directionX} ${directionY} ${className}`} style={style}>
+      <div className={`p-4 mb-12 md:mb-0 ${colWidth}`}>{children}</div>
+      <div className={`${classNames?.TextAndImage__image || ''} p-4 ${colWidth}`} style={styles?.TextAndImage__image}>
+        <Image
+          src={src}
+          width={width}
+          height={height}
+          alt={alt}
+        />
       </div>
+    </div>
   )
 }
 

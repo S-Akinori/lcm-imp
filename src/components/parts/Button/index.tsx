@@ -6,10 +6,11 @@ interface Props {
   className?: string
   style?: React.CSSProperties
   target?: '_blank' 
+  color?: string
   children: React.ReactNode
 }
-const Button = ({href='', className = '', style, target, children}:Props) => {
-  const btnClass = `inline-block relative bg-base-color-dark py-4 pl-8 pr-16 ${styles.btn}`;
+const Button = ({href='', className = '', color, style, target, children}:Props) => {
+  const btnClass = `inline-block relative bg-${color || 'base-color-dark'} text-${color || 'base'}-cont py-4 pl-8 pr-16 ${styles.btn} ${className}`;
   return (
     <>
       {!href && <button className={btnClass} style={style}>{children}</button>}

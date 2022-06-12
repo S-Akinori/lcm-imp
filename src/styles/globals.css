@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
+@import './swiper.css';
 
 
 :root {
@@ -32,14 +33,28 @@ video {
   width: 100%;
 }
 h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
 }
 h2 {
   font-size: 1.25rem;
 }
 h3 {
   font-size: 1.2rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+.title-border-b {
+  position: relative;
+}
+.title-border-b::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: var(--accent-color);
+  width: 3rem;
+  height: 1px;
 }
 a {
   color: var(--base-text-color);
@@ -76,14 +91,24 @@ ul li::before, .list .list-item::before {
   height: 2px;
 }
 
-input, textarea {
+input:not([type="checkbox"]), textarea {
   display: block;
-  background: #FFF;
+  background: var(--base-background);
   padding: 0.5rem;
   color: #333;
   border-radius: 5px;
+  border: 1px solid var(--base-background);
   width: 100%;
+  transition: 300ms;
+  outline: none;
 }
+input:focus, textarea:focus {
+  border: 1px solid var(--accent-color);
+}
+label {
+  padding: 0.5rem;
+}
+
 iframe {
   max-width: 100%;
 }
@@ -165,6 +190,13 @@ iframe {
 /*** animation ***/
 .fadeIn {
   animation: fadeIn 300ms linear both;
+}
+.fadeInTrans {
+  opacity: 0;
+  transition: 300ms;
+}
+.fadeInTrans.active {
+  opacity: 1;
 }
 
 @keyframes fadeIn {

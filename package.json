@@ -10,15 +10,21 @@
   },
   "dependencies": {
     "@mui/icons-material": "^5.8.2",
+    "@types/react-datepicker": "^4.4.2",
+    "lightgallery": "^2.4.0",
     "next": "12.1.6",
+    "nodemailer": "^6.7.5",
     "react": "18.1.0",
+    "react-datepicker": "^4.8.0",
     "react-dom": "18.1.0",
+    "react-hook-form": "^7.32.0",
     "react-intersection-observer": "^9.2.2",
     "react-player": "^2.10.1",
     "swiper": "^8.2.2"
   },
   "devDependencies": {
     "@types/node": "17.0.38",
+    "@types/nodemailer": "^6.4.4",
     "@types/react": "18.0.10",
     "@types/react-dom": "18.0.5",
     "autoprefixer": "^10.4.2",

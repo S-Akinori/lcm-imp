@@ -4,7 +4,6 @@ interface Props {
   en?: string;
   h2?: string
   h3?: string
-  children?: React.ReactNode
 }
 const Title = ({en, h2, h3}: Props) => {
   return (
@@ -18,7 +17,8 @@ const Title = ({en, h2, h3}: Props) => {
           left: 0;
           background: var(--accent-color);
           width: 1px;
-          height: 2rem;
+          height: 50%;
+          max-height: 2rem;
         }
         @media(max-width: 768px) {
           .wrapper::before {

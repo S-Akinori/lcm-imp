@@ -50,6 +50,7 @@ const Home: NextPage = () => {
           </Container>
           <div>
             {menus && menus.map((menu, index) => (
+              (menu.isTop && (
               <TextAndVideo
                 src={menu.src}
                 key={menu.id}
@@ -62,6 +63,7 @@ const Home: NextPage = () => {
                   <div className='mt-12'><Button href={menu.link}>詳細を見る</Button></div>
                 </div>
               </TextAndVideo>
+              ))
             ))}
           </div>
         </section>

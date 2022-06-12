@@ -1,17 +1,17 @@
 export const gnav = [
   {
     id: 'nav1',
-    href: '/',
+    href: '/concept',
     linkText: 'CONCEPT',
   },
   {
     id: 'nav2',
-    href: '/',
+    href: '/menu',
     linkText: 'MENU',
   },
   {
     id: 'nav3',
-    href: '/',
+    href: '/company',
     linkText: 'COMPANY',
   },
 ]

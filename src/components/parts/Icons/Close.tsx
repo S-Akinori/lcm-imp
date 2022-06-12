@@ -1,4 +1,7 @@
-const CloseIcon = () => {
+interface Props {
+  color? : string
+}
+const CloseIcon = ({color}: Props) => {
   return (
     <>
       <style jsx>{`
@@ -13,7 +16,7 @@ const CloseIcon = () => {
           position: absolute;
           top: 50%;
           left: 50%;
-          background: var(--base-text-color);
+          background: ${color || `var(--base-text-color)`};
           width: 100%;
           height: 1px;
         }

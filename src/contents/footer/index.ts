@@ -1,17 +1,17 @@
 export const fnav = [
   {
     id: 'fnav1',
-    href: '/',
+    href: '/concept',
     linkText: 'CONCEPT'
   },
   {
     id: 'fnav2',
-    href: '/',
+    href: '/menu',
     linkText: 'MENU'
   },
   {
     id: 'fnav3',
-    href: '/',
+    href: '/company',
     linkText: 'COMPANY'
   },
 ]

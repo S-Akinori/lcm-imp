@@ -1,9 +1,9 @@
 .btn {
   border-radius: 100vh;
-  background: var(--base-background);
   text-align: center;
+  transition: 300ms;
 }
 
-.btn:hover::after {
-  transform: translateX(.5rem);
+.btn:hover {
+  opacity: 0.8;
 }
