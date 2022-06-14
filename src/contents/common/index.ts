@@ -15,5 +15,5 @@ export const SNS = [
 
 export const company = {
   name: '株式会社imp',
-  address: '東京都新宿区0-0-00'
+  address: '〒166-0012 東京都杉並区和田2-33-5'
 }

@@ -42,7 +42,7 @@ const MenuDetailPage = ({menu}: Props) => {
         </div>
         <div className="mb-8">
           <div className="mb-4 text-xl text-accent text-right">{menu.price}</div>
-          <div className="text-right"><Button color="accent" href="/contact">このプランで問い合わせる</Button></div>
+          <div className="text-center md:text-right"><Button color="accent" href="/contact">このプランで問い合わせる</Button></div>
         </div>
         <div className="mb-8">
           <div>{menu.content}</div>

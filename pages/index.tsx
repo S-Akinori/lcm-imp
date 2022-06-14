@@ -20,6 +20,8 @@ import { contactContents, topContactText } from 'src/contents/contact'
 import AnimationTrigger from 'src/components/parts/AnimationTrigger'
 import PageLoading from 'src/components/parts/PageLoading'
 import Box from 'src/components/parts/Box'
+import GalleryBox from 'src/components/parts/Gallery/GalleryBox'
+import { Autoplay } from 'swiper'
 
 const Home: NextPage = () => {
   return (
@@ -80,24 +82,22 @@ const Home: NextPage = () => {
                 </div>
                 <div className='md:w-2/3 md:pl-16'>
                   <Swiper
+                    modules={[Autoplay]}
                     spaceBetween={30}
                     slidesPerView={1}
+                    autoplay={{
+                      delay: 5000,
+                      disableOnInteraction: false
+                    }}
                     breakpoints={{
                       768: {
-                        slidesPerView: 1.5
+                        slidesPerView: 2
                       }
                     }}
                   >
                     {galleryContents && galleryContents.map(content => (
                       <SwiperSlide key={content.id}>
-                        <Image 
-                          src={content.src}
-                          width={600}
-                          height={400}
-                          alt={content.title}
-                        />
-                        <h3 className='text-lg text-accent'>{content.title}</h3>
-                        <div>{content.text}</div>
+                        <GalleryBox src={content.src} date={content.date} info={content.info} href={content.href} title={content.title} text={content.text} />
                       </SwiperSlide>
                     ))}
                   </Swiper>
@@ -118,7 +118,7 @@ const Home: NextPage = () => {
                 <div key={flow.id} className='relative my-24'>
                   <div className='absolute left-0 -top-8 text-accent'>{flow.label}</div>
                   <Box className='md:flex'>
-                    <div className='p-4 md:w-60 shrink-0'>
+                    <div className='p-4 md:w-80 shrink-0'>
                       <Image 
                         src={flow.src}
                         width={600}

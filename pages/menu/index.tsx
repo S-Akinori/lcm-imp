@@ -15,9 +15,9 @@ const MenuPage = () => {
       <Layout>
         <FV en="MENU" title="メニュー" src="/images/concept.jpg" />
         <Container>
-          <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
             <div>
               {menus && menus.map((menu, index) => (
+              <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
                 <TextAndVideo
                   src={menu.src}
                   key={menu.id}
@@ -30,9 +30,9 @@ const MenuPage = () => {
                     <div className='mt-12'><Button href={menu.link}>詳細を見る</Button></div>
                   </div>
                 </TextAndVideo>
+              </AnimationTrigger>
               ))}
             </div>
-          </AnimationTrigger>
         </Container>
       </Layout>
     </>

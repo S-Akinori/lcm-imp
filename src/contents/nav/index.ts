@@ -11,6 +11,21 @@ export const gnav = [
   },
   {
     id: 'nav3',
+    href: '/flow',
+    linkText: 'FLOW',
+  },
+  {
+    id: 'nav4',
+    href: '/news',
+    linkText: 'NEWS',
+  },
+  {
+    id: 'nav5',
+    href: '/gallery',
+    linkText: 'GALLERY',
+  },
+  {
+    id: 'nav6',
     href: '/company',
     linkText: 'COMPANY',
   },

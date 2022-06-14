@@ -41,6 +41,7 @@ const TextAndVideo = ({src, children, rtl = false}: Props) => {
           .text::before {
             top: 0;
             left: 0;
+            width: 100%;
           }
           .rtl .text::before {
             left: auto;

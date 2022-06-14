@@ -27,8 +27,8 @@ const ConceptPage = () => {
                 <TextAndImage
                   src={message.src}
                   alt={message.title}
-                  width={600}
-                  height={400}
+                  width={800}
+                  height={600}
                   col={2}
                   rtl={index % 2 !== 0 ? true : false}
                   ttb
