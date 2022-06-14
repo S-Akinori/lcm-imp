@@ -12,12 +12,12 @@ export const subContactText = {
 export const contactContents = [
   {
     id: 'conact1',
-    href: '/',
+    href: '/contact/order',
     linkText: 'お申込みはこちら'
   },
   {
     id: 'conact2',
-    href: '/',
+    href: '/contact',
     linkText: 'ご相談はこちら'
   }
 ]

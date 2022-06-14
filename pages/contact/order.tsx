@@ -76,8 +76,8 @@ const ContactOrderPage = () => {
           <Form onSubmit={handleSubmit(onSubmit)}>
             {contactOrderFormInputs && contactOrderFormInputs.map(orderInput => (
               <InputGroup key={orderInput.id} className="mb-8">
-                {orderInput.inputs && <div className="p-2 md:w-48 md:shrink-0">{orderInput.title}</div>}
-                {!orderInput.inputs && <InputLabel className="md:w-48 md:shrink-0" htmlFor={orderInput.id}>{orderInput.title}</InputLabel>}
+                {orderInput.inputs && <div className="p-2 md:w-60 md:shrink-0">{orderInput.title}</div>}
+                {!orderInput.inputs && <InputLabel className="md:w-60 md:shrink-0" htmlFor={orderInput.id}>{orderInput.title}</InputLabel>}
                 {orderInput.type === 'checkbox' && (
                   <>
                     <div> 

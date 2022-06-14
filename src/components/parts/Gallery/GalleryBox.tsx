@@ -22,7 +22,7 @@ const GalleryBox = ({src, date, info, href, title, text}: Props) => {
           transform: translateY(-10px);
         }
       `}</style>
-      <div className="p-4 GalleryBox" style={{boxShadow: '2px 4px 3px var(--main-color)'}}>
+      <div className="p-4 bg-white GalleryBox" style={{boxShadow: '2px 4px 3px var(--main-color)'}}>
         <Link href={href}>
           <a className="block">
             <div className="flex">
