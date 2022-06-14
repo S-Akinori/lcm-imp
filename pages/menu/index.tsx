@@ -17,10 +17,9 @@ const MenuPage = () => {
         <Container>
             <div>
               {menus && menus.map((menu, index) => (
-              <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
+              <AnimationTrigger key={menu.id} animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
                 <TextAndVideo
                   src={menu.src}
-                  key={menu.id}
                   rtl={index % 2 == 0 ? true : false}
                 >
                   <div className='p-4 md:p-0'>
