@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react";
 import { CommonProps } from "src/types/CommonProps"
-import {Swiper as sw, Navigation, Pagination, EffectFade, Keyboard} from "swiper"
+import SwiperCore, {Swiper as sw, Navigation, Pagination, EffectFade, Keyboard} from "swiper"
 import {Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import Animation from "../Animation";
 import Modal from "../Modal";
@@ -52,7 +52,6 @@ const ImageGallery = ({images, className = '', style}: Props) => {
     <div className={`relative ImageGallery ${className}`}>
       <Modal open={open} onClose={closeGallery}>
         <Swiper
-          style={{}}
           modules={[Navigation, Pagination, EffectFade, Keyboard]}
           navigation={{
             nextEl: nextEl.current,

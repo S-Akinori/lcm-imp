@@ -1,11 +1,19 @@
 .swiper-wrapper {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
   bottom: -1rem;
 }
 .swiper-pagination-bullet-active {
-  background: var(--base-background) !important;
+  background: var(--main-color) !important;
+}
+.custom-swiper-bullet--main {
+  background: var(--main-color) !important;
+  opacity: 1 !important;
+}
+.custom-swiper-bullet--accent {
+  background: var(--accent-color) !important;
+  opacity: 1 !important;
 }
 .custom-swiper-next-button, .custom-swiper-prev-button {
   position: absolute;
@@ -20,6 +28,9 @@
 }
 .custom-swiper-prev-button {
   left: 1rem;
+}
+.custom-swiper-next-button--base-cont, .custom-swiper-prev-button--base-cont {
+  color: var(--base-cont);
 }
 .custom-swiper-next-button::after,
 .custom-swiper-prev-button::after {
@@ -37,6 +48,10 @@
 }
 .custom-swiper-prev-button::after {
   left: 0;
+}
+.custom-swiper-next-button--base-cont::after,
+.custom-swiper-prev-button--base-cont::after {
+  background: var(--base-cont);
 }
 .custom-swiper-next-button:hover::after,
 .custom-swiper-prev-button:hover::after {

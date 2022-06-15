@@ -19,7 +19,7 @@ const GalleryBox = ({src, date, info, href, title, text}: Props) => {
           transition: 300ms;
         }
         .GalleryBox:hover {
-          transform: translateY(-10px);
+          transform: translateY(-5px);
         }
       `}</style>
       <div className="p-4 bg-white GalleryBox" style={{boxShadow: '2px 4px 3px var(--main-color)'}}>

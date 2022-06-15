@@ -1,19 +1,34 @@
 export const topMenuText = {
-  'en': 'MENU',
-  'h2': '一生の思い出をカタチに',
-  'text': `プロのカメラマンと編集者による完全オーダーメイドの結婚式ムービーを制作いたします。\n新郎新婦様、出席される方々全員が思い出に残るムービーを一緒制作していきましょう。`
+  en: 'MENU',
+  h2: '思い出を最高のカタチで残す',
+  text: `プロのカメラマンと編集者によるオーダーメイドの結婚式ムービーを制作いたします。\n新郎新婦様、出席される方々全員が思い出に残るムービーを一緒制作していきましょう。`,
+  href: '/menu',
+  linkText: 'メニュー一覧へ'
 }
+
+export const menuCategories = [
+  {
+    id: 'category1',
+    name: '結婚式前制作',
+    slug: 'pre-wedding-production'
+  },
+  {
+    id: 'category2',
+    name: '結婚式当日制作',
+    slug: 'wedding-production'
+  }
+]
 
 export const menus = [
   {
     id: 'menu1',
     title: '前撮りプラン',
     price: '99,000円(税込)',
-    text: 'ロケーション撮影を行います。おしゃれな場所、思い出の場所で一生の記念になる写真をお渡しします。',
+    text: 'ロケーション撮影を行います。おしゃれな場所、思い出の場所で一生の記念になる写真を撮りお渡しします。',
     src: 'https://youtu.be/rPzbR5m5VhY',
     thumbnail: '/images/concept.jpg',
     link: '/',
-    category: '写真撮影',
+    category: 'category1',
     isTop: true
   },
   {
@@ -24,7 +39,7 @@ export const menus = [
     src: 'https://youtu.be/rPzbR5m5VhY',
     thumbnail: '/images/concept.jpg',
     link: '/menu/wedding-movie',
-    category: 'ムービー制作',
+    category: 'category1',
     isTop: true
   },
   {
@@ -35,7 +50,7 @@ export const menus = [
     src: 'https://youtu.be/rPzbR5m5VhY',
     thumbnail: '/images/concept.jpg',
     link: '/',
-    category: 'ムービー制作',
+    category: 'category2',
     isTop: true
   },
   {
@@ -46,18 +61,7 @@ export const menus = [
     src: 'https://youtu.be/rPzbR5m5VhY',
     thumbnail: '/images/concept.jpg',
     link: '/',
-    category: '写真撮影',
-    isTop: false
-  },
-  {
-    id: 'menu5',
-    title: 'オーダーメイド編集',
-    price: '66,000円（税込）',
-    text: 'いただいた素材を編集し納品するプランです。すでに素材があり、安く高品質なムービーを作りたい方にオススメです。',
-    src: 'https://youtu.be/rPzbR5m5VhY',
-    thumbnail: '/images/concept.jpg',
-    link: '/',
-    category: 'ムービー制作',
+    category: 'category2',
     isTop: false
   },
   {
@@ -68,7 +72,18 @@ export const menus = [
     src: 'https://youtu.be/rPzbR5m5VhY',
     thumbnail: '/images/concept.jpg',
     link: '/',
-    category: 'ムービー制作',
+    category: 'category1',
+    isTop: false
+  },
+  {
+    id: 'menu5',
+    title: 'オーダーメイド編集',
+    price: '66,000円（税込）',
+    text: 'いただいた素材を編集し納品するプランです。すでに素材があり、安く高品質なムービーを作りたい方にオススメです。',
+    src: 'https://youtu.be/rPzbR5m5VhY',
+    thumbnail: '/images/concept.jpg',
+    link: '/',
+    category: 'category1',
     isTop: false
   },
   {
@@ -79,7 +94,7 @@ export const menus = [
     src: 'https://youtu.be/rPzbR5m5VhY',
     thumbnail: '/images/concept.jpg',
     link: '/',
-    category: '写真撮影',
+    category: 'category2',
     isTop: false
   },
 ]

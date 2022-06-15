@@ -23,7 +23,7 @@ const MV = ({title, text, src}: Props) => {
   const titleHtml = titleHtmlSplit.join('<br>');
 
   return (
-      <div className="mv-container relative">
+      <div className={`${styles.mv_container} relative`}>
         {fileType == 'image' && <Image src={src} width={1920} height={1080} />}
         {fileType == 'video' && <video src={src} autoPlay loop muted className={`md:h-screen object-cover object-center ${styles.mv_video}`}></video>}
         <div className="absolute top-1/4 left-6 md:left-12">

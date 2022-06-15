@@ -11,7 +11,6 @@ import TextAndVideo from 'src/components/parts/TextAndVideo'
 import Button from 'src/components/parts/Button'
 import { galleryContents, topGalleryText } from 'src/contents/gallery'
 import {Swiper, SwiperSlide} from 'swiper/react'
-import 'swiper/css';
 import { flowContents, topFlowText } from 'src/contents/flow'
 import Flex from 'src/components/parts/Flex'
 import { newsContents, topNewsText } from 'src/contents/news'
@@ -21,13 +20,20 @@ import AnimationTrigger from 'src/components/parts/AnimationTrigger'
 import PageLoading from 'src/components/parts/PageLoading'
 import Box from 'src/components/parts/Box'
 import GalleryBox from 'src/components/parts/Gallery/GalleryBox'
-import { Autoplay } from 'swiper'
+import { Autoplay, Navigation, Pagination } from 'swiper'
+import { useRef } from 'react'
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const Home: NextPage = () => {
+  const nextEl = useRef(null)
+  const prevEl = useRef(null)
+
   return (
     <Layout>
       <PageLoading />
-      <MV src='/videos/mv.mp4' title={`世界にたったひとつだけの\nウェディングムービー`} text="結婚式ムービーの「RING RING」" />
+      <MV src='/videos/mv.mp4' title={`世界にたったひとつの\nウェディングムービー`} text="結婚式ムービーの「RING RING」" />
       <AnimationTrigger animation='bg-rect active' rootMargin='-150px' triggerOnce>
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
           <section className='py-14 md:py-28'>
@@ -39,6 +45,7 @@ const Home: NextPage = () => {
               >
                 <Title en={conceptData.en} h2={conceptData.h2} />
                 <div className='text'>{conceptData.text}</div>
+                <div className='px-4'><Button href={conceptData.href}>{conceptData.linkText}</Button></div>
               </TextAndImage>
             </Container>
           </section>
@@ -50,15 +57,16 @@ const Home: NextPage = () => {
               <Title en={topMenuText.en} h2={topMenuText.h2} />
               <div className='text'>{topMenuText.text}</div>
           </Container>
-          <div>
+          <div className='mt-8'>
             {menus && menus.map((menu, index) => (
               (menu.isTop && (
               <TextAndVideo
                 src={menu.src}
                 key={menu.id}
                 rtl={index % 2 == 0 ? true : false}
+                className="mb-24 md:mb-32"
               >
-                <div className='p-4 md:p-0'>
+                <div>
                   <h3 className='pb-0'>{menu.title}</h3>
                   <div className='mb-4'>{menu.price}</div>
                   <div>{menu.text}</div>
@@ -68,6 +76,9 @@ const Home: NextPage = () => {
               ))
             ))}
           </div>
+          <Container>
+            <div className='text-center'><Button href={topMenuText.href}>{topMenuText.linkText}</Button></div>
+          </Container>
         </section>
       </AnimationTrigger>
       <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-150px' triggerOnce>
@@ -82,15 +93,30 @@ const Home: NextPage = () => {
                 </div>
                 <div className='md:w-2/3 md:pl-16'>
                   <Swiper
-                    modules={[Autoplay]}
+                    modules={[Pagination, Navigation, Autoplay]}
                     spaceBetween={30}
                     slidesPerView={1}
                     autoplay={{
                       delay: 5000,
                       disableOnInteraction: false
                     }}
+                    navigation={{
+                      nextEl: nextEl.current,
+                      prevEl: prevEl.current
+                    }}
+                    pagination={{
+                      clickable: true,
+                      bulletClass: 'swiper-pagination-bullet custom-swiper-bullet--main',
+                      bulletActiveClass: 'swiper-pagination-bullet, custom-swiper-bullet--accent'
+                    }}
                     breakpoints={{
                       768: {
+                        slidesPerView: 1.2
+                      },
+                      1024: {
+                        slidesPerView: 1.5
+                      },
+                      1280: {
                         slidesPerView: 2
                       }
                     }}
@@ -100,6 +126,8 @@ const Home: NextPage = () => {
                         <GalleryBox src={content.src} date={content.date} info={content.info} href={content.href} title={content.title} text={content.text} />
                       </SwiperSlide>
                     ))}
+                    <div ref={nextEl} className="top-auto bottom-4 md:-bottom-2 custom-swiper-next-button custom-swiper-next-button--base-cont font_en">next</div>
+                    <div ref={prevEl} className="top-auto bottom-4 md:-bottom-2 custom-swiper-prev-button custom-swiper-prev-button--base-cont font_en">prev</div>
                   </Swiper>
                 </div>
               </div>
@@ -129,6 +157,7 @@ const Home: NextPage = () => {
                     <div className='p-4'>
                       <div className='text-accent text-lg'>{flow.title}</div>
                       <div className='whitespace-pre-wrap'>{flow.text}</div>
+                      {flow.notes && <div className='mt-4 whitespace-pre-wrap text-sm'>{flow.notes}</div>}
                     </div>
                   </Box>
                 </div>

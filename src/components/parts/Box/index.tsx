@@ -8,10 +8,10 @@ const Box = ({children, className, style}: Props) => {
     <>
       <style jsx>{`
         div {
-          box-shadow: 2px 4px 3px var(--main-color);
+          box-shadow: 2px 4px 3px #F6F6F6;
         }  
       `}</style>
-      <div className={`bg-base-color-dark shadow-xl shadow-base-color ${className}`} style={style}>{children}</div>
+      <div className={`bg-main ${className}`} style={style}>{children}</div>
     </>
   )
 }

@@ -36,7 +36,7 @@ const NewsDetailPage = ({news}: Props) => {
           />
         </div>
         <div>{news.content}</div>
-        <div className="mt-8 text-center"><Button href="/news">新着情報一覧へ</Button></div>
+        <div className="mt-8 text-center"><Button href="/news">お知らせ一覧へ</Button></div>
       </Container>
     </Layout>
   )
