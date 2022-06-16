@@ -1,6 +1,8 @@
+import { useRouter } from "next/router"
 import { ChangeEventHandler, FormEventHandler, useState } from "react"
 import { FieldError, SubmitHandler, useForm } from "react-hook-form"
 import Layout from "src/components/Layout"
+import Button from "src/components/parts/Button"
 import ButtonRounded from "src/components/parts/Button/ButtonRounded"
 import LoadingButton from "src/components/parts/Button/LoadingButton"
 import Container from "src/components/parts/Container"
@@ -32,6 +34,8 @@ const ContactOrderPage = () => {
   const {register, handleSubmit, formState: {errors}} = useForm<InputData>()
   const [submimtMessage, setSubmitMessage] = useState('')
   const [loading, setLoading] = useState(false)
+  const router = useRouter();
+  const { menuId } = router.query
 
   const onSubmit: SubmitHandler<InputData> = async (data) => {
     setSubmitMessage('')
@@ -67,6 +71,10 @@ const ContactOrderPage = () => {
         <section className="mb-12">
           <TitleAndText h2={contactOrderText.h2}>{contactOrderText.text}</TitleAndText>
         </section>
+        <div className="mb-12">
+          <div className="text-center mb-4">ご相談などはお問い合わせフォームより受け付けております。</div>
+          <div className="text-center"><Button href="/contact/order">お問い合わせはこちら</Button></div>
+        </div>
         <div className="text-center mb-12">
           <div className="mb-4">LINEやインスタグラムでのお問い合わせ受け付けております。</div>
           <div className="w-max mx-auto"><SNSList /></div>
@@ -83,7 +91,7 @@ const ContactOrderPage = () => {
                     <div> 
                       {orderInput.inputs && orderInput.inputs.map(input => (
                         <InputGroup className="items-center mb-0" key={input.id}>
-                          <Input register={register} validation={orderInput.validation} name={input.name} id={input.id} type='checkbox' defaultValue={input.title} />
+                          <Input register={register} validation={orderInput.validation} name={input.name} id={input.id} type='checkbox' defaultValue={input.title} defaultChecked={input.id === menuId ? true : false} />
                           <InputLabel htmlFor={input.id}>{input.title}</InputLabel>
                         </InputGroup>
                       ))}

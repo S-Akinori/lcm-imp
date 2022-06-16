@@ -23,7 +23,7 @@ const Menu = () => {
         <Title h2="そのほかのメニュー" />
         <div className="flex flex-wrap Menu">
           {menus && menus.map(menu => (
-            <Link key={menu.id} href={menu.link}><a className="block p-4 mb-8 md:w-1/3">
+            <Link key={menu.id} href={menu.link}><a className="block md:p-4 mb-8 md:w-1/3">
               <div className="relative flex mb-2 Menu__image">
                 <Image
                   src={menu.thumbnail}

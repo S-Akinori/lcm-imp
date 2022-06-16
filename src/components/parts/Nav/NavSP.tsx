@@ -35,13 +35,14 @@ const NavSP = ({nav, open, setOpen, className = '', style}: Props) => {
       <div className="absolute right-4 top-4 cursor-pointer" onClick={setOpen ? () => setOpen(false) : undefined}><CloseIcon /></div>
       <div className="flex flex-col justify-center h-5/6">
         <nav className="mb-4" style={style}>
-          <ul className="w-2/3 ml-auto">
+          <ul className="w-max mx-auto">
             {nav && nav.map(navItem => (
               <li key={navItem.id} className="px-4"><Link href={navItem.href}>{navItem.linkText}</Link></li>
             ))}
           </ul>
         </nav>
         <div className='pr-2 mb-4 text-center'><ButtonRounded href="/contact">お問い合わせ</ButtonRounded></div>
+        <div className='pr-2 mb-4 text-center'><ButtonRounded href="/contact/order">お申込み</ButtonRounded></div>
         <div className="flex justify-center mb-4">
           {SNS && SNS.map(item => (
             <div key={item.id} className="pr-4"><a href={item.href} target="_blank" rel="noreferrer">

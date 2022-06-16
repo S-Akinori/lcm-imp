@@ -4,6 +4,7 @@ import { CommonProps } from "src/types/CommonProps"
 interface Props extends CommonProps {
   children: ReactNode
   type?: 'th' | 'td'
+  
 }
 
 const TableCell = ({type = 'td', children, className = '', style}: Props) => {

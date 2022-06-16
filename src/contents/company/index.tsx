@@ -9,7 +9,7 @@ export const companies = [
       {id: 'company1_email', title: 'メール', content: 'contact@impre.jp'},
       {id: 'company1_tel', title: '電話番号', content: '080-6725-1692'},
       {id: 'company1_hours', title: '営業時間', content: '10:00～19:00'},
-      {id: 'company1_url', title: 'ホームページ', content: 'https://impre.jp'},
+      {id: 'company1_url', title: 'ホームページ', content: <a href="https://impre.jp" target="_blank">https://impre.jp</a>},
       {id: 'company1_business', title: '事業内容', content: 'ドローン空撮、結婚式ムービー制作、プロモーションビデオ制作'},
     ]
   },
@@ -23,7 +23,7 @@ export const companies = [
       {id: 'company2_email', title: 'メール', content: 'information@lcm-atelier.com'},
       {id: 'company2_tel', title: '電話番号', content: '0725-25-5031'},
       {id: 'company2_hours', title: '営業時間', content: '9:00〜20:00'},
-      {id: 'company2_url', title: 'ホームページ', content: 'https://lcm-atelier.com'}, 
+      {id: 'company2_url', title: 'ホームページ', content: <a href="https://lcm-atelier.com" target="_blank">https://lcm-atelier.com</a>}, 
       {id: 'company2_business', title: '事業内容', content: '	婚礼用映像作成、ウェルカムボード作成、イベント企画・運営'},
     ]
   },

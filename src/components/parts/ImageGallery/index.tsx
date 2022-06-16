@@ -37,10 +37,6 @@ const ImageGallery = ({images, className = '', style}: Props) => {
     setOpen(false)
   }
 
-  const slideToTarget = (swiper: sw, index?: number) => {
-    swiper.slideTo(index || initialIndex, 0);
-  }
-
   useEffect(() => {
     if(open && swiper) {
       swiper.slideTo(initialIndex, 0);

@@ -55,6 +55,9 @@ const Title = ({en, h2, h3, type = 'default', children}: Props) => {
           .wrapper::before {
             height: 1.25rem;
           }
+          .wrapper.default::before {
+            top: 0.5rem;
+          }
           .wrapper.x-border .Title__inner {
             margin: auto;
           }

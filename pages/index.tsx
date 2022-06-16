@@ -21,14 +21,11 @@ import PageLoading from 'src/components/parts/PageLoading'
 import Box from 'src/components/parts/Box'
 import GalleryBox from 'src/components/parts/Gallery/GalleryBox'
 import { Autoplay, Navigation, Pagination } from 'swiper'
-import { useRef } from 'react'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const Home: NextPage = () => {
-  const nextEl = useRef(null)
-  const prevEl = useRef(null)
 
   return (
     <Layout>
@@ -36,7 +33,7 @@ const Home: NextPage = () => {
       <MV src='/videos/mv.mp4' title={`世界にたったひとつの\nウェディングムービー`} text="結婚式ムービーの「RING RING」" />
       <AnimationTrigger animation='bg-rect active' rootMargin='-150px' triggerOnce>
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
-          <section className='py-14 md:py-28'>
+          <section className='py-14 md:py-24'>
             <Container>
               <TextAndImage
                 src='/images/concept.jpg'
@@ -52,7 +49,7 @@ const Home: NextPage = () => {
         </AnimationTrigger>
       </AnimationTrigger>
       <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
-        <section className='relative py-14 md:py-28'>
+        <section className='relative py-14 md:py-20'>
           <Container>
               <Title en={topMenuText.en} h2={topMenuText.h2} />
               <div className='text'>{topMenuText.text}</div>
@@ -67,7 +64,7 @@ const Home: NextPage = () => {
                 className="mb-24 md:mb-32"
               >
                 <div>
-                  <h3 className='pb-0'>{menu.title}</h3>
+                  <h3 className='pb-0 mb-0 text-accent'>{menu.title}</h3>
                   <div className='mb-4'>{menu.price}</div>
                   <div>{menu.text}</div>
                   <div className='mt-12'><Button href={menu.link}>詳細を見る</Button></div>
@@ -83,7 +80,7 @@ const Home: NextPage = () => {
       </AnimationTrigger>
       <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-150px' triggerOnce>
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
-          <section className='py-14 md:py-28'>
+          <section className='py-14 md:py-20'>
             <Container>
               <div className='md:flex'>
                 <div className='mb-12 md:w-1/3'>
@@ -101,8 +98,8 @@ const Home: NextPage = () => {
                       disableOnInteraction: false
                     }}
                     navigation={{
-                      nextEl: nextEl.current,
-                      prevEl: prevEl.current
+                      nextEl: '.custom-swiper-next-button',
+                      prevEl: '.custom-swiper-prev-button',
                     }}
                     pagination={{
                       clickable: true,
@@ -111,23 +108,24 @@ const Home: NextPage = () => {
                     }}
                     breakpoints={{
                       768: {
-                        slidesPerView: 1.2
+                        slidesPerView: 1.2,
                       },
                       1024: {
-                        slidesPerView: 1.5
+                        slidesPerView: 1.5,
                       },
                       1280: {
-                        slidesPerView: 2
+                        slidesPerView: 2,
                       }
                     }}
+                    onSwiper={swiper => console.log(swiper)}
                   >
                     {galleryContents && galleryContents.map(content => (
                       <SwiperSlide key={content.id}>
                         <GalleryBox src={content.src} date={content.date} info={content.info} href={content.href} title={content.title} text={content.text} />
                       </SwiperSlide>
                     ))}
-                    <div ref={nextEl} className="top-auto bottom-4 md:-bottom-2 custom-swiper-next-button custom-swiper-next-button--base-cont font_en">next</div>
-                    <div ref={prevEl} className="top-auto bottom-4 md:-bottom-2 custom-swiper-prev-button custom-swiper-prev-button--base-cont font_en">prev</div>
+                    <div className="top-auto bottom-4 md:-bottom-2 custom-swiper-next-button custom-swiper-next-button--base-cont font_en">next</div>
+                    <div className="top-auto bottom-4 md:-bottom-2 custom-swiper-prev-button custom-swiper-prev-button--base-cont font_en">prev</div>
                   </Swiper>
                 </div>
               </div>
@@ -136,14 +134,14 @@ const Home: NextPage = () => {
         </AnimationTrigger>
       </AnimationTrigger>
       <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
-        <section className='py-14 md:py-28'>
+        <section className='py-14 md:py-20'>
           <Container>
             <div>
               <Title en={topFlowText.en} h2={topFlowText.h2} />
             </div>
             <div>
-              {flowContents && flowContents.map(flow => (
-                <div key={flow.id} className='relative my-24'>
+              {flowContents && flowContents.map((flow, index) => (
+                <div key={flow.id} className={`relative ${index !== flowContents.length - 1 ? 'my-24' : ''}`}>
                   <div className='absolute left-0 -top-8 text-accent'>{flow.label}</div>
                   <Box className='md:flex'>
                     <div className='p-4 md:w-80 shrink-0'>
@@ -168,7 +166,7 @@ const Home: NextPage = () => {
       </AnimationTrigger>
       <AnimationTrigger animation='bg-rect active' rootMargin='-150px' triggerOnce>
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
-          <section className='py-14 md:py-28'>
+          <section className='py-14 md:py-20'>
             <Container>
               <Flex>
                 <div className='md:w-1/3 lg:w-1/4'>
@@ -188,7 +186,7 @@ const Home: NextPage = () => {
       </AnimationTrigger>
       <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-150px' triggerOnce>
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
-          <section className='py-14 md:py-28'>
+          <section className='py-14 md:py-20'>
             <Container>
               <Flex>
                 <div className='md:w-2/3'>

@@ -1,17 +1,13 @@
-import Image from "next/image"
 import GalleryBox from "src/components/parts/Gallery/GalleryBox"
 import Title from "src/components/parts/Title"
 import { galleryContents } from "src/contents/gallery"
-import {Navigation, Pagination, A11y} from "swiper"
+import {Navigation, Pagination} from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { useRef } from "react"
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const Voices = () => {
-  const nextEl = useRef(null)
-  const prevEl = useRef(null)
 
   return (
     <div>
@@ -26,8 +22,8 @@ const Voices = () => {
         }}
         modules={[Navigation, Pagination]}
         navigation={{
-          nextEl: nextEl.current,
-          prevEl: prevEl.current
+          nextEl: '.custom-swiper-next-button',
+          prevEl: '.custom-swiper-prev-button'
         }}
         pagination={{
           clickable: true,
@@ -40,8 +36,8 @@ const Voices = () => {
             <GalleryBox src={content.src} date={content.date} info={content.info} href={content.href} title={content.title} text={content.text} />
           </SwiperSlide>
         ))}
-        <div ref={nextEl} className="top-auto bottom-4 md:-bottom-2 custom-swiper-next-button custom-swiper-next-button--base-cont font_en">next</div>
-        <div ref={prevEl} className="top-auto bottom-4 md:-bottom-2 custom-swiper-prev-button custom-swiper-prev-button--base-cont font_en">prev</div>
+        <div className="top-auto bottom-4 md:-bottom-2 custom-swiper-next-button custom-swiper-next-button--base-cont font_en">next</div>
+        <div className="top-auto bottom-4 md:-bottom-2 custom-swiper-prev-button custom-swiper-prev-button--base-cont font_en">prev</div>
       </Swiper>
     </div>
   )
