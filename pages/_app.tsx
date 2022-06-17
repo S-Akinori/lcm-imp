@@ -13,12 +13,12 @@ export const visitContext = createContext<VisitContext>({
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [visited, setVisited] = useState(false)
-  useEffect(() => {
-    const isVisited = localStorage.getItem('visited');
-    if(isVisited === 'true') {
-      setVisited(true)
-    }
-  }, [])
+  // useEffect(() => {
+  //   const isVisited = localStorage.getItem('visited');
+  //   if(isVisited === 'true') {
+  //     setVisited(true)
+  //   }
+  // }, [])
   return (
     <visitContext.Provider value={{visited: visited, setVisited: setVisited}}>
       <Component {...pageProps} />
