@@ -22,7 +22,7 @@
 body {
   color: var(--base-text-color);
   line-height: 1.75;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
   overflow-x: hidden;
   max-width: 100%;
   font-family: "Source Han Serif", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Arial", "Meiryo", sans-serif;
