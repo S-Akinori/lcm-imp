@@ -10,7 +10,7 @@ import { flowContents, subFlowText } from "src/contents/flow"
 const FlowPage = () => {
   return(
     <Layout>
-      <FV en="FLOW" title="制作の流れ" src="/images/concept.jpg" />
+      <FV en="FLOW" title="制作の流れ" src="/images/flow.jpg" />
       <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-150px' triggerOnce>
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
           <Container>

@@ -14,14 +14,14 @@ export const flowContents = [
     title: '1. お申込み',
     text: 'プランがお決まりになりましたら、お申込みフォームよりご連絡ください。\nご相談も無料でできますので、お問い合わせフォームよりお気軽にご相談ください。',
     label: '挙式1か月前まで',
-    src: '/images/flow.jpg',
+    src: '/images/flow1.jpg',
   },
   {
     id: 'flow2',
     title: '2. 打ち合わせ',
     text: 'オンラインでお打ち合わせをいたします。撮影場所や日時、動画の構成を一緒に考えていきましょう。',
     label: '挙式1か月まで',
-    src: '/images/flow.jpg',
+    src: '/images/flow2.jpg',
   },
   {
     id: 'flow3',
@@ -29,7 +29,7 @@ export const flowContents = [
     text: '打ち合わせで決めた場所で撮影を行います。',
     notes: '※ 当日撮影後、取り直しを行う場合は追加料金が発生します\n※ 取って出しエンドロールムービーの場合は当日の結婚式場で撮影します。',
     label: '挙式3週間前まで',
-    src: '/images/flow.jpg',
+    src: '/images/flow3.jpg',
   },
   {
     id: 'flow4',
@@ -37,13 +37,13 @@ export const flowContents = [
     text: '素材が弊社に到着後、10日前後で完成ムービーをWeb上でご案内します。',
     notes: '※ 修正は一度だけ無料で行います。それ以降はOOO円発生します。\n※ パスワード設定し、第三者に見られることはありませんのでご安心ください。',
     label: '挙式2週間前まで',
-    src: '/images/flow.jpg',
+    src: '/images/flow4.jpg',
   },
   {
     id: 'flow5',
     title: '5. DVDのお届け',
     text: '制作したムービーはDVDでお届けします。\n内容のご確認と上映される会場様にて再生テストを必ず行ってください。',
     label: '挙式1週間前まで',
-    src: '/images/flow.jpg',
+    src: '/images/flow5.jpeg',
   },
 ]

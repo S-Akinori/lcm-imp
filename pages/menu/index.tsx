@@ -14,7 +14,7 @@ const MenuPage = () => {
   return (
     <>
       <Layout>
-        <FV en="MENU" title="メニュー" src="/images/concept.jpg" />
+        <FV en="MENU" title="メニュー" src="/images/menu.jpg" />
         <Container className="py-12">
             <div>
               {menuCategories && menuCategories.map(category => (

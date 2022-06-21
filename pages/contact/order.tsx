@@ -66,7 +66,7 @@ const ContactOrderPage = () => {
 
   return (
     <Layout>
-      <FV en="ORDER" title="プランお申込み" src="/images/concept.jpg" />
+      <FV en="ORDER" title="プランお申込み" src="/images/order.jpg" />
       <Container className="py-14 max-w-screen-lg">
         <section className="mb-12">
           <TitleAndText h2={contactOrderText.h2}>{contactOrderText.text}</TitleAndText>

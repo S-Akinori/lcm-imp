@@ -14,7 +14,7 @@ const ConceptPage = () => {
   return (
     <>
       <Layout>
-        <FV en="COMPANY" title="運営会社" src="/images/concept.jpg" />
+        <FV en="COMPANY" title="運営会社" src="/images/company.jpg" />
         <Container>
           {companies && companies.map(company => (
             <Table key={company.id}>

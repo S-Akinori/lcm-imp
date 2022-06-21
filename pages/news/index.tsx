@@ -8,7 +8,7 @@ import { newsContents } from "src/contents/news"
 const NewsPage = () => {
   return (
     <Layout>
-      <FV en="NEWS" title="お知らせ" src="/images/concept.jpg" />
+      <FV en="NEWS" title="お知らせ" src="/images/news.jpg" />
       <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
         <Container className="py-14 max-w-screen-lg">
           <ul className=''>

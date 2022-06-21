@@ -55,7 +55,7 @@ const ContactPage = () => {
   }
   return (
     <Layout>
-      <FV en="CONTACT" title="お問い合わせ" src="/images/concept.jpg" />
+      <FV en="CONTACT" title="お問い合わせ" src="/images/contact.jpg" />
       <Container className="py-14 max-w-screen-lg">
         <section className="mb-12">
           <TitleAndText h2={subContactText.h2}>{subContactText.text}</TitleAndText>

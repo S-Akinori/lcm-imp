@@ -11,7 +11,7 @@ import { galleryContents } from "src/contents/gallery"
 const GalleryPage = () => {
   return (
     <Layout>
-      <FV en="GALLERY" title="お客様の声" src="/images/concept.jpg" />
+      <FV en="GALLERY" title="お客様の声" src="/images/gallery.jpg" />
       <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
         <Container className="py-12">
           <div className="flex flex-wrap">
