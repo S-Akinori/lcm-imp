@@ -60,6 +60,7 @@ const Home: NextPage = () => {
             {menus && menus.map((menu, index) => (
               (menu.isTop && (
               <TextAndImageOver
+                src={menu.src}
                 image={menu.thumbnail}
                 key={menu.id}
                 rtl={index % 2 == 0 ? true : false}
