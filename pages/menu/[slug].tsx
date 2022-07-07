@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next"
+import Image from "next/image"
 import Layout from "src/components/Layout"
 import Button from "src/components/parts/Button"
 import Container from "src/components/parts/Container"
@@ -16,6 +17,11 @@ interface Props {
     slug: string
     category: string
     videoSrc: string
+    thumbnail: {
+      src: string
+      width: string
+      height: string
+    }
     images: {
       id: string
       src: string
@@ -36,7 +42,15 @@ const MenuDetailPage = ({menu}: Props) => {
     <Layout>
       <Container className="py-12 max-w-screen-lg">
         <h1 className="border-b border-b-accent">{menu.title}</h1>
-        <Video src={menu.videoSrc} />
+        {/* <Video src={menu.videoSrc} /> */}
+        <div className="text-center">
+          <Image 
+            src={menu.thumbnail.src}
+            width={menu.thumbnail.width}
+            height={menu.thumbnail.height}
+            objectFit='cover'
+          />
+        </div>
         <div>
           <ImageGallery images={menu.images} />
         </div>
@@ -45,7 +59,7 @@ const MenuDetailPage = ({menu}: Props) => {
           <div className="text-center md:text-right"><Button className="!bg-accent !text-accent-cont" href="/contact/order" query={{menuId: menu.id}}>このプランで問い合わせる</Button></div>
         </div>
         <div className="mb-8">
-          <div>{menu.content}</div>
+          <div className="whitespace-pre-wrap">{menu.content}</div>
         </div>
         <div className="mb-24">
           {menu.details && menu.details.map((detail) => (
@@ -55,9 +69,9 @@ const MenuDetailPage = ({menu}: Props) => {
             </div>
           ))}
         </div>
-        <div className="mb-20">
+        {/* <div className="mb-20">
           <Voices />
-        </div>
+        </div> */}
         <div>
           <Menu />
         </div>

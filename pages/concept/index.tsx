@@ -23,7 +23,7 @@ const ConceptPage = () => {
         <Container>
           {subConceptMessages && subConceptMessages.map((message, index)=> (
             <AnimationTrigger key={message.id} animation='fadeInBottom' startClass='opacity-0' rootMargin='-100px' triggerOnce>
-              <section className="py-12">
+              <section className="py-4 md:py-12">
                 <TextAndImage
                   src={message.src}
                   alt={message.title}

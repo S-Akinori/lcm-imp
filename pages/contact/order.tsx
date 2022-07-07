@@ -73,10 +73,10 @@ const ContactOrderPage = () => {
         </section>
         <div className="mb-12">
           <div className="text-center mb-4">ご相談などはお問い合わせフォームより受け付けております。</div>
-          <div className="text-center"><Button href="/contact/order">お問い合わせはこちら</Button></div>
+          <div className="text-center"><Button href="/contact">お問い合わせはこちら</Button></div>
         </div>
         <div className="text-center mb-12">
-          <div className="mb-4">LINEやインスタグラムでのお問い合わせ受け付けております。</div>
+          <div className="mb-4">LINEやインスタグラムでのお申込み、お問い合わせ受け付けております。</div>
           <div className="w-max mx-auto"><SNSList /></div>
         </div>
         <div>

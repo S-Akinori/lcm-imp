@@ -24,9 +24,9 @@ import { Autoplay, Navigation, Pagination } from 'swiper'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import TextAndImageOver from 'src/components/parts/TextAndImage/TextAndImageOver'
 
 const Home: NextPage = () => {
-
   return (
     <Layout>
       <PageLoading />
@@ -38,6 +38,8 @@ const Home: NextPage = () => {
               <TextAndImage
                 src='/images/concept.jpg'
                 alt={conceptData.h2}
+                width={600}
+                height={400}
                 col={2}
               >
                 <Title en={conceptData.en} h2={conceptData.h2} />
@@ -57,8 +59,8 @@ const Home: NextPage = () => {
           <div className='mt-8'>
             {menus && menus.map((menu, index) => (
               (menu.isTop && (
-              <TextAndVideo
-                src={menu.src}
+              <TextAndImageOver
+                image={menu.thumbnail}
                 key={menu.id}
                 rtl={index % 2 == 0 ? true : false}
                 className="mb-24 md:mb-32"
@@ -69,7 +71,7 @@ const Home: NextPage = () => {
                   <div>{menu.text}</div>
                   <div className='mt-12'><Button href={menu.link}>詳細を見る</Button></div>
                 </div>
-              </TextAndVideo>
+              </TextAndImageOver>
               ))
             ))}
           </div>
@@ -78,7 +80,7 @@ const Home: NextPage = () => {
           </Container>
         </section>
       </AnimationTrigger>
-      <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-150px' triggerOnce>
+      {/* <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-150px' triggerOnce>
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
           <section className='py-14 md:py-20'>
             <Container>
@@ -132,7 +134,7 @@ const Home: NextPage = () => {
             </Container>
           </section>
         </AnimationTrigger>
-      </AnimationTrigger>
+      </AnimationTrigger> */}
       <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
         <section className='py-14 md:py-20'>
           <Container>
@@ -164,7 +166,7 @@ const Home: NextPage = () => {
           </Container>
         </section>
       </AnimationTrigger>
-      <AnimationTrigger animation='bg-rect active' rootMargin='-150px' triggerOnce>
+      {/* <AnimationTrigger animation='bg-rect active' rootMargin='-150px' triggerOnce>
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
           <section className='py-14 md:py-20'>
             <Container>
@@ -183,7 +185,7 @@ const Home: NextPage = () => {
             </Container>
           </section>
         </AnimationTrigger>
-      </AnimationTrigger>
+      </AnimationTrigger> */}
       <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-150px' triggerOnce>
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
           <section className='py-14 md:py-20'>

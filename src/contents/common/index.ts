@@ -1,19 +1,19 @@
 export const SNS = [
   {
     id: 'sns1',
-    href: '/',
+    href: 'https://lin.ee/N13cbC7',
     linkText: 'LINE',
     src: '/images/line_icon.png'
   },
   {
     id: 'sns2',
-    href: '/',
+    href: 'https://www.instagram.com/imp.drone/',
     linkText: 'Instagram',
     src: '/images/instagram_icon.png'
   },
 ]
 
 export const company = {
-  name: '株式会社LCM',
-  address: '〒594-0032 大阪府和泉市池田下町173番地30'
+  name: '株式会社imp',
+  address: '〒166-0012 東京都杉並区和田2-33-5'
 }

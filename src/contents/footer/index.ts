@@ -14,16 +14,16 @@ export const fnav = [
     href: '/flow',
     linkText: 'FLOW',
   },
-  {
-    id: 'nav4',
-    href: '/news',
-    linkText: 'NEWS',
-  },
-  {
-    id: 'nav5',
-    href: '/gallery',
-    linkText: 'GALLERY',
-  },
+  // {
+  //   id: 'nav4',
+  //   href: '/news',
+  //   linkText: 'NEWS',
+  // },
+  // {
+  //   id: 'nav5',
+  //   href: '/gallery',
+  //   linkText: 'GALLERY',
+  // },
   {
     id: 'nav6',
     href: '/company',

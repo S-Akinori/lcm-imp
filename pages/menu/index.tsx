@@ -1,9 +1,11 @@
 import Layout from "src/components/Layout"
 import AnimationTrigger from "src/components/parts/AnimationTrigger"
 import Button from "src/components/parts/Button"
+import CircleText from "src/components/parts/CircleText"
 import Container from "src/components/parts/Container"
 import FV from "src/components/parts/FV"
 import TextAndImage from "src/components/parts/TextAndImage"
+import TextAndImageOver from "src/components/parts/TextAndImage/TextAndImageOver"
 import TextAndVideo from "src/components/parts/TextAndVideo"
 import Title from "src/components/parts/Title"
 import TitleAndText from "src/components/parts/TitleAndText"
@@ -19,12 +21,17 @@ const MenuPage = () => {
             <div>
               {menuCategories && menuCategories.map(category => (
                 <div key={category.id}>
-                  <Title type="x-border">{category.name}</Title>
+                  <div className="w-max mx-auto mb-8">
+                    <CircleText rotation={5} radius={175} height={50} fontSize={14} className="text-accent">{category.en}</CircleText>
+                    <div className="text-center text-xl">{category.name}</div>
+                  </div>
+                  {category.description && <div className="mb-8 text-center text-sm">{category.description}</div>}
                   {menus && menus.map((menu, index) => (
                     <>
                     {menu.category === category.id && (
                       <AnimationTrigger key={menu.id} animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
-                        <TextAndVideo
+                        <TextAndImageOver
+                          image={menu.thumbnail}
                           src={menu.src}
                           rtl
                           className="mb-24 md:mb-32"
@@ -35,7 +42,7 @@ const MenuPage = () => {
                             <div>{menu.text}</div>
                             <div className='mt-12'><Button href={menu.link}>詳細を見る</Button></div>
                           </div>
-                        </TextAndVideo>
+                        </TextAndImageOver>
                       </AnimationTrigger>
                     )}
                     </>
