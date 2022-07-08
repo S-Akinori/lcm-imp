@@ -65,7 +65,13 @@ const ContactOrderPage = () => {
   }
 
   return (
-    <Layout>
+    <Layout
+      pageTitle="プランお申込み"
+      pageDescription="結婚式ムービーのプランが決まりましたらこちらよりお申込みください。LINEやインスタも可能です。おしゃれで感動するウェディングムービーを作りましょう。"
+      h1="オーダーメイドの結婚式ムービーの依頼はこちら"
+      pageImg={`${process.env.NEXT_PUBLIC_HOME_URL}/images/order.jpg`}
+      pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/contact/order`}
+    >
       <FV en="ORDER" title="プランお申込み" src="/images/order.jpg" />
       <Container className="py-14 max-w-screen-lg">
         <section className="mb-12">

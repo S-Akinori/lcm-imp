@@ -9,7 +9,13 @@ import { subConceptMessages, subConceptText } from "src/contents/concept"
 const ConceptPage = () => {
   return (
     <>
-      <Layout>
+      <Layout
+        pageTitle="コンセプト"
+        pageDescription="結婚式ムービーをロケーション撮影やドローンを使い作成します。テンプレートのないプロフィールムービーやオープニングムービーを作るので自分だけのムービーが作れます。"
+        h1="テンプレートを使わないおしゃれな結婚式ムービーを制作"
+        pageImg={`${process.env.NEXT_PUBLIC_HOME_URL}/images/concept.jpg`}
+        pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/concept`}
+      >
         <FV en="CONCEPT" title="コンセプト" src="/images/concept.jpg" />
         <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-150px' triggerOnce>
           <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>

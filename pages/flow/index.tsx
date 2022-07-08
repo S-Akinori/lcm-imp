@@ -9,7 +9,13 @@ import { flowContents, subFlowText } from "src/contents/flow"
 
 const FlowPage = () => {
   return(
-    <Layout>
+    <Layout
+      pageTitle="制作の流れ"
+      pageDescription="テンプレートがないので企画から相談しつつ進めていきます。ロケーション撮影、ドローン撮影も行うので新郎新婦様の思い出の場所で最高のウェディングムービーを作りましょう。"
+      h1="結婚式でおしゃれなプロフィールムービーを作るまでの流れ"
+      pageImg={`${process.env.NEXT_PUBLIC_HOME_URL}/images/flow.jpg`}
+      pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/flow`}
+    >
       <FV en="FLOW" title="制作の流れ" src="/images/flow.jpg" />
       <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-150px' triggerOnce>
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>

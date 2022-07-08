@@ -168,14 +168,19 @@ export const menuArticles = [
     price: '55,000円(税込)',
     details: [
       {
-        id: 'detail2',
+        id: 'detail1',
         title: '納品日',
         content: '撮影から1週間以内',
       },
       {
-        id: 'detail3',
+        id: 'detail2',
         title: '納品形態',
         content: '現像写真, 写真データ',
+      },
+      {
+        id: 'detail3',
+        title: '注意事項',
+        content: '・ドレス等はご持参いただきます。\n・交通費は関東圏では無料、それ以外では別途お支払いいただきます。',
       },
     ]
   },

@@ -54,7 +54,13 @@ const ContactPage = () => {
     }
   }
   return (
-    <Layout>
+    <Layout
+      pageTitle="お問い合わせ"
+      pageDescription="完全オリジナルな結婚式ムービーの作成に関するご相談を受けています。アイデアやロケーションなど、気になる点はご相談ください。"
+      h1="結婚式ムービー作成のお問い合わせ"
+      pageImg={`${process.env.NEXT_PUBLIC_HOME_URL}/images/contact.jpg`}
+      pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/contact`}
+    >
       <FV en="CONTACT" title="お問い合わせ" src="/images/contact.jpg" />
       <Container className="py-14 max-w-screen-lg">
         <section className="mb-12">

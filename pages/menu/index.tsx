@@ -15,7 +15,13 @@ import { menuCategories, menus } from "src/contents/menu"
 const MenuPage = () => {
   return (
     <>
-      <Layout>
+      <Layout
+        pageTitle="メニュー"
+        pageDescription="プロフィールムービー、オープニングムービーはもちろん、撮って出しエンドロールムービーの制作も行っています。前撮りと結婚式ムービーはロケーション撮影を行い好きな場所で思い出を残せます。"
+        h1="テンプレートを使わない自作ウェディングムービーの料金プラン"
+        pageImg={`${process.env.NEXT_PUBLIC_HOME_URL}/images/menu.jpg`}
+        pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/menu`}
+      >
         <FV en="MENU" title="メニュー" src="/images/menu.jpg" />
         <Container className="py-12">
             <div>

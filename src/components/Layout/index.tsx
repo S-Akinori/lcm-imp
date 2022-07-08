@@ -10,13 +10,15 @@ interface Props {
   pageDescription?: string
   pagePath?: string
   pageImg?: string
+  h1?: string
 }
 
 const Layout = ({
     pageTitle = process.env.NEXT_PUBLIC_SITE_NAME, 
     pageDescription = process.env.NEXT_PUBLIC_SITE_DESCRIPTION,
     pagePath = process.env.NEXT_PUBLIC_HOME_URL, 
-    pageImg = 'https://impre.jp/images/agriculture-gf0d64886b_1920.jpg', 
+    pageImg = process.env.NEXT_PUBLIC_HOME_URL + '/images/concept.jpg', 
+    h1 = process.env.NEXT_PUBLIC_SITE_DESCRIPTION,
     children
   }: Props) => {
   return (
@@ -38,6 +40,7 @@ const Layout = ({
       </Head>
       <Header />
       <main>
+        {h1 && <h1 className="hidden">{h1}</h1>}
         <div>
           {children}
         </div>

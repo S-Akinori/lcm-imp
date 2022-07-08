@@ -28,7 +28,9 @@ import TextAndImageOver from 'src/components/parts/TextAndImage/TextAndImageOver
 
 const Home: NextPage = () => {
   return (
-    <Layout>
+    <Layout
+      h1={process.env.NEXT_PUBLIC_SITE_NAME}
+    >
       <PageLoading />
       <MV src='/videos/mv.mp4' title={`世界にたったひとつの\nウェディングムービー`} text="結婚式ムービーの「RING RING」" />
       <AnimationTrigger animation='bg-rect active' rootMargin='-150px' triggerOnce>

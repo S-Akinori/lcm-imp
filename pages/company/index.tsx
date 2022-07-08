@@ -13,7 +13,13 @@ import { subConceptMessages, subConceptText } from "src/contents/concept"
 const ConceptPage = () => {
   return (
     <>
-      <Layout>
+      <Layout
+        pageTitle="運営会社"
+        pageDescription="結婚式ムービー制作をはじめ、前撮りやフォトウェディング、結婚式カメラマン派遣も行っています。結婚式で感動が巻き起こる演出をご提供します。"
+        h1="感動する結婚式ムービーを制作"
+        pageImg={`${process.env.NEXT_PUBLIC_HOME_URL}/images/company.jpg`}
+        pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/company`}
+      >
         <FV en="COMPANY" title="運営会社" src="/images/company.jpg" />
         <Container>
           {companies && companies.map(company => (

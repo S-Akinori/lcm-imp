@@ -39,7 +39,13 @@ interface Props {
 
 const MenuDetailPage = ({menu}: Props) => {
   return (
-    <Layout>
+    <Layout
+      pageTitle={menu.title}
+      pageDescription={menu.content}
+      h1={menu.title}
+      pageImg={`${process.env.NEXT_PUBLIC_HOME_URL}${menu.thumbnail.src}`}
+      pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/menu/${menu.slug}`}
+    >
       <Container className="py-12 max-w-screen-lg">
         <h1 className="border-b border-b-accent">{menu.title}</h1>
         {/* <Video src={menu.videoSrc} /> */}
@@ -51,12 +57,12 @@ const MenuDetailPage = ({menu}: Props) => {
             objectFit='cover'
           />
         </div>
-        <div>
+        {/* <div>
           <ImageGallery images={menu.images} />
-        </div>
+        </div> */}
         <div className="mb-8">
-          <div className="mb-4 text-xl text-accent text-right">{menu.price}</div>
-          <div className="text-center md:text-right"><Button className="!bg-accent !text-accent-cont" href="/contact/order" query={{menuId: menu.id}}>このプランで問い合わせる</Button></div>
+          <div className="mb-4 text-xl text-accent">{menu.price}</div>
+          <div className=""><Button className="!bg-accent !text-accent-cont" href="/contact/order" query={{menuId: menu.id}}>このプランで問い合わせる</Button></div>
         </div>
         <div className="mb-8">
           <div className="whitespace-pre-wrap">{menu.content}</div>
