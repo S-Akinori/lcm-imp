@@ -28,7 +28,7 @@ const MenuPage = () => {
               {menuCategories && menuCategories.map(category => (
                 <div key={category.id}>
                   <div className="w-max mx-auto mb-8">
-                    <CircleText rotation={5} radius={175} height={50} fontSize={14} className="text-accent">{category.en}</CircleText>
+                    <CircleText rotation={6} radius={125} height={50} fontSize={14} className="text-accent">{category.en}</CircleText>
                     <div className="text-center text-xl">{category.name}</div>
                   </div>
                   {category.description && <div className="mb-8 text-center text-sm">{category.description}</div>}
