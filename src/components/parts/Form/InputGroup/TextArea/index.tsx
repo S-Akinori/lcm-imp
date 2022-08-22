@@ -21,6 +21,5 @@ const TextArea = ({register, name, id, placeholder, defaultValue, validation, on
       : <textarea name={name} rows={5} id={id} placeholder={placeholder} onChange={onChange}>{defaultValue}</textarea>
     )
   }
-}
 
 export default TextArea
