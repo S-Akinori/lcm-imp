@@ -1,4 +1,4 @@
-import { MenuProp } from "src/types/MenuProp"
+import { MenuObjectProp, MenuProp } from "src/types/MenuProp"
 
 export const topMenuText = {
   en: 'MENU',
@@ -511,7 +511,7 @@ export const menuArticles = [
   },
 ]
 
-export const menuMovies = [
+export const menuMovies : MenuProp[] = [
   {
     id: 'prePhoto',
     title: '前撮り',
@@ -546,7 +546,7 @@ export const menuMovies = [
   },
 ]
 
-export const menuLocations = [
+export const menuLocations : MenuProp[]  = [
   {
     id: 'kantoArea',
     title: '関東',
@@ -565,7 +565,7 @@ export const menuLocations = [
   },
 ]
 
-export const menuOptions = [
+export const menuOptions : MenuProp[] = [
   {
     id: 'option1',
     title: '休日、祝日撮影',
@@ -608,7 +608,7 @@ export const menuOptions = [
   },
 ]
 
-export const discountOptions = [
+export const discountOptions : MenuProp[] = [
   {
     id: 'discountOption1',
     title: '早割',
