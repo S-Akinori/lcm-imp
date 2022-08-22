@@ -1,7 +1,8 @@
 import { useRouter } from "next/router"
-import { ChangeEventHandler, FormEventHandler, useState } from "react"
+import { ChangeEventHandler, FormEventHandler, useEffect, useState } from "react"
 import { FieldError, SubmitHandler, useForm } from "react-hook-form"
 import Layout from "src/components/Layout"
+import Box from "src/components/parts/Box"
 import Button from "src/components/parts/Button"
 import ButtonRounded from "src/components/parts/Button/ButtonRounded"
 import LoadingButton from "src/components/parts/Button/LoadingButton"
@@ -17,13 +18,15 @@ import TitleAndText from "src/components/parts/TitleAndText"
 import SNSList from "src/components/templates/SNSList"
 import { contactFormInputs, subContactText } from "src/contents/contact"
 import { contactOrderFormInputs, contactOrderText } from "src/contents/contact/contactOrder"
+import { MenuObjectProp } from "src/types/MenuProp"
 
 interface InputData {
   name: string
   kana: string
   email: string
   tel: string
-  menus: string[]
+  menu: MenuObjectProp
+  price: number
   date?: string
   place?: string
   meeting: string
@@ -34,27 +37,27 @@ const ContactOrderPage = () => {
   const {register, handleSubmit, formState: {errors}} = useForm<InputData>()
   const [submimtMessage, setSubmitMessage] = useState('')
   const [loading, setLoading] = useState(false)
+  const [total, setTotal] = useState(0);
+  const [menu, setMenu] = useState<MenuObjectProp | null>(null)
   const router = useRouter();
   const { menuId } = router.query
 
   const onSubmit: SubmitHandler<InputData> = async (data) => {
     setSubmitMessage('')
     setLoading(true)
-    const orderData = JSON.parse(JSON.stringify(data)) as InputData;
-    const keys = Object.keys(orderData) as (keyof InputData)[]
-    keys.forEach(key => {
-      const value = orderData[key]
-      if(Array.isArray(value)) {
-        Object.assign(orderData, {[key]: value.join('\n')})
-      }
-    })
+    const modifiedData = {
+      ...data, 
+      menu: menu,
+      price: total
+    }
+    console.log(modifiedData);
     try {
       const res = await fetch('/api/orderMail', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(orderData)
+        body: JSON.stringify(modifiedData)
       });
       setLoading(false)
       setSubmitMessage('注文を受け付けました。contact@impre.jpよりメールが送信されるのでご確認お願いします。メールが届かない場合、お手数ですがcontact@impre.jpまたはLINEよりお問い合わせください。')
@@ -63,6 +66,61 @@ const ContactOrderPage = () => {
       setSubmitMessage('エラーが発生しました。お手数ですが、お時間を空けて改めてご注文してください')
     }
   }
+
+  const onClickCopyText = () => {
+    const text = `
+    ムービー作成のご依頼
+    
+    =======予定プラン=======
+    【ムービーの種類】
+    ${menu?.movies.map(item => item.title)}
+
+    【ロケーション】
+    ${menu?.locations.map(item => item.title)}
+
+    【オプション】
+    ${menu?.options.map(item => item.title)}
+
+    【割引】
+    ${menu?.discounts.map(item => item.title)}
+
+    費用: ${total.toLocaleString()}円
+    =======================
+
+    =======お客様情報=======
+    【お名前】
+    〇〇
+
+    【フリガナ】
+    〇〇
+
+    【挙式日（予定日も可）】
+    〇〇
+
+    【式場（予定場所でも可）】
+    〇〇
+
+    【ヒアリング希望日時 (候補3つほど) 】
+    〇〇
+
+    【ご質問等あればお書きください】
+
+    =======================
+    `.replace(/ /g, "")
+
+    navigator.clipboard.writeText(text);
+    alert('コピーしました');
+  }
+
+  useEffect(() => {
+    const menuJson = sessionStorage.getItem('menus');
+    const total = sessionStorage.getItem('total');
+    if(menuJson && total) {
+      const menu = JSON.parse(menuJson);
+      setTotal(parseInt(total))
+      setMenu(menu);
+    }
+  }, [])
 
   return (
     <Layout
@@ -77,19 +135,87 @@ const ContactOrderPage = () => {
         <section className="mb-12">
           <TitleAndText h2={contactOrderText.h2}>{contactOrderText.text}</TitleAndText>
         </section>
-        <div className="mb-12">
+        {!menu && (<Box className="p-4 mb-8">
+          <h2 className="mb-4">まずはご自身に合うプランをお選びください！</h2>
+          <p className="mb-8">わたしたちはお客様にお好きなオプションを追加していただき、お客様に合うプランをご提供しております。メニューページよりプランをお選びいただきお申込みください！</p>
+          <div className="text-center">
+            <Button href="/menu" color="accent">メニューページへ</Button>
+          </div>
+        </Box>)
+        }
+        {menu && (
+          <Box className="px-4 py-8 mb-8">
+            <h2 className="text-center mb-4">お客様の撮影プラン</h2>
+            <div className="mb-4 px-4 text-center">
+              合計: <span className="text-accent text-3xl">{total.toLocaleString()}</span>円 (税込)
+              {menu.locations.find(item => item.id === 'outsideKantoArea') && <div className="text-sm">関東以外の撮影では別途交通費がかかります</div>}
+            </div>
+            <div className="md:flex flex-wrap mb-4">
+              <div className="p-4 md:w-1/2 lg:w-1/4">
+                <div>ムービーの種類</div>
+                <ul>
+                  {menu.movies.length > 0 && menu.movies.map(item => (
+                    <li key={item.id}>{item.title}</li>
+                  ))}
+                  {menu.movies.length === 0 && (
+                    <li>なし</li>
+                  )}
+                </ul>
+              </div>
+              <div className="p-4 md:w-1/2 lg:w-1/4">
+                <div>ロケーション</div>
+                <ul>
+                  {menu.locations.length > 0 && menu.locations.map(item => (
+                    <li key={item.id}>{item.title}</li>
+                  ))}
+                  {menu.locations.length === 0 && (
+                    <li>なし</li>
+                  )}
+                </ul>
+              </div>
+              <div className="p-4 md:w-1/2 lg:w-1/4">
+                <div>オプション</div>
+                <ul>
+                  {menu.options.length > 0 && menu.options.map(item => (
+                    <li key={item.id}>{item.title}</li>
+                  ))}
+                  {menu.options.length === 0 && (
+                    <li>なし</li>
+                  )}
+                </ul>
+              </div>
+              <div className="p-4 md:w-1/2 lg:w-1/4">
+                <div>割引</div>
+                <ul>
+                  {menu.discounts.length > 0 && menu.discounts.map(item => (
+                    <li key={item.id}>{item.title}</li>
+                  ))}
+                  {menu.discounts.length === 0 && (
+                    <li>なし</li>
+                  )}
+                </ul>
+              </div>
+            </div>
+            <div className="text-center">
+              <Button href="/menu" color="accent">プランを編集する</Button>
+            </div>
+          </Box>
+        )}
+        {/* <div className="mb-12">
           <div className="text-center mb-4">ご相談などはお問い合わせフォームより受け付けております。</div>
           <div className="text-center"><Button href="/contact">お問い合わせはこちら</Button></div>
-        </div>
+        </div> */}
         <div className="text-center mb-12">
           <div className="mb-4">LINEやインスタグラムでのお申込み、お問い合わせ受け付けております。</div>
+          <div className="mb-4">LINE、インスタグラムでお申込みの際は、以下のボタンよりプラン内容をコピーしていただき、そのままペーストしてください。次に「お客様情報」の欄をご入力いただき送信してください</div>
+          <ButtonRounded onClick={onClickCopyText} className="mb-8">プラン内容をコピー</ButtonRounded>
           <div className="w-max mx-auto"><SNSList /></div>
         </div>
         <div>
           <h2 className="text-center mb-12">お申込み</h2>
           <Form onSubmit={handleSubmit(onSubmit)}>
             {contactOrderFormInputs && contactOrderFormInputs.map(orderInput => (
-              <InputGroup key={orderInput.id} className="mb-8">
+              <div key={orderInput.id} className="mb-8">
                 {orderInput.inputs && <div className="p-2 md:w-60 md:shrink-0">{orderInput.title}</div>}
                 {!orderInput.inputs && <InputLabel className="md:w-60 md:shrink-0" htmlFor={orderInput.id}>{orderInput.title}</InputLabel>}
                 {orderInput.type === 'checkbox' && (
@@ -134,7 +260,7 @@ const ContactOrderPage = () => {
                     )}
                   </>
                 )}
-              </InputGroup>
+              </div>
             ))}
             <div className="text-center">確認画面はございませんので、送信する前に内容をご確認ください。</div>
             <div className="text-center mt-8"><LoadingButton loading={loading} color="accent" className="bg-accent text-accent-cont">送信する</LoadingButton></div>

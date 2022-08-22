@@ -78,7 +78,7 @@ const ContactPage = () => {
           <h2 className="text-center mb-12">お問い合わせ</h2>
           <Form onSubmit={handleSubmit(onSubmit)}>
             {contactFormInputs && contactFormInputs.map(formInput => (
-              <InputGroup key={formInput.id} className="mb-8">
+              <div key={formInput.id} className="mb-8">
                 {formInput.inputs && <div className="p-2 md:w-48 md:shrink-0">{formInput.title}</div>}
                 {!formInput.inputs && <InputLabel className="md:w-48 md:shrink-0" htmlFor={formInput.id}>{formInput.title}</InputLabel>}
                 {formInput.type === 'checkbox' && (
@@ -123,7 +123,7 @@ const ContactPage = () => {
                     )}
                   </>
                 )}
-              </InputGroup>
+              </div>
             ))}
             <div className="text-center">確認画面はございませんので、送信する前に内容をご確認ください。</div>
             <div className="text-center mt-8"><LoadingButton loading={loading} color="accent" className="bg-accent text-accent-cont">送信する</LoadingButton></div>

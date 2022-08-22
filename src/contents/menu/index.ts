@@ -1,3 +1,5 @@
+import { MenuProp } from "src/types/MenuProp"
+
 export const topMenuText = {
   en: 'MENU',
   h2: '思い出を最高のカタチで残す',
@@ -506,5 +508,132 @@ export const menuArticles = [
         content: '式場で撮影および撮って出しが可能な場合のみ承ります。',
       },
     ]
+  },
+]
+
+export const menuMovies = [
+  {
+    id: 'prePhoto',
+    title: '前撮り',
+    priceText: '79,800円',
+    price: 79800,
+    category: 'movies',
+    disabled: false,
+  },
+  {
+    id: 'profileMovie',
+    title: 'プロフィールムービー',
+    priceText: '129,800円',
+    price: 129800,
+    category: 'movies',
+    disabled: false,
+  },
+  {
+    id: 'openingMovie',
+    title: 'オープニングムービー',
+    priceText: '129,800円',
+    price: 129800,
+    category: 'movies',
+    disabled: false,
+  },
+  {
+    id: 'endingMovie',
+    title: 'エンドロールムービー',
+    priceText: '129,800円',
+    price: 129800,
+    category: 'movies',
+    disabled: false,
+  },
+]
+
+export const menuLocations = [
+  {
+    id: 'kantoArea',
+    title: '関東',
+    priceText: '20,000円',
+    price: 20000,
+    category: 'locations',
+    disabled: false,
+  },
+  {
+    id: 'outsideKantoArea',
+    title: '関東以外',
+    priceText: '料金別途相談',
+    price: 0,
+    category: 'locations',
+    disabled: false,
+  },
+]
+
+export const menuOptions = [
+  {
+    id: 'option1',
+    title: '休日、祝日撮影',
+    priceText: '30,000円',
+    price: 30000,
+    category: 'options',
+    disabled: false,
+  },
+  {
+    id: 'option2',
+    title: 'ドローン撮影',
+    priceText: '40,000円',
+    price: 40000,
+    category: 'options',
+    disabled: false,
+  },
+  {
+    id: 'option3',
+    title: 'FPVドローン撮影',
+    priceText: '80,000円',
+    price: 80000,
+    category: 'options',
+    disabled: false,
+  },
+  {
+    id: 'option4',
+    title: 'ロケーション1カ所追加',
+    priceText: '20,000円',
+    price: 20000,
+    category: 'options',
+    disabled: false,
+  },
+  {
+    id: 'option5',
+    title: 'ドキュメンタリープラン',
+    priceText: '70,000円',
+    price: 70000,
+    category: 'options',
+    disabled: false,
+  },
+]
+
+export const discountOptions = [
+  {
+    id: 'discountOption1',
+    title: '早割',
+    text: '挙式日の6か月前までにご予約された方が対象',
+    priceText: '15,000円',
+    price: -15000,
+    category: 'discounts',
+    disabled: false,
+  },
+  {
+    id: 'discountOption2',
+    title: 'SNS掲載割',
+    text: '弊社のHP等での掲載、およびお客様のSNSでの掲載が可能な方が対象',
+    priceText: '15,000円',
+    price: -15000,
+    category: 'discounts',
+    disabled: false,
+  },
+  {
+    id: 'setDiscount',
+    title: 'セット割',
+    text: 'ムービー、前撮りを合計2種類以上ご注文された方が対象',
+    priceText: '19,800円',
+    price: -19800,
+    category: 'discounts',
+    disabled: true,
   },
 ]

@@ -106,9 +106,9 @@ input:not([type="checkbox"]), textarea {
 input:focus, textarea:focus {
   border: 1px solid var(--accent-color);
 }
-label {
+/* label {
   padding: 0.5rem;
-}
+} */
 
 iframe {
   max-width: 100%;

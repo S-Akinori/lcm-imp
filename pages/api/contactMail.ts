@@ -22,19 +22,6 @@ interface ContactData {
   content: string
 }
 
-const createNotificationMessage = (contactData: ContactData) => {
-  const header = 'お問い合わせがありました';
-  const message = `
-【お名前】
-${contactData.name}
-【メールアドレス】
-${contactData.email}
-【お問い合わせ内容】
-${contactData.content}
-  `
-  return {header, message};
-}
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Response>

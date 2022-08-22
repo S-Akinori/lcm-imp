@@ -1,6 +1,4 @@
-import { ChangeEventHandler, FocusEventHandler, LegacyRef, ReactNode } from "react"
-import { FieldValues, Path, UseFormRegister } from "react-hook-form"
-import { CommonProps } from "src/types/CommonProps"
+import { UseFormRegister } from "react-hook-form"
 
 interface Validation {
   [key: string]: any
@@ -14,22 +12,25 @@ interface Props {
   type?: string
   defaultValue?: string
   defaultChecked?: boolean
+  checked?: boolean
   validation?: Validation
+  onChange? : React.ChangeEventHandler<HTMLInputElement>
+  disabled?: boolean
 }
 
-const Input = ({register, name, id, placeholder, type = 'text', defaultValue, defaultChecked = false, validation}: Props) => {
+const Input = ({register, name, id, placeholder, type = 'text', defaultValue, defaultChecked, checked, validation, onChange, disabled}: Props) => {
   if(register && name) {
     return (
       <>
-        {type == 'textarea' && <textarea {...register(name, {...validation})} rows={5} id={id} placeholder={placeholder}>{defaultValue}</textarea>}
-        {type !== 'textarea' && <input {...register(name, {...validation})} id={id} placeholder={placeholder} type={type} defaultValue={defaultValue} defaultChecked={defaultChecked} />}
+        {type == 'textarea' && <textarea {...register(name, {...validation})} rows={5} id={id} placeholder={placeholder} disabled={disabled}>{defaultValue}</textarea>}
+        {type !== 'textarea' && <input {...register(name, {...validation})} id={id} placeholder={placeholder} type={type} defaultValue={defaultValue} checked={checked} defaultChecked={defaultChecked} onChange={onChange} disabled={disabled} />}
       </>
     )
   } else {
     return (
       <>
-        {type == 'textarea' && <textarea name={name} rows={5} id={id} placeholder={placeholder}>{defaultValue}</textarea>}
-        {type !== 'textarea' && <input name={name} id={id} placeholder={placeholder} type={type} defaultValue={defaultValue} defaultChecked={defaultChecked} />}
+        {type == 'textarea' && <textarea name={name} rows={5} id={id} placeholder={placeholder} disabled={disabled}>{defaultValue}</textarea>}
+        {type !== 'textarea' && <input name={name} id={id} placeholder={placeholder} type={type} defaultValue={defaultValue} checked={checked} defaultChecked={defaultChecked} onChange={onChange} disabled={disabled} />}
       </>
     )
   }

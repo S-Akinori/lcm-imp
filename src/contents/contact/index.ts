@@ -101,7 +101,7 @@ export const generateContactMail = (contactData: FormInputData) => {
     運営会社: 株式会社imp
     〒166-0012 東京都杉並区和田2-33-5
     EMAIL: contact@impre.jp
-    TEL: 080-6725-1692
+    TEL: 080-8499-7385
     HP: https://impre.jp
     ------------------------------------
   `.replace(/ /g, "")
