@@ -17,9 +17,12 @@ import TextAndVideo from "src/components/parts/TextAndVideo"
 import Title from "src/components/parts/Title"
 import TitleLabel from "src/components/parts/Title/TitleLabel"
 import TitleAndText from "src/components/parts/TitleAndText"
+import MenuSummary from "src/components/templates/Menu/MenuSummary"
 import { subConceptMessages, subConceptText } from "src/contents/concept"
 import { discountOptions, menuCategories, menuLocations, menuMovies, menuOptions, menus } from "src/contents/menu"
 import { MenuObjectProp, MenuProp } from "src/types/MenuProp"
+
+const setDiscountId = 'setDiscount'
 
 const MenuPage = () => {
   const router = useRouter()
@@ -35,8 +38,6 @@ const MenuPage = () => {
     //この辺要修正
     let price = 0
     let menuObj : MenuObjectProp | null = null
-    const setDiscountId = 'setDiscount'
-    const setDiscount = discountOptions.find(item => item.id === setDiscountId) as MenuProp;
 
     if(e.currentTarget.checked) {
       price = parseInt(e.currentTarget.value);
@@ -54,18 +55,6 @@ const MenuPage = () => {
         [menu.category] : menus[menu.category].filter(item => item.id !== menu.id)
       }
     }
-    
-    if(!menus.discounts.find(item => item.id === setDiscountId) && menu.category == 'movies' && menus.movies.length > 0) {
-      price += setDiscount.price
-      menuObj.discounts = [
-        ...menuObj.discounts,   
-        setDiscount
-      ]
-    } else if(menus.discounts.find(item => item.id === setDiscountId) && menu.category == 'movies' && menus.movies.length === 0) {
-      price -= setDiscount.price
-      menuObj.discounts.filter(item => item.id !== setDiscountId)
-    }
-    console.log(price)
     setMenus(menuObj);
     setTotal(total + price);
   }
@@ -87,6 +76,30 @@ const MenuPage = () => {
     }
   }, [])
 
+  useEffect(() => {
+    const setDiscount = discountOptions.find(item => item.id === setDiscountId) as MenuProp;
+    if(!menus.discounts.find(item => item.id === setDiscountId) && menus.movies.length > 1) {
+      const price = setDiscount.price
+      const menuObj = {
+        ...menus,
+        discounts: [
+          ...menus.discounts,   
+          setDiscount
+        ]
+      }
+      setMenus(menuObj);
+      setTotal(total + price);
+    } else if(menus.discounts.find(item => item.id === setDiscountId) && menus.movies.length < 2) {
+      const price = -setDiscount.price
+      const menuObj = {
+        ...menus,
+        discounts: menus.discounts.filter(item => item.id !== setDiscountId)
+      }
+      setMenus(menuObj);
+      setTotal(total + price);
+    }
+  }, [menus])
+
   return (
     <>
       <Layout
@@ -97,10 +110,14 @@ const MenuPage = () => {
         pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/menu`}
       >
         <FV en="MENU" title="メニュー" src="/images/menu.jpg" />
-        <Container className="py-12">
-          <Title h2="プランは一つだけ！自分だけの結婚式ムービーを制作します" />
-          <p>わたしたちは「結婚式ムービー制作」というメニューだけをご提供しています。<br />その中で前撮りやドローン撮影など必要に応じたオプションを追加していただくことで、簡単にお見積もりができます。</p>
-        </Container>
+        <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-150px' triggerOnce>
+          <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
+            <Container className="py-12">
+              <Title h2="プランは一つだけ！自分だけの結婚式ムービーを制作します" />
+              <p>わたしたちは「結婚式ムービー制作」というメニューだけをご提供しています。<br />その中で前撮りやドローン撮影など必要に応じたオプションを追加していただくことで、簡単にお見積もりができます。</p>
+            </Container>
+          </AnimationTrigger>
+        </AnimationTrigger>
         <Container className="py-12">
           <div className="mb-4">
             <TitleLabel label="STEP1">ムービーの種類を選択</TitleLabel>
@@ -163,62 +180,7 @@ const MenuPage = () => {
           </div>
         </Container>
         <Container>
-          <Box className="px-4 py-8">
-            <h2 className="text-center mb-4">お客様の撮影プラン</h2>
-            <div className="mb-4 px-4 text-center">
-              <div>合計: <span className="text-accent text-3xl">{total.toLocaleString()}</span>円 (税込)</div>
-              {menus.locations.find(item => item.id === 'outsideKantoArea') && <div className="text-sm">関東以外の撮影では別途交通費がかかります</div>}
-            </div>
-            <div className="md:flex flex-wrap mb-4">
-              <div className="p-4 md:w-1/2 lg:w-1/4">
-                <div>ムービーの種類</div>
-                <ul>
-                  {menus.movies.length > 0 && menus.movies.map(item => (
-                    <li key={item.id}>{item.title}</li>
-                  ))}
-                  {menus.movies.length === 0 && (
-                    <li>なし</li>
-                  )}
-                </ul>
-              </div>
-              <div className="p-4 md:w-1/2 lg:w-1/4">
-                <div>ロケーション</div>
-                <ul>
-                  {menus.locations.length > 0 && menus.locations.map(item => (
-                    <li key={item.id}>{item.title}</li>
-                  ))}
-                  {menus.locations.length === 0 && (
-                    <li>なし</li>
-                  )}
-                </ul>
-              </div>
-              <div className="p-4 md:w-1/2 lg:w-1/4">
-                <div>オプション</div>
-                <ul>
-                  {menus.options.length > 0 && menus.options.map(item => (
-                    <li key={item.id}>{item.title}</li>
-                  ))}
-                  {menus.options.length === 0 && (
-                    <li>なし</li>
-                  )}
-                </ul>
-              </div>
-              <div className="p-4 md:w-1/2 lg:w-1/4">
-                <div>割引</div>
-                <ul>
-                  {menus.discounts.length > 0 && menus.discounts.map(item => (
-                    <li key={item.id}>{item.title}</li>
-                  ))}
-                  {menus.discounts.length === 0 && (
-                    <li>なし</li>
-                  )}
-                </ul>
-              </div>
-            </div>
-            <div className="text-center">
-              <Button color="accent" onClick={onClick}>このプランで依頼をする</Button>
-            </div>
-          </Box>
+          <MenuSummary menu={menus} total={total} isButton={true} />
         </Container>
         {/* <Container className="py-12">
             <div>

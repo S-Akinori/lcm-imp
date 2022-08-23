@@ -15,6 +15,7 @@ import InputLabel from "src/components/parts/Form/InputGroup/InputLabel"
 import FV from "src/components/parts/FV"
 import Title from "src/components/parts/Title"
 import TitleAndText from "src/components/parts/TitleAndText"
+import MenuSummary from "src/components/templates/Menu/MenuSummary"
 import SNSList from "src/components/templates/SNSList"
 import { contactFormInputs, subContactText } from "src/contents/contact"
 import { contactOrderFormInputs, contactOrderText } from "src/contents/contact/contactOrder"
@@ -143,64 +144,7 @@ const ContactOrderPage = () => {
           </div>
         </Box>)
         }
-        {menu && (
-          <Box className="px-4 py-8 mb-8">
-            <h2 className="text-center mb-4">お客様の撮影プラン</h2>
-            <div className="mb-4 px-4 text-center">
-              合計: <span className="text-accent text-3xl">{total.toLocaleString()}</span>円 (税込)
-              {menu.locations.find(item => item.id === 'outsideKantoArea') && <div className="text-sm">関東以外の撮影では別途交通費がかかります</div>}
-            </div>
-            <div className="md:flex flex-wrap mb-4">
-              <div className="p-4 md:w-1/2 lg:w-1/4">
-                <div>ムービーの種類</div>
-                <ul>
-                  {menu.movies.length > 0 && menu.movies.map(item => (
-                    <li key={item.id}>{item.title}</li>
-                  ))}
-                  {menu.movies.length === 0 && (
-                    <li>なし</li>
-                  )}
-                </ul>
-              </div>
-              <div className="p-4 md:w-1/2 lg:w-1/4">
-                <div>ロケーション</div>
-                <ul>
-                  {menu.locations.length > 0 && menu.locations.map(item => (
-                    <li key={item.id}>{item.title}</li>
-                  ))}
-                  {menu.locations.length === 0 && (
-                    <li>なし</li>
-                  )}
-                </ul>
-              </div>
-              <div className="p-4 md:w-1/2 lg:w-1/4">
-                <div>オプション</div>
-                <ul>
-                  {menu.options.length > 0 && menu.options.map(item => (
-                    <li key={item.id}>{item.title}</li>
-                  ))}
-                  {menu.options.length === 0 && (
-                    <li>なし</li>
-                  )}
-                </ul>
-              </div>
-              <div className="p-4 md:w-1/2 lg:w-1/4">
-                <div>割引</div>
-                <ul>
-                  {menu.discounts.length > 0 && menu.discounts.map(item => (
-                    <li key={item.id}>{item.title}</li>
-                  ))}
-                  {menu.discounts.length === 0 && (
-                    <li>なし</li>
-                  )}
-                </ul>
-              </div>
-            </div>
-            <div className="text-center">
-              <Button href="/menu" color="accent">プランを編集する</Button>
-            </div>
-          </Box>
-        )}
+        {menu && (<MenuSummary menu={menu} total={total} />)}
         {/* <div className="mb-12">
           <div className="text-center mb-4">ご相談などはお問い合わせフォームより受け付けております。</div>
           <div className="text-center"><Button href="/contact">お問い合わせはこちら</Button></div>
