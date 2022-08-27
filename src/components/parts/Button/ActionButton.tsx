@@ -27,7 +27,7 @@ const ActionButton = ({href='', className = '', color = 'accent', style, target,
     <>
       {!href && (
         <button className={btnClass} style={style} onClick={onClick}>
-          <span className="block py-2 px-20 border border-main text-center">
+          <span className="block py-2 px-16 border border-main text-center md:px-24">
             {subText && <span>＼ {subText} ／ <br /></span>}
             <span className="text-xl font-bold">{children}</span>
           </span>
@@ -37,7 +37,7 @@ const ActionButton = ({href='', className = '', color = 'accent', style, target,
       {href && (
         <Link href={{pathname: href, query: query}} target={target} rel={target && "noreferrer"}>
           <a className={btnClass} style={style}>
-            <span className="block py-2 px-20 border border-main text-center">
+            <span className="block py-2 px-16 border border-main text-center md:px-24">
               {subText && (<span>＼ {subText} ／ <br /></span>)}
               <span className="text-xl font-bold">{children}</span>
             </span>
