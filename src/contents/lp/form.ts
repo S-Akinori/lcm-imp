@@ -95,6 +95,7 @@ export const generateContactMail = (contactData: FormInputData) => {
 
     ------------------------------------
     オーダーメイド結婚式ムービー | RING RING
+    HP: https://wedding.impre.jp
 
     運営会社: 株式会社imp
     〒166-0012 東京都杉並区和田2-33-5
