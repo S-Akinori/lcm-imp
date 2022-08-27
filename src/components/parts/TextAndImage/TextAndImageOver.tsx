@@ -3,7 +3,7 @@ import { ReactNode } from "react"
 import { CommonProps } from "src/types/CommonProps"
 
 interface Props extends CommonProps {
-  src: string
+  src?: string
   image: {
     src: string
     width: number

@@ -7,7 +7,7 @@ export const SNS = [
   },
   {
     id: 'sns2',
-    href: 'https://www.instagram.com/imp.drone/',
+    href: 'https://www.instagram.com/wedding.ringring/',
     linkText: 'Instagram',
     src: '/images/instagram_icon.png'
   },

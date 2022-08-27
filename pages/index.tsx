@@ -58,7 +58,7 @@ const Home: NextPage = () => {
               <Title en={topMenuText.en} h2={topMenuText.h2} />
               <div className='text'>{topMenuText.text}</div>
           </Container>
-          <div className='mt-8'>
+          {/* <div className='mt-8'>
             {menus && menus.map((menu, index) => (
               (menu.isTop && (
               <TextAndImageOver
@@ -77,9 +77,9 @@ const Home: NextPage = () => {
               </TextAndImageOver>
               ))
             ))}
-          </div>
+          </div> */}
           <Container>
-            <div className='text-center'><Button href={topMenuText.href}>{topMenuText.linkText}</Button></div>
+            <div><Button href={topMenuText.href}>{topMenuText.linkText}</Button></div>
           </Container>
         </section>
       </AnimationTrigger>

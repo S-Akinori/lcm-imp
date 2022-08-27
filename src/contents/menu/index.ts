@@ -5,7 +5,7 @@ export const topMenuText = {
   h2: '思い出を最高のカタチで残す',
   text: `プロのカメラマンと編集者によるオーダーメイドの結婚式ムービーを制作いたします。\n新郎新婦様、出席される方々全員が思い出に残るムービーを一緒制作していきましょう。`,
   href: '/menu',
-  linkText: 'メニュー一覧へ'
+  linkText: 'メニューへ'
 }
 
 export const menuCategories = [

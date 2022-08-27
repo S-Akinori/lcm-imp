@@ -4,12 +4,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
 @import './swiper.css';
 
+@font-face {
+  src: url('/fonts/Cookie-Regular.ttf') format('truetype');
+  font-family: 'Cookie';
+}
+
 :root {
   --base-background: #F6F6F6;
   --base-color: #F6F6F6;
   --base-text-color: #080D1B;
   --base-cont: #080D1B;
   --main-color: #fbe5e7;
+  --main-color-cont: #FFF;
+  --lp-main-color: #F7F4E9;
   --main-color-cont: #FFF;
   --accent-color: #A69463;
   --accent-cont: #FFF;
