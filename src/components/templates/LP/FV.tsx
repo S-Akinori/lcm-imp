@@ -19,10 +19,6 @@ const LPFV = ({src, children}: Props) => {
   return (
     <>
       <style jsx>{`
-        @font-face {
-          font-family: 'SoukouMincho';
-          src: url('/fonts/SoukouMincho.ttf') format('truetype'),
-        }
         .fv-container {
           position: relative;
           height: 80vh;

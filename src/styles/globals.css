@@ -4,11 +4,6 @@
 @import './fonts.css';
 @import './swiper.css';
 
-@font-face {
-  src: url('/fonts/Cookie-Regular.ttf') format('truetype');
-  font-family: 'Cookie';
-}
-
 :root {
   --base-background: #F6F6F6;
   --base-color: #F6F6F6;
