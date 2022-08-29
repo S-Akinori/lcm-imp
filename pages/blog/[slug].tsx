@@ -34,7 +34,7 @@ const PostSinglePage = ({post, categories, pickedOutPosts}: Props) => {
             <article>
               <h1>{post.title}</h1>
               <div className="flex justify-center mb-8">{post.categories?.edges?.map(edge => (
-                <Link href={'/blog/category/' + edge?.node?.slug}>{edge?.node?.name}</Link>
+                <Link key={edge?.node?.id} href={'/blog/category/' + edge?.node?.slug}>{edge?.node?.name}</Link>
               ))}</div>
               <div>
                 <Image
