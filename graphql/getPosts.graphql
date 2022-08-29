@@ -1,0 +1,27 @@
+query getPosts {
+  posts {
+    edges {
+      node {
+        id
+        slug
+        title
+        excerpt
+        date
+        categories {
+          edges {
+            node {
+              id
+              name
+              slug
+            }
+          }
+        }
+        featuredImage {
+          node {
+            sourceUrl
+          }
+        }
+      }
+    }
+  }
+}

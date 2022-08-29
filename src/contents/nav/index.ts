@@ -14,18 +14,13 @@ export const gnav = [
     href: '/flow',
     linkText: 'FLOW',
   },
-  // {
-  //   id: 'nav4',
-  //   href: '/news',
-  //   linkText: 'NEWS',
-  // },
-  // {
-  //   id: 'nav5',
-  //   href: '/gallery',
-  //   linkText: 'GALLERY',
-  // },
   {
-    id: 'nav6',
+    id: 'nav4',
+    href: '/blog',
+    linkText: 'BLOG',
+  },
+  {
+    id: 'nav5',
     href: '/company',
     linkText: 'COMPANY',
   },

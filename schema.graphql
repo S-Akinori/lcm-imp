@@ -1,0 +1,103 @@
+type Post {
+  id: Int!
+  title: String!
+  slug: String!
+  content: String
+  excerpt: String
+  date: String
+  categories: PostToCategoryConnection
+  imageUrl: String
+  featuredImage: FeaturedImageConnection
+}
+
+type Query {
+  posts: RootQueryToPostConnection
+  post(id: ID!, idType: PostIdType = SLUG): Post
+  categories: RootQueryToCategoryConnection
+  menu(id: ID! = "pickedOutPosts", idType: MenuNodeIdTypeEnum = NAME ): Menu
+}
+
+enum PostIdType {
+  DATABASE_ID
+  ID
+  SLUG
+  URI  
+}
+
+enum MenuNodeIdTypeEnum {
+  DATABASE_ID
+  ID
+  LOCATION
+  NAME
+  SLUG
+}
+
+# Post
+type RootQueryToPostConnection {
+  edges: [RootQueryToPostConnectionEdge]
+}
+
+type RootQueryToPostConnectionEdge {
+  node: Post
+}
+
+type PostToCategoryConnection {
+  edges: [PostToCategoryConnectionEdge]
+}
+
+type PostToCategoryConnectionEdge {
+  node: Category
+}
+
+type FeaturedImageConnection {
+  node: FeaturedImage!
+}
+
+type FeaturedImage {
+  sourceUrl: String!
+}
+
+#Category
+type RootQueryToCategoryConnection {
+  edges: [RootQueryToCategoryConnectionEdge]
+}
+
+type RootQueryToCategoryConnectionEdge {
+  node: Category 
+}
+
+type Category {
+  id: Int
+  name: String
+  slug: String
+  uri: String
+}
+
+# Menu
+type Menu {
+  id: String!
+  slug: String!
+  name: String!
+  locations: [MenuLocationEnum]
+  menuItems: MenuToMenuItemConnection
+}
+
+enum MenuLocationEnum {
+  SIDE_NAV
+}
+
+type MenuToMenuItemConnection  {
+  edges: [MenuToMenuItemConnectionEdge]
+}
+
+type MenuToMenuItemConnectionEdge {
+  node: MenuItem
+}
+
+type MenuItem {
+  connectedNode: MenuItemToMenuItemLinkableConnectionEdge
+}
+
+type MenuItemToMenuItemLinkableConnectionEdge {
+  node: Post
+}

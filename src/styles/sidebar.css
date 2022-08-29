@@ -1,0 +1,9 @@
+.sidebar h4 {
+  margin-bottom: 1.5rem;
+}
+.sidebar ul li {
+  border-top: 1px solid var(--accent-color);
+}
+.sidebar ul li:last-child {
+  border-bottom: 1px solid var(--accent-color);
+}

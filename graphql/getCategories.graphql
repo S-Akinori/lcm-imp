@@ -1,0 +1,12 @@
+query getCategories {
+  categories {
+    edges {
+      node {
+        id
+        slug
+        name
+        uri
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+query getPickedOutPosts {
+  menu(id: "pickedOutPosts", idType: NAME) {
+    id
+    slug
+    name
+    locations
+    menuItems {
+      edges {
+        node {
+          connectedNode {
+            node {
+              ... on Post {
+                id
+                title
+                slug
+                excerpt
+                featuredImage {
+                  node {
+                    sourceUrl
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

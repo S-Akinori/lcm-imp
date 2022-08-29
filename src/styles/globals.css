@@ -3,6 +3,8 @@
 @tailwind utilities;
 @import './fonts.css';
 @import './swiper.css';
+@import './blog.css';
+@import './sidebar.css';
 
 :root {
   --base-background: #F6F6F6;
@@ -10,11 +12,11 @@
   --base-text-color: #080D1B;
   --base-cont: #080D1B;
   --main-color: #fbe5e7;
-  --main-color-cont: #FFF;
+  --main-color-cont: #F6F6F6;
   --lp-main-color: #F7F4E9;
-  --main-color-cont: #FFF;
+  --main-color-cont: #F6F6F6;
   --accent-color: #A69463;
-  --accent-cont: #FFF;
+  --accent-cont: #F6F6F6;
   --max-width: 1280px;
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
