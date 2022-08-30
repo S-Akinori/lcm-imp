@@ -102,6 +102,5 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
   // data will be fetched from Wordpress, Contentful or others
   // testing now
   const menu = menuArticles.find(article => article.slug == params?.slug)
-  console.log(menu);
   return {props: {menu}}
 }
