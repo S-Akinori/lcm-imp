@@ -124,7 +124,13 @@ const LPFreeContactPage = () => {
           }
         }
       `}</style>
-      <LPLayout>
+      <LPLayout
+        pageTitle="結婚式ムービー制作の無料相談"
+        pageDescription="結婚式ムービーをロケーション撮影やドローンを使い作成します。プロフィールムービーやオープニングムービーの無料相談をぜひお気軽にしてください"
+        h1="テンプレートを結婚式ムービー制作の無料相談"
+        pageImg={`${process.env.NEXT_PUBLIC_HOME_URL}/images/lp/fv.jpg`}
+        pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/lp/free-contact`}
+      >
         <Head>
           <link
             href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
