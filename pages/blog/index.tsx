@@ -106,6 +106,9 @@ export const getStaticProps: GetStaticProps = async () => {
   const posts = res.posts
   const categories = resCategories.categories
   const pickedOutPosts = resPickedOutPosts.menu?.menuItems
+  console.log(posts)
+  console.log(categories)
+  console.log(pickedOutPosts)
   return {
     props: {
       posts,
