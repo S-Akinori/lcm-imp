@@ -5,9 +5,7 @@ import { MenuToMenuItemConnection, RootQueryToCategoryConnection, RootQueryToPos
 import Image from "next/image";
 import Link from "next/link";
 import Container from "src/components/parts/Container";
-// import sdk from "lib/wpSdk";
-import { GraphQLClient } from "graphql-request";
-import { getSdk } from "lib/generated/client";
+import sdk from "lib/wpSdk";
 
 interface Props {
   posts: RootQueryToPostConnection
@@ -102,12 +100,6 @@ const BlogIndexPage = ({posts, categories, pickedOutPosts}: Props) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const client = new GraphQLClient(process.env.NEXT_PUBLIC_WORDPRESS_API_URL as string, {
-    headers: {
-      Authorization: `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`,
-    },
-  });
-  const sdk = getSdk(client);
   const res = await sdk.getPosts();
   const resCategories = await sdk.getCategories();
   const resPickedOutPosts = await sdk.getPickedOutPosts();
