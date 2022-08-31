@@ -4,6 +4,8 @@ import { createContext, Dispatch, SetStateAction, useEffect, useState } from 're
 import { useRouter } from 'next/router'
 import Script from 'next/script'
 import * as gtag from '../lib/gtag'
+import GoogleTagManager, { GoogleTagManagerId } from 'src/components/parts/GoogleTagManager'
+import { googleTagManagerId } from 'lib/gtm'
 
 interface VisitContext {
   visited: boolean
@@ -23,23 +25,23 @@ function MyApp({ Component, pageProps }: AppProps) {
   //   }
   // }, [])
   const router = useRouter()
-  useEffect(() => {
-    if(process.env.NODE_ENV == 'production') {
-      const handleRouteChange = (url: string) => {
-        gtag.pageview(url)
-      }
-      router.events.on('routeChangeComplete', handleRouteChange)
-      router.events.on('hashChangeComplete', handleRouteChange)
-      return () => {
-        router.events.off('routeChangeComplete', handleRouteChange)
-        router.events.off('hashChangeComplete', handleRouteChange)
-      }
-    }
-  }, [router.events])
+  // useEffect(() => {
+  //   if(process.env.NODE_ENV == 'production') {
+  //     const handleRouteChange = (url: string) => {
+  //       gtag.pageview(url)
+  //     }
+  //     router.events.on('routeChangeComplete', handleRouteChange)
+  //     router.events.on('hashChangeComplete', handleRouteChange)
+  //     return () => {
+  //       router.events.off('routeChangeComplete', handleRouteChange)
+  //       router.events.off('hashChangeComplete', handleRouteChange)
+  //     }
+  //   }
+  // }, [router.events])
   return (
     <>
       {/* Global Site Tag (gtag.js) - Google Analytics */}
-      {process.env.NODE_ENV == 'production' && (
+      {/* {process.env.NODE_ENV == 'production' && (
         <>
           <Script
             strategy="afterInteractive"
@@ -60,7 +62,10 @@ function MyApp({ Component, pageProps }: AppProps) {
             }}
           />
         </>
-      )}
+      )} */}
+      <GoogleTagManager
+        googleTagManagerId={googleTagManagerId as GoogleTagManagerId}
+      />
       <visitContext.Provider value={{visited: visited, setVisited: setVisited}}>
         <Component {...pageProps} />
       </visitContext.Provider>

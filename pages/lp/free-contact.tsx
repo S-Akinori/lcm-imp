@@ -1,3 +1,4 @@
+import { sendClickLPLineButton } from "lib/gtm"
 import Head from "next/head"
 import React, { useRef, useState } from "react"
 import { FieldError, SubmitHandler, useForm } from "react-hook-form"
@@ -33,7 +34,6 @@ interface InputData {
   kana: string
   email: string
   date: string
-
   body?: string
 }
 
@@ -47,6 +47,11 @@ const LPFreeContactPage = () => {
     if(ref && ref.current) {
       (ref.current as HTMLDivElement).scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
+  }
+  
+  const onClickLineButton: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    sendClickLPLineButton('click_lp_line_button');
+    window.location.replace(actionButtonContent.href);
   }
 
   const onSubmit: SubmitHandler<InputData> = async (data) => {
@@ -131,12 +136,6 @@ const LPFreeContactPage = () => {
         pageImg={`${process.env.NEXT_PUBLIC_HOME_URL}/images/lp/fv.jpg`}
         pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/lp/free-contact`}
       >
-        <Head>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
-            rel="stylesheet"
-          />
-        </Head>
         <LPFV src="/images/lp/fv.jpg">
           <h2 className={`relative mb-12 text-base-color text-3xl md:text-4xl !leading-loose`} style={{fontFamily: 'SoukouMincho'}}>人生に寄り添う<br />「わたしたちだけ」の<br className="md:hidden" />結婚式ムービーを</h2>
           <div className="relative border border-main px-4 py-12 mt-8">
@@ -236,7 +235,7 @@ const LPFreeContactPage = () => {
             <LPTitle>月4組限定です！まずはご相談ください！</LPTitle>
             <p>新郎新婦さまに寄り添って制作を行うため、毎月の申し込み数を4組までとさせていただいております。<br />ご相談は無料で行っていますので、まずはご相談ください！</p>
             <div className="text-center mt-8">
-              <ActionButton href={actionButtonContent.href} target="_blank" subText={actionButtonContent.subText}>LINEでのお問い合わせはこちら</ActionButton>
+              <ActionButton onClick={onClickLineButton} subText={actionButtonContent.subText}>LINEでのお問い合わせはこちら</ActionButton>
             </div>
             <div className="mt-12">
               <h3 className="text-center">メールでお問い合わせ</h3>
