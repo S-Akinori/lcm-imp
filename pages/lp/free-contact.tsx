@@ -48,11 +48,6 @@ const LPFreeContactPage = () => {
       (ref.current as HTMLDivElement).scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
   }
-  
-  const onClickLineButton: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    sendClickLPLineButton('click_lp_line_button');
-    window.location.replace(actionButtonContent.href);
-  }
 
   const onSubmit: SubmitHandler<InputData> = async (data) => {
     console.log(data)
@@ -235,7 +230,7 @@ const LPFreeContactPage = () => {
             <LPTitle>月4組限定です！まずはご相談ください！</LPTitle>
             <p>新郎新婦さまに寄り添って制作を行うため、毎月の申し込み数を4組までとさせていただいております。<br />ご相談は無料で行っていますので、まずはご相談ください！</p>
             <div className="text-center mt-8">
-              <ActionButton onClick={onClickLineButton} subText={actionButtonContent.subText}>LINEでのお問い合わせはこちら</ActionButton>
+              <ActionButton href={actionButtonContent.href} subText={actionButtonContent.subText}>LINEでのお問い合わせはこちら</ActionButton>
             </div>
             <div className="mt-12">
               <h3 className="text-center">メールでお問い合わせ</h3>
