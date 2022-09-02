@@ -4,7 +4,7 @@ import { actionButtonContent } from 'src/contents/lp/common';
 
 interface Props {
   button: {
-    href: string
+    href?: string
     text: string
   }
 }
@@ -16,7 +16,7 @@ const LPHeader = ({button}: Props) => {
         <div className='flex justify-between items-center w-full'>
           <div className='text-xl md:text-3xl' style={{fontFamily: 'Cookie'}}>RING RING</div>
           <div className='flex items-center'>
-            <div className='pr-6'><Button href={actionButtonContent.href} color='accent' style={{padding: '0.5rem 2rem 0.5rem 1rem'}}>LINEで無料相談</Button></div>
+            <div className='pr-6'><Button href={button.href} color='accent' style={{padding: '0.5rem 2rem 0.5rem 1rem'}}>{button.text}</Button></div>
           </div>
         </div>
       </header>

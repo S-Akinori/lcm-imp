@@ -13,6 +13,10 @@ interface Props {
   pagePath?: string
   pageImg?: string
   h1?: string
+  headerButton: {
+    href: string
+    text: string
+  }
 }
 
 const LPLayout = ({
@@ -21,7 +25,8 @@ const LPLayout = ({
     pagePath = process.env.NEXT_PUBLIC_HOME_URL, 
     pageImg = process.env.NEXT_PUBLIC_HOME_URL + '/images/concept.jpg', 
     h1 = process.env.NEXT_PUBLIC_SITE_DESCRIPTION,
-    children
+    children,
+    headerButton
   }: Props) => {
   return (
     <div style={{overflowX: 'hidden'}}>
@@ -40,7 +45,7 @@ const LPLayout = ({
         <meta property="og:site_name" content={pageTitle} />
         <meta property="og:locale" content="ja_JP"  />
       </Head>
-      <LPHeader  />
+      <LPHeader button={headerButton} />
       <main>
         {h1 && <h1 className="hidden">{h1}</h1>}
         <div>

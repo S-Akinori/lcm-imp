@@ -130,6 +130,7 @@ const LPFreeContactPage = () => {
         h1="テンプレートを使わない結婚式ムービー制作の無料相談"
         pageImg={`${process.env.NEXT_PUBLIC_HOME_URL}/images/lp/fv.jpg`}
         pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/lp/free-contact`}
+        headerButton={{href: actionButtonContent.href, text: actionButtonContent.mainText}}
       >
         <LPFV src="/images/lp/fv.jpg">
           <h2 className={`relative mb-12 text-base-color text-3xl md:text-4xl !leading-loose`} style={{fontFamily: 'SoukouMincho'}}>人生に寄り添う<br />「わたしたちだけ」の<br className="md:hidden" />結婚式ムービーを</h2>

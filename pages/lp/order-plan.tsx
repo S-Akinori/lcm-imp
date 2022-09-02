@@ -205,11 +205,12 @@ const LPOrderPlanPage = () => {
         }
       `}</style>
       <LPLayout
-        pageTitle="結婚式ムービー制作の無料相談"
-        pageDescription="結婚式ムービーをロケーション撮影やドローンを使い作成します。プロフィールムービーやオープニングムービーの無料相談をぜひお気軽にしてください"
-        h1="テンプレートを結婚式ムービー制作の無料相談"
+        pageTitle="結婚式ムービー制作の自分のプランで依頼"
+        pageDescription="結婚式ムービーをロケーション撮影やドローンを使い作成します。ご自分に合ったプランを選ぶことで無駄な料金をかけず制作ができます。"
+        h1="結婚式ムービー制作を自分のプランで依頼"
         pageImg={`${process.env.NEXT_PUBLIC_HOME_URL}/images/lp/fv.jpg`}
-        pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/lp/free-contact`}
+        pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/lp/order-plan`}
+        headerButton={{href: actionButtonContent.href, text: 'LINEで依頼する'}}
       >
         <LPFV src="/images/lp/fv.jpg">
           <h2 className={`relative mb-12 text-base-color text-3xl md:text-4xl !leading-loose`} style={{fontFamily: 'SoukouMincho'}}>人生に寄り添う<br />「わたしたちだけ」の<br className="md:hidden" />結婚式ムービーを</h2>
