@@ -23,7 +23,7 @@ const ConceptPage = () => {
         <FV en="COMPANY" title="運営会社" src="/images/company.jpg" />
         <Container>
           {companies && companies.map(company => (
-            <Table key={company.id}>
+            <Table className="py-12" key={company.id}>
               {company.contents.map((item) => (
                 <TableRow key={item.id}>
                   <TableCell type="th">{item.title}</TableCell>

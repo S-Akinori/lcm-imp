@@ -1,3 +1,5 @@
+import { MenuObjectProp } from "src/types/MenuProp"
+
 interface FormInputs {
   id: string
   name: 'name' | 'kana' | 'email' | 'email_confirmation' | 'menus' | 'tel' | 'date' | 'place' | 'meeting' | 'body'

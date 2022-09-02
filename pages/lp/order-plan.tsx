@@ -1,6 +1,6 @@
 import { sendClickLPLineButton } from "lib/gtm"
 import Head from "next/head"
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { FieldError, SubmitHandler, useForm } from "react-hook-form"
 import Layout from "src/components/Layout"
 import LPLayout from "src/components/Layout/LPLayout"
@@ -21,13 +21,24 @@ import TextAndImageRow from "src/components/parts/TextAndImage/TextAndImageRow"
 import LPFV from "src/components/templates/LP/FV"
 import LPTitle from "src/components/templates/LP/LPTitle"
 import { contactFormInputs } from "src/contents/contact"
-import { actionButtonContent } from "src/contents/lp/common"
+import { actionButtonContent } from "src/contents/lp/order-plan/common"
 import { LPFormInputs } from "src/contents/lp/form"
 import { LPProblems } from "src/contents/lp/problems"
 import { LPReasons } from "src/contents/lp/reasons"
 import { LPServices } from "src/contents/lp/services"
 import { LPThought } from "src/contents/lp/thought"
 import { LPVoices } from "src/contents/lp/voices"
+import MenuForm from "src/components/templates/MenuForm"
+import { MenuObjectProp, MenuProp } from "src/types/MenuProp"
+import MenuSummary from "src/components/templates/Menu/MenuSummary"
+import MenuDetail from "src/components/templates/Menu/MenuDetail"
+import { discountOptions, locationDetail, movieDetails, movieIntroductions, optionDetails } from "src/contents/menu"
+import Table from "src/components/parts/Table"
+import TableRow from "src/components/parts/Table/TableRow"
+import TableCell from "src/components/parts/Table/TableRow/TableCell"
+import ButtonRounded from "src/components/parts/Button/ButtonRounded"
+
+const setDiscountId = 'setDiscount'
 
 interface InputData {
   name: string
@@ -37,10 +48,18 @@ interface InputData {
   body?: string
 }
 
-const LPFreeContactPage = () => {
+const LPOrderPlanPage = () => {
   const {register, handleSubmit, formState: {errors}} = useForm<InputData>()
   const [submimtMessage, setSubmitMessage] = useState<React.ReactNode>()
   const [loading, setLoading] = useState(false);
+  const [total, setTotal] = useState(0);
+  const [canSubmit, setCanSubmit] = useState(false);
+  const [menu, setMenu] = useState<MenuObjectProp>({
+    movies: [],
+    locations: [],
+    options: [],
+    discounts: [],
+  });
   const ref = useRef(null)
 
   const onClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -49,17 +68,45 @@ const LPFreeContactPage = () => {
     }
   }
 
+  const onClickCopyText = () => {
+    const text = `
+    制作の依頼
+
+    【ムービーの種類】
+    ${menu?.movies.map(item => item.title)}
+
+    【ロケーション】
+    ${menu?.locations.map(item => item.title)}
+
+    【オプション】
+    ${menu?.options.map(item => item.title)}
+
+    【割引】
+    ${menu?.discounts.map(item => item.title)}
+
+    費用: ${total.toLocaleString()}円
+    `.replace(/ /g, "")
+
+    navigator.clipboard.writeText(text);
+    alert('コピーしました');
+  }
+
   const onSubmit: SubmitHandler<InputData> = async (data) => {
     console.log(data)
     setSubmitMessage('')
     setLoading(true)
+    const modifiedData = {
+      ...data,
+      menu: menu,
+      price: total
+    }
     try {
-      const res = await fetch('/api/contactMailLP', {
+      const res = await fetch('/api/orderMailLP', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(modifiedData)
       });
       const resData = await res.json();
       console.log(resData)
@@ -78,6 +125,39 @@ const LPFreeContactPage = () => {
       setSubmitMessage('エラーが発生しました。お手数ですが、改めてお問い合わせお願いします')
     }
   }
+
+  useEffect(() => {
+    if(menu.movies.length === 0 || menu.locations.length === 0) {
+      setCanSubmit(false);
+    } else {
+      setCanSubmit(true)
+    }
+  }, [menu])
+
+  useEffect(() => {
+    const setDiscount = discountOptions.find(item => item.id === setDiscountId) as MenuProp;
+    if(!menu.discounts.find(item => item.id === setDiscountId) && menu.movies.length > 1) {
+      const price = setDiscount.price
+      const menuObj = {
+        ...menu,
+        discounts: [
+          ...menu.discounts,   
+          setDiscount
+        ]
+      }
+      setMenu(menuObj);
+      setTotal(total + price);
+    } else if(menu.discounts.find(item => item.id === setDiscountId) && menu.movies.length < 2) {
+      const price = -setDiscount.price
+      const menuObj = {
+        ...menu,
+        discounts: menu.discounts.filter(item => item.id !== setDiscountId)
+      }
+      setMenu(menuObj);
+      setTotal(total + price);
+    }
+  }, [menu])
+  
   return (
     <>
       <style jsx>{`
@@ -127,7 +207,7 @@ const LPFreeContactPage = () => {
       <LPLayout
         pageTitle="結婚式ムービー制作の無料相談"
         pageDescription="結婚式ムービーをロケーション撮影やドローンを使い作成します。プロフィールムービーやオープニングムービーの無料相談をぜひお気軽にしてください"
-        h1="テンプレートを使わない結婚式ムービー制作の無料相談"
+        h1="テンプレートを結婚式ムービー制作の無料相談"
         pageImg={`${process.env.NEXT_PUBLIC_HOME_URL}/images/lp/fv.jpg`}
         pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/lp/free-contact`}
       >
@@ -225,15 +305,58 @@ const LPFreeContactPage = () => {
           <LPTitle>わたしたちの想い</LPTitle>
           <p className="whitespace-pre-wrap mx-auto md:w-max">{LPThought.text}</p>
         </Container>
-        <div className="bg-lp-main" ref={ref}>
+        <div className="bg-lp-main">
           <Container className="py-12">
-            <LPTitle>月4組限定です！まずはご相談ください！</LPTitle>
-            <p>新郎新婦さまに寄り添って制作を行うため、毎月の申し込み数を4組までとさせていただいております。<br />ご相談は無料で行っていますので、まずはご相談ください！</p>
-            <div className="text-center mt-8">
-              <ActionButton href={actionButtonContent.href} subText={actionButtonContent.subText}>LINEでのお問い合わせはこちら</ActionButton>
-            </div>
+            <LPTitle>月4組限定です！一緒に最高の結婚式ムービーを創りましょう！</LPTitle>
+            <p>新郎新婦さまに寄り添って制作を行うため、毎月の申し込み数を4組までとさせていただいております。ご相談は無料で行っていますので、まずはご相談ください！</p>
             <div className="mt-12">
-              <h3 className="text-center">メールでお問い合わせ</h3>
+              <div>
+                <LPTitle heading="h3">各ウェディングムービーについて</LPTitle>
+                {movieIntroductions && movieIntroductions.map(item => (
+                  <div className="mb-6" key={item.id}>
+                    <h4>【{item.title}】</h4>
+                    <p>{item.content}</p>
+                  </div>
+                ))}
+                <Table>
+                  {movieDetails && movieDetails.map(item => (
+                    <TableRow className="!border-b-0" key={item.id}>
+                      <TableCell className="bg-main" type="th">{item.title}</TableCell>
+                      <TableCell>{item.content}</TableCell>
+                    </TableRow>
+                  ))}
+                </Table>
+              </div>
+              <div className="mt-12">
+                <LPTitle heading="h3">{locationDetail.title}</LPTitle>
+                <p className="whitespace-pre-wrap">{locationDetail.content}</p>
+              </div>
+              <div className="mt-12">
+                <LPTitle heading="h3">オプションについて</LPTitle>
+                {optionDetails && optionDetails.map(item => (
+                  <div className="mb-6" key={item.id}>
+                    <h4>【{item.title}】</h4>
+                    <p>{item.content}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div ref={ref} className="mt-8">
+              <LPTitle>自分にあったプランを決める</LPTitle>
+              <MenuForm menuState={{menu: menu, setMenu: setMenu}} totalState={{total: total, setTotal: setTotal}} />
+            </div>
+            <MenuSummary menu={menu} total={total} />
+            {canSubmit && (
+              <div className="text-center mt-8">
+                <div className="mb-4">LINEでお申込みの際は「プランをコピー」を押してください。その後ラインを追加いただきそのままペーストしてお送りください。</div>
+                <div>
+                  <ButtonRounded onClick={onClickCopyText} className="mb-8" color="main">プラン内容をコピー</ButtonRounded>
+                </div>
+                <ActionButton href={actionButtonContent.href} subText={actionButtonContent.subText}>LINEで依頼する</ActionButton>
+              </div>
+            )}
+            <div className="mt-12">
+              <h3 className="text-center">メールで依頼する</h3>
               <Form onSubmit={handleSubmit(onSubmit)}>
                 {LPFormInputs && LPFormInputs.map(formInput => (
                   <div key={formInput.id} className="mb-8">
@@ -283,8 +406,15 @@ const LPFreeContactPage = () => {
                     )}
                   </div>
                 ))}
-                <div className="text-center">確認画面はございませんので、送信する前に内容をご確認ください。</div>
-                <div className="text-center mt-8"><LoadingButton loading={loading} color="accent" className="bg-accent text-accent-cont">送信する</LoadingButton></div>
+                <div className="text-center">
+                  プランはこの後の打ち合わせで変更可能です。<br />
+                  確認画面はございませんので、送信する前に内容をご確認ください。
+                </div>
+                <div className="text-center mt-8">
+                  <LoadingButton disabled={!canSubmit} loading={loading} color="accent" className="bg-accent text-accent-cont">
+                    {!canSubmit ? 'プランをお決めください' : '送信する'}
+                  </LoadingButton>
+                </div>
                 {submimtMessage && (<div className="mt-4 p-4 border border-accent">{submimtMessage}</div>)}
               </Form>
             </div>
@@ -295,4 +425,4 @@ const LPFreeContactPage = () => {
   )
 }
 
-export default LPFreeContactPage
+export default LPOrderPlanPage

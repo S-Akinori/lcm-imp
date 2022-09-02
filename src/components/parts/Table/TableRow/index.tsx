@@ -7,7 +7,7 @@ interface Props extends CommonProps {
 
 const TableRow = ({children, className = '', style}: Props) => {
   return (
-    <div className={`md:flex TableRow ${className} border-b border-b-base-color-dark`} style={style}>{children}</div>
+    <div className={`md:flex TableRow ${className} border-b border-b-accent`} style={style}>{children}</div>
   )
 }
 

@@ -8,6 +8,210 @@ export const topMenuText = {
   linkText: 'メニューへ'
 }
 
+export const menuMovies : MenuProp[] = [
+  // {
+  //   id: 'prePhoto',
+  //   title: '前撮り',
+  //   priceText: '79,800円',
+  //   price: 79800,
+  //   category: 'movies',
+  //   disabled: false,
+  // },
+  {
+    id: 'profileMovie',
+    title: 'プロフィールムービー',
+    priceText: '159,500円',
+    price: 159500,
+    category: 'movies',
+    disabled: false,
+  },
+  {
+    id: 'openingMovie',
+    title: 'オープニングムービー',
+    priceText: '139,700円',
+    price: 139700,
+    category: 'movies',
+    disabled: false,
+  },
+  {
+    id: 'endingMovie',
+    title: 'エンドロールムービー',
+    priceText: '139,700円',
+    price: 139700,
+    category: 'movies',
+    disabled: false,
+  },
+]
+
+export const menuLocations : MenuProp[]  = [
+  {
+    id: 'kantoArea',
+    title: '関東',
+    priceText: '22,000円',
+    price: 22000,
+    category: 'locations',
+    disabled: false,
+  },
+  {
+    id: 'outsideKantoArea',
+    title: '関東以外',
+    priceText: '料金別途相談',
+    price: 0,
+    category: 'locations',
+    disabled: false,
+  },
+]
+
+export const menuOptions : MenuProp[] = [
+  {
+    id: 'prePhoto',
+    title: '前撮り',
+    priceText: '59,400円',
+    price: 59400,
+    category: 'options',
+    disabled: false,
+  },
+  {
+    id: 'option1',
+    title: '休日、祝日撮影',
+    priceText: '33,000円',
+    price: 33000,
+    category: 'options',
+    disabled: false,
+  },
+  {
+    id: 'option2',
+    title: 'ドローン撮影',
+    priceText: '44,000円',
+    price: 44000,
+    category: 'options',
+    disabled: false,
+  },
+  {
+    id: 'option3',
+    title: 'FPVドローン撮影',
+    priceText: '88,000円',
+    price: 88000,
+    category: 'options',
+    disabled: false,
+  },
+  {
+    id: 'option4',
+    title: 'ロケーション1カ所追加',
+    priceText: '22,000円',
+    price: 22000,
+    category: 'options',
+    disabled: false,
+  },
+  {
+    id: 'option5',
+    title: 'ドキュメンタリープラン',
+    priceText: '77,000円',
+    price: 77000,
+    category: 'options',
+    disabled: false,
+  },
+]
+
+export const discountOptions : MenuProp[] = [
+  {
+    id: 'discountOption1',
+    title: '早割',
+    text: '挙式日の6か月前までにご予約された方が対象',
+    priceText: '16,500円',
+    price: -16500,
+    category: 'discounts',
+    disabled: false,
+  },
+  {
+    id: 'discountOption2',
+    title: 'SNS掲載割',
+    text: '弊社のHP等での掲載、およびお客様のSNSでの掲載が可能な方が対象',
+    priceText: '16,500円',
+    price: -16500,
+    category: 'discounts',
+    disabled: false,
+  },
+  // {
+  //   id: 'setDiscount',
+  //   title: '前撮り + ムービーセット割り',
+  //   text: 'ムービー1つと前撮りをご注文された方が対象',
+  //   priceText: '19,800円',
+  //   price: -19800,
+  //   category: 'discounts',
+  //   disabled: true,
+  // },
+  {
+    id: 'setDiscount',
+    title: 'ムービー2種セット割り',
+    text: 'ムービーを2種類以上ご注文された方が対象',
+    priceText: '37,400円',
+    price: -37400,
+    category: 'discounts',
+    disabled: true,
+  },
+]
+
+export const movieIntroductions = [
+  {
+    id: 'movieDetail1',
+    title: 'オープニングムービー',
+    content: '披露宴で新郎新婦さまが入場される前に流れるムービーです。披露宴の最初を飾る余興ムービーですので、感嘆の声が上がるムービーを創りましょう！'
+  },
+  {
+    id: 'movieDetail2',
+    title: 'プロフィールムービー',
+    content: '披露宴途中でお二人の生い立ちを紹介するムービーです。演出 + インタビュー動画でゲストを楽しませましょう！'
+  },
+  {
+    id: 'movieDetail3',
+    title: 'エンドロールムービー',
+    content: '披露宴の最後に流れるムービーです。スタッフロール風に1人1人感謝のコメントを流し、全体に感謝の気持ちを伝えましょう！'
+  },
+]
+
+
+export const movieDetails = [
+  {
+    id: 'movieDetail1',
+    title: '上映時間',
+    content: '3～5分'
+  },
+  {
+    id: 'movieDetail2',
+    title: '納品形式',
+    content: 'データ + DVD'
+  },
+  {
+    id: 'movieDetail3',
+    title: '画面比率',
+    content: '16:9または4:3（上下に黒帯が入ります）'
+  },
+  {
+    id: 'movieDetail4',
+    title: '納品日',
+    content: '撮影から1か月以内'
+  },
+]
+
+export const locationDetail = {
+  title: 'ロケーションについて',
+  content: 'わたしたちのムービーは、ロケーション撮影をした映像で制作します。海や山といった美しい場所、思い出の場所などお好きな場所をお選びいただけます。\n関東圏内なら一律20,000円、それ以外は別途相談となります。'
+}
+
+export const optionDetails = [
+  {
+    id: 'optionDetail1',
+    title: 'FPVドローンとは？',
+    content: 'ドローン視点で操作できるドローンです。普通のドローンよりも速く細かい動きが可能なので、より爽快で壮大な演出を作り出すことができます。'
+  },
+  {
+    id: 'optionDetail2',
+    title: 'ドキュメンタリープランとは？',
+    content: 'ドラマやミュージックビデオのパロディなど、脚本やセリフを制作し撮影するプランです。余興ムービーとして、会場をより盛り上げたい方におススメです。'
+  },
+]
+
 export const menuCategories = [
   {
     id: 'category1',
@@ -508,132 +712,5 @@ export const menuArticles = [
         content: '式場で撮影および撮って出しが可能な場合のみ承ります。',
       },
     ]
-  },
-]
-
-export const menuMovies : MenuProp[] = [
-  {
-    id: 'prePhoto',
-    title: '前撮り',
-    priceText: '79,800円',
-    price: 79800,
-    category: 'movies',
-    disabled: false,
-  },
-  {
-    id: 'profileMovie',
-    title: 'プロフィールムービー',
-    priceText: '159,800円',
-    price: 159800,
-    category: 'movies',
-    disabled: false,
-  },
-  {
-    id: 'openingMovie',
-    title: 'オープニングムービー',
-    priceText: '139,800円',
-    price: 139800,
-    category: 'movies',
-    disabled: false,
-  },
-  {
-    id: 'endingMovie',
-    title: 'エンドロールムービー',
-    priceText: '139,800円',
-    price: 139800,
-    category: 'movies',
-    disabled: false,
-  },
-]
-
-export const menuLocations : MenuProp[]  = [
-  {
-    id: 'kantoArea',
-    title: '関東',
-    priceText: '20,000円',
-    price: 20000,
-    category: 'locations',
-    disabled: false,
-  },
-  {
-    id: 'outsideKantoArea',
-    title: '関東以外',
-    priceText: '料金別途相談',
-    price: 0,
-    category: 'locations',
-    disabled: false,
-  },
-]
-
-export const menuOptions : MenuProp[] = [
-  {
-    id: 'option1',
-    title: '休日、祝日撮影',
-    priceText: '30,000円',
-    price: 30000,
-    category: 'options',
-    disabled: false,
-  },
-  {
-    id: 'option2',
-    title: 'ドローン撮影',
-    priceText: '40,000円',
-    price: 40000,
-    category: 'options',
-    disabled: false,
-  },
-  {
-    id: 'option3',
-    title: 'FPVドローン撮影',
-    priceText: '80,000円',
-    price: 80000,
-    category: 'options',
-    disabled: false,
-  },
-  {
-    id: 'option4',
-    title: 'ロケーション1カ所追加',
-    priceText: '20,000円',
-    price: 20000,
-    category: 'options',
-    disabled: false,
-  },
-  {
-    id: 'option5',
-    title: 'ドキュメンタリープラン',
-    priceText: '70,000円',
-    price: 70000,
-    category: 'options',
-    disabled: false,
-  },
-]
-
-export const discountOptions : MenuProp[] = [
-  {
-    id: 'discountOption1',
-    title: '早割',
-    text: '挙式日の6か月前までにご予約された方が対象',
-    priceText: '15,000円',
-    price: -15000,
-    category: 'discounts',
-    disabled: false,
-  },
-  {
-    id: 'discountOption2',
-    title: 'SNS掲載割',
-    text: '弊社のHP等での掲載、およびお客様のSNSでの掲載が可能な方が対象',
-    priceText: '15,000円',
-    price: -15000,
-    category: 'discounts',
-    disabled: false,
-  },
-  {
-    id: 'setDiscount',
-    title: 'セット割',
-    text: 'ムービー、前撮りを合計2種類以上ご注文された方が対象',
-    priceText: '19,800円',
-    price: -19800,
-    category: 'discounts',
-    disabled: true,
   },
 ]

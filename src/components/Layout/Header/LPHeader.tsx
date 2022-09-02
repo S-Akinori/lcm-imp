@@ -2,7 +2,14 @@ import React, { createContext, useState } from 'react';
 import Button from 'src/components/parts/Button';
 import { actionButtonContent } from 'src/contents/lp/common';
 
-const LPHeader = () => {
+interface Props {
+  button: {
+    href: string
+    text: string
+  }
+}
+
+const LPHeader = ({button}: Props) => {
   return (
     <>
       <header className="flex items-center fixed top-0 z-40 px-4 bg-main border-b border-main w-full h-16">

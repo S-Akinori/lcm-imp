@@ -40,7 +40,7 @@ const LPLayout = ({
         <meta property="og:site_name" content={pageTitle} />
         <meta property="og:locale" content="ja_JP"  />
       </Head>
-      <LPHeader />
+      <LPHeader  />
       <main>
         {h1 && <h1 className="hidden">{h1}</h1>}
         <div>

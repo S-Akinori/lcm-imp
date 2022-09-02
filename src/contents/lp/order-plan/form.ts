@@ -1,11 +1,6 @@
 import { MenuObjectProp } from "src/types/MenuProp"
 
-export const contactOrderText = {
-  h2: 'メニューが決まりましたらお問い合わせください',
-  text: '結婚式ムービー制作ではムービー構成や段取り、撮影場所をお客様と一緒に考えていきます。\nプランがお決まりになりましたら、以下よりお問い合わせください。最高の思い出を創り上げましょう。'
-}
-
-interface OrderFormInputs {
+interface FormInputs {
   id: string
   name: 'name' | 'kana' | 'email' | 'email_confirmation' | 'menus' | 'tel' | 'date' | 'place' | 'meeting' | 'body'
   type: string
@@ -14,11 +9,11 @@ interface OrderFormInputs {
   validation?: {
     [key: string]: any
   }
-  inputs?: OrderFormInputs[]
+  inputs?: FormInputs[]
 }
 
-export const contactOrderFormInputs: OrderFormInputs[] = [
-   {
+export const LPFormInputs: FormInputs[] = [
+  {
     id: 'input1',
     type: 'text',
     name: 'name',
@@ -35,7 +30,7 @@ export const contactOrderFormInputs: OrderFormInputs[] = [
     title: 'フリガナ',
     placeholder: '',
     validation: {
-      required: '入力してください'
+      required: '入力してください',
     }
   },
   {
@@ -53,110 +48,38 @@ export const contactOrderFormInputs: OrderFormInputs[] = [
     }
   },
   {
-    id: 'input3_1',
-    type: 'text',
-    name: 'tel',
-    title: '電話番号',
-    placeholder: '',
-    validation: {
-      required: '入力してください'
-    }
-  },
-  // {
-  //   id: 'input4',
-  //   type: 'checkbox',
-  //   name: 'menus',
-  //   title: 'メニュー',
-  //   placeholder: '',
-  //   validation: {
-  //     required: '入力してください',
-  //   },
-  //   inputs: [
-  //     {
-  //       id: 'menuArticle1',
-  //       name: 'menus',
-  //       type: 'checkbox',
-  //       title: '前撮りプラン',
-  //       placeholder: '',
-  //     },
-  //     {
-  //       id: 'menuArticle2',
-  //       name: 'menus',
-  //       type: 'checkbox',
-  //       title: 'ウェディングムービー制作',
-  //       placeholder: '',
-  //     },
-  //     {
-  //       id: 'menuArticle3',
-  //       name: 'menus',
-  //       type: 'checkbox',
-  //       title: '取って出しエンドロールムービー制作',
-  //       placeholder: '',
-  //     },
-  //     {
-  //       id: 'menuArticle4',
-  //       name: 'menus',
-  //       type: 'checkbox',
-  //       title: '当日記録写真・動画撮影',
-  //       placeholder: '',
-  //     },
-  //     {
-  //       id: 'menuArticle5',
-  //       name: 'menus',
-  //       type: 'checkbox',
-  //       title: 'オーダーメイド編集',
-  //       placeholder: '',
-  //     },
-  //     {
-  //       id: 'menuArticle6',
-  //       name: 'menus',
-  //       type: 'checkbox',
-  //       title: 'ウェディングムービー2本制作',
-  //       placeholder: '',
-  //     },
-  //     {
-  //       id: 'menuArticle7',
-  //       name: 'menus',
-  //       type: 'checkbox',
-  //       title: '結婚式１日密着撮影',
-  //       placeholder: '',
-  //     },
-  //   ]
-  // },
-  {
-    id: 'input5',
+    id: 'input4',
     type: 'text',
     name: 'date',
     title: '挙式日（予定日でも可）',
-    placeholder: '2022年1月1日',
-  },
-  {
-    id: 'input6',
-    type: 'text',
-    name: 'place',
-    title: '式場（予定場所でも可）',
-    placeholder: '東京都 アニヴェルセル表参道',
-  },
-  {
-    id: 'input7',
-    type: 'textarea',
-    name: 'meeting',
-    title: 'ヒアリング希望日時',
-    placeholder: '2022年12月1日 18:00 ~ 21:00\n2022年12月2日 15:00~18:00',
+    placeholder: '',
     validation: {
       required: '入力してください',
-    },
+    }
   },
   {
-    id: 'input8',
+    id: 'input5',
     type: 'textarea',
-    name: 'body',
-    title: 'ご質問',
-    placeholder: '気になる点や相談したいことがありましたらお書きください',
+    name: 'meeting',
+    title: 'オンライン相談希望日 (3候補ほど)',
+    placeholder: '10/1 15:00 ~ 18:00\n10/3 12:00 ~ 18:00\n10/6 18:00 ~ 20:00',
+    validation: {
+      required: '入力してください',
+    }
   },
 ]
 
-export const generateOrderMail = (orderData: OrderInputData) => {
+export interface FormInputData {
+  name: string
+  kana: string
+  email: string
+  date: string
+  price: number
+  meeting: string
+  menu: MenuObjectProp
+}
+
+export const generateOrderMail = (orderData: FormInputData) => {
   const {orderText, menuText} = generateOrderDataText(orderData);
   const header = 'ご注文ありがとうございます';
   const text = `
@@ -187,9 +110,9 @@ export const generateOrderMail = (orderData: OrderInputData) => {
   return {header, text}
 }
 
-export const generateOrderNotification = (orderData: OrderInputData) => {
+export const generateOrderNotification = (orderData: FormInputData) => {
   const {orderText, menuText} = generateOrderDataText(orderData);
-  const header = '注文がありました';
+  const header = 'LPより注文がありました';
   const text = `
   ========ご予定プラン==========
   ${menuText}
@@ -202,18 +125,15 @@ export const generateOrderNotification = (orderData: OrderInputData) => {
   return {header, text}
 }
 
-const generateOrderDataText = (orderData: OrderInputData) => {
+const generateOrderDataText = (orderData: FormInputData) => {
   const orderDataTitleObj = {
     name: 'お名前',
     kana: 'フリガナ',
     email: 'メールアドレス',
-    tel: '電話番号',
     menu: 'メニュー',
     price: '料金',
     date: '挙式日',
-    place: '式場',
     meeting: 'ヒアリング希望日時',
-    body: 'ご質問',
   }
   const menuText = `
   【ムービーの種類】
@@ -243,17 +163,4 @@ const generateOrderDataText = (orderData: OrderInputData) => {
     }
   })
   return {menuText, orderText};
-}
-
-export interface OrderInputData {
-  name: string
-  kana: string
-  email: string
-  tel: string
-  menu: MenuObjectProp
-  price: number
-  date?: string
-  place?: string
-  meeting: string
-  body?: string
 }

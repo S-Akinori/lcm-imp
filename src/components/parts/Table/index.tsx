@@ -7,7 +7,7 @@ interface Props extends CommonProps {
 
 const Table = ({children, className, style}: Props) => {
   return (
-    <div className={`py-12 Table ${className}`} style={style}>{children}</div>
+    <div className={`Table ${className}`} style={style}>{children}</div>
   )
 }
 
