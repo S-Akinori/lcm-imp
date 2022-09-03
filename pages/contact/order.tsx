@@ -108,9 +108,18 @@ const ContactOrderPage = () => {
 
     =======================
     `.replace(/ /g, "")
+    navigator.clipboard.writeText(text)
+    .then(() => {
+      alert('コピーしました');
+    })
+    .catch(() => {
+      alert("something went wrong")
+    })
+    // if(navigator.clipboard) {
+    //   navigator.clipboard.writeText(text);
+    // } else {
 
-    navigator.clipboard.writeText(text);
-    alert('コピーしました');
+    // }
   }
 
   useEffect(() => {
@@ -152,6 +161,7 @@ const ContactOrderPage = () => {
         <div className="text-center mb-12">
           <div className="mb-4">LINEやインスタグラムでのお申込み、お問い合わせ受け付けております。</div>
           <div className="mb-4">LINE、インスタグラムでお申込みの際は、以下のボタンよりプラン内容をコピーしていただき、そのままペーストしてください。次に「お客様情報」の欄をご入力いただき送信してください</div>
+          
           <ButtonRounded onClick={onClickCopyText} className="mb-8">プラン内容をコピー</ButtonRounded>
           <div className="w-max mx-auto"><SNSList /></div>
         </div>
