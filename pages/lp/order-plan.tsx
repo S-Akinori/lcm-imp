@@ -87,8 +87,13 @@ const LPOrderPlanPage = () => {
     費用: ${total.toLocaleString()}円
     `.replace(/ /g, "")
 
-    navigator.clipboard.writeText(text);
-    alert('コピーしました');
+    navigator.clipboard.writeText(text)
+    .then(() => {
+      alert('コピーしました');
+    })
+    .catch(() => {
+      alert("コピーに失敗しました")
+    })
   }
 
   const onSubmit: SubmitHandler<InputData> = async (data) => {

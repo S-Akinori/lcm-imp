@@ -113,7 +113,7 @@ const ContactOrderPage = () => {
       alert('コピーしました');
     })
     .catch(() => {
-      alert("something went wrong")
+      alert("コピーに失敗しました")
     })
     // if(navigator.clipboard) {
     //   navigator.clipboard.writeText(text);
