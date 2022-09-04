@@ -27,6 +27,7 @@ const PostSinglePage = ({post, categories, pickedOutPosts}: Props) => {
       pageDescription={excerpt}
       pageImg={post?.featuredImage?.node?.sourceUrl}
       pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/blog/${post.slug}`}
+      h1=''
     >
       <Container className="pt-12">
         <div className="md:flex">
