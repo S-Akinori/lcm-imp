@@ -28,7 +28,7 @@ const BlogIndexPage = ({posts, categories, pickedOutPosts}: Props) => {
       <FV en="BLOG" title="ブログ" src="/images/fv-blog.jpg" />
       <Container className="py-8">
         <div className="md:flex">
-          <div className="md:flex items-start flex-wrap md:w-2/3">
+          <div className="md:flex flex-wrap md:w-2/3">
             {edges && edges.map(item => (
               <div key={item?.node?.id} className="py-8 mb-4 border-b border-b-accent md:p-4 lg:w-1/2">
                 <div>

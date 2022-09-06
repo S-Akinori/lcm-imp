@@ -55,3 +55,21 @@
 .blog .btn.center {
   margin: auto;
 }
+
+.blog .point {
+  position: relative;
+  padding-left: 2rem;
+  margin: 1.25rem 0 1rem;
+}
+
+.blog .point::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: url(/images/check-icon.png) center center / cover no-repeat;
+}
