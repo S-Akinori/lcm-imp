@@ -1,0 +1,23 @@
+query getCategoryWithPosts($id: ID!) {
+  category(id: $id, idType: SLUG) {
+    id
+    name
+    slug
+    uri
+    posts {
+      edges {
+        node {
+          id
+          slug
+          title
+          excerpt
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
+        }
+      }
+    }
+  }
+}

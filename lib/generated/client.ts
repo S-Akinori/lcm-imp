@@ -19,8 +19,27 @@ export type Category = {
   __typename?: 'Category';
   id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
+  posts?: Maybe<CategoryToPostConnection>;
   slug?: Maybe<Scalars['String']>;
   uri?: Maybe<Scalars['String']>;
+};
+
+export enum CategoryIdType {
+  DatabaseId = 'DATABASE_ID',
+  Id = 'ID',
+  Name = 'NAME',
+  Slug = 'SLUG',
+  Uri = 'URI'
+}
+
+export type CategoryToPostConnection = {
+  __typename?: 'CategoryToPostConnection';
+  edges?: Maybe<Array<Maybe<CategoryToPostConnectionEdge>>>;
+};
+
+export type CategoryToPostConnectionEdge = {
+  __typename?: 'CategoryToPostConnectionEdge';
+  node?: Maybe<Post>;
 };
 
 export type FeaturedImage = {
@@ -107,9 +126,16 @@ export type PostToCategoryConnectionEdge = {
 export type Query = {
   __typename?: 'Query';
   categories?: Maybe<RootQueryToCategoryConnection>;
+  category?: Maybe<Category>;
   menu?: Maybe<Menu>;
   post?: Maybe<Post>;
   posts?: Maybe<RootQueryToPostConnection>;
+};
+
+
+export type QueryCategoryArgs = {
+  id: Scalars['ID'];
+  idType?: InputMaybe<CategoryIdType>;
 };
 
 
@@ -158,6 +184,13 @@ export type GetCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetCategoriesQuery = { __typename?: 'Query', categories?: { __typename?: 'RootQueryToCategoryConnection', edges?: Array<{ __typename?: 'RootQueryToCategoryConnectionEdge', node?: { __typename?: 'Category', id?: number | null, slug?: string | null, name?: string | null, uri?: string | null } | null } | null> | null } | null };
 
+export type GetCategoryWithPostsQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type GetCategoryWithPostsQuery = { __typename?: 'Query', category?: { __typename?: 'Category', id?: number | null, name?: string | null, slug?: string | null, uri?: string | null, posts?: { __typename?: 'CategoryToPostConnection', edges?: Array<{ __typename?: 'CategoryToPostConnectionEdge', node?: { __typename?: 'Post', id: number, slug: string, title: string, excerpt?: string | null, featuredImage?: { __typename?: 'FeaturedImageConnection', node: { __typename?: 'FeaturedImage', sourceUrl: string } } | null } | null } | null> | null } | null } | null };
+
 export type GetPickedOutPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -176,13 +209,6 @@ export type GetPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetPostsQuery = { __typename?: 'Query', posts?: { __typename?: 'RootQueryToPostConnection', edges?: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node?: { __typename?: 'Post', id: number, slug: string, title: string, excerpt?: string | null, date?: string | null, categories?: { __typename?: 'PostToCategoryConnection', edges?: Array<{ __typename?: 'PostToCategoryConnectionEdge', node?: { __typename?: 'Category', id?: number | null, name?: string | null, slug?: string | null } | null } | null> | null } | null, featuredImage?: { __typename?: 'FeaturedImageConnection', node: { __typename?: 'FeaturedImage', sourceUrl: string } } | null } | null } | null> | null } | null };
 
-export type GetPostsByCategoryQueryVariables = Exact<{
-  categoryName?: InputMaybe<Scalars['String']>;
-}>;
-
-
-export type GetPostsByCategoryQuery = { __typename?: 'Query', posts?: { __typename?: 'RootQueryToPostConnection', edges?: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node?: { __typename?: 'Post', id: number, slug: string, title: string, excerpt?: string | null, date?: string | null, categories?: { __typename?: 'PostToCategoryConnection', edges?: Array<{ __typename?: 'PostToCategoryConnectionEdge', node?: { __typename?: 'Category', id?: number | null, name?: string | null, slug?: string | null } | null } | null> | null } | null, featuredImage?: { __typename?: 'FeaturedImageConnection', node: { __typename?: 'FeaturedImage', sourceUrl: string } } | null } | null } | null> | null } | null };
-
 
 export const GetCategoriesDocument = gql`
     query getCategories {
@@ -193,6 +219,31 @@ export const GetCategoriesDocument = gql`
         slug
         name
         uri
+      }
+    }
+  }
+}
+    `;
+export const GetCategoryWithPostsDocument = gql`
+    query getCategoryWithPosts($id: ID!) {
+  category(id: $id, idType: SLUG) {
+    id
+    name
+    slug
+    uri
+    posts {
+      edges {
+        node {
+          id
+          slug
+          title
+          excerpt
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
+        }
       }
     }
   }
@@ -282,35 +333,6 @@ export const GetPostsDocument = gql`
   }
 }
     `;
-export const GetPostsByCategoryDocument = gql`
-    query getPostsByCategory($categoryName: String = "all") {
-  posts(where: {categoryName: $categoryName}) {
-    edges {
-      node {
-        id
-        slug
-        title
-        excerpt
-        date
-        categories {
-          edges {
-            node {
-              id
-              name
-              slug
-            }
-          }
-        }
-        featuredImage {
-          node {
-            sourceUrl
-          }
-        }
-      }
-    }
-  }
-}
-    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
@@ -322,6 +344,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     getCategories(variables?: GetCategoriesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCategoriesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetCategoriesQuery>(GetCategoriesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategories', 'query');
     },
+    getCategoryWithPosts(variables: GetCategoryWithPostsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCategoryWithPostsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetCategoryWithPostsQuery>(GetCategoryWithPostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategoryWithPosts', 'query');
+    },
     getPickedOutPosts(variables?: GetPickedOutPostsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPickedOutPostsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetPickedOutPostsQuery>(GetPickedOutPostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPickedOutPosts', 'query');
     },
@@ -330,9 +355,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getPosts(variables?: GetPostsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPostsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetPostsQuery>(GetPostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPosts', 'query');
-    },
-    getPostsByCategory(variables?: GetPostsByCategoryQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPostsByCategoryQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetPostsByCategoryQuery>(GetPostsByCategoryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPostsByCategory', 'query');
     }
   };
 }

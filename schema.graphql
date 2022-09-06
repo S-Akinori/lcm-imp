@@ -1,19 +1,8 @@
-type Post {
-  id: Int!
-  title: String!
-  slug: String!
-  content: String
-  excerpt: String
-  date: String
-  categories: PostToCategoryConnection
-  imageUrl: String
-  featuredImage: FeaturedImageConnection
-}
-
 type Query {
   posts(where: RootQueryToPostConnectionWhereArgs): RootQueryToPostConnection
   post(id: ID!, idType: PostIdType = SLUG): Post
   categories: RootQueryToCategoryConnection
+  category (id: ID!, idType: CategoryIdType): Category
   menu(id: ID! = "pickedOutPosts", idType: MenuNodeIdTypeEnum = NAME ): Menu
 }
 
@@ -37,6 +26,18 @@ input RootQueryToPostConnectionWhereArgs {
 }
 
 # Post
+type Post {
+  id: Int!
+  title: String!
+  slug: String!
+  content: String
+  excerpt: String
+  date: String
+  categories: PostToCategoryConnection
+  imageUrl: String
+  featuredImage: FeaturedImageConnection
+}
+
 type RootQueryToPostConnection {
   edges: [RootQueryToPostConnectionEdge]
 }
@@ -62,6 +63,14 @@ type FeaturedImage {
 }
 
 #Category
+enum CategoryIdType {
+  DATABASE_ID
+  ID
+  NAME
+  SLUG
+  URI
+}
+
 type RootQueryToCategoryConnection {
   edges: [RootQueryToCategoryConnectionEdge]
 }
@@ -75,6 +84,15 @@ type Category {
   name: String
   slug: String
   uri: String
+  posts: CategoryToPostConnection
+}
+
+type CategoryToPostConnection {
+  edges: [CategoryToPostConnectionEdge]
+}
+
+type CategoryToPostConnectionEdge {
+  node: Post
 }
 
 # Menu

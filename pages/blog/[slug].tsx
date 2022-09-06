@@ -33,7 +33,7 @@ const PostSinglePage = ({post, categories, pickedOutPosts}: Props) => {
         <div className="md:flex">
           <div className="blog md:w-2/3 mb-16">
             <article>
-              <h1>{post.title}</h1>
+              <h1 className="text-center">{post.title}</h1>
               <div className="flex justify-center mb-8">{post.categories?.edges?.map(edge => (
                 <Link key={edge?.node?.id} href={'/blog/category/' + edge?.node?.slug}>{edge?.node?.name}</Link>
               ))}</div>

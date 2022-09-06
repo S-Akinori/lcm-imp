@@ -17,7 +17,6 @@ const CircleText = ({rotation = 8, radius = 125, fontSize = 16, height = 30, chi
           height: ${height}px;
           font-size: ${fontSize}px;
           text-align: center;
-          margin: 0;
         }
         .CircleText span {
           position: absolute;

@@ -1,32 +1,33 @@
 import { GetStaticPaths, GetStaticProps } from "next"
 import Layout from "src/components/Layout"
 import FV from "src/components/parts/FV"
-import { MenuToMenuItemConnection, RootQueryToCategoryConnection, RootQueryToPostConnection } from "lib/generated/client";
+import { Category, MenuToMenuItemConnection, RootQueryToCategoryConnection, RootQueryToPostConnection } from "lib/generated/client";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "src/components/parts/Container";
 import sdk from "lib/wpSdk";
 
 interface Props {
+  category: Category
   posts: RootQueryToPostConnection
   categories: RootQueryToCategoryConnection
   pickedOutPosts: MenuToMenuItemConnection
 }
 
-const BlogIndexByCategoryPage = ({posts, categories, pickedOutPosts}: Props) => {
+const BlogIndexByCategoryPage = ({category, posts, categories, pickedOutPosts}: Props) => {
   const {edges} = posts
   const categoryEdges = categories.edges
   const pickedOutPostsEdges = pickedOutPosts.edges
   return (
     <Layout
-      pageTitle={"ブログ"}
+      pageTitle={"ブログ" + category.name}
       pageDescription="結婚式に関する情報をお送りしてます。プロフィールムービー制作を含め、結婚式準備に有益な記事を書いていきます"
-      h1="結婚式ムービーに関するブログ"
+      h1={"結婚式ムービーのブログカテゴリー: " + category.name}
       pageImg={`${process.env.NEXT_PUBLIC_HOME_URL}/images/fv-blog.jpg`}
       pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/blog`}
       noindex
     >
-      <FV en="BLOG" title="ブログ" src="/images/fv-blog.jpg" />
+      <FV en="BLOG" title={category.name} src="/images/fv-blog.jpg" />
       <Container className="py-8">
         <div className="md:flex">
           <div className="md:flex flex-wrap md:w-2/3">
@@ -115,14 +116,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({params}) => {
-  const res = await sdk.getPostsByCategory({categoryName: params?.slug as string});
+  const res = await sdk.getCategoryWithPosts({id: params?.slug as string});
   const resCategories = await sdk.getCategories();
   const resPickedOutPosts = await sdk.getPickedOutPosts();
-  const posts = res.posts
+  const category = res.category
+  const posts = res.category?.posts
   const categories = resCategories.categories
   const pickedOutPosts = resPickedOutPosts.menu?.menuItems
   return {
     props: {
+      category,
       posts,
       categories,
       pickedOutPosts
