@@ -11,7 +11,7 @@ type Post {
 }
 
 type Query {
-  posts: RootQueryToPostConnection
+  posts(where: RootQueryToPostConnectionWhereArgs): RootQueryToPostConnection
   post(id: ID!, idType: PostIdType = SLUG): Post
   categories: RootQueryToCategoryConnection
   menu(id: ID! = "pickedOutPosts", idType: MenuNodeIdTypeEnum = NAME ): Menu
@@ -30,6 +30,10 @@ enum MenuNodeIdTypeEnum {
   LOCATION
   NAME
   SLUG
+}
+
+input RootQueryToPostConnectionWhereArgs {
+  categoryName: String
 }
 
 # Post

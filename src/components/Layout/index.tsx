@@ -11,6 +11,7 @@ interface Props {
   pagePath?: string
   pageImg?: string
   h1?: string
+  noindex?: boolean
 }
 
 const Layout = ({
@@ -19,6 +20,7 @@ const Layout = ({
     pagePath = process.env.NEXT_PUBLIC_HOME_URL, 
     pageImg = process.env.NEXT_PUBLIC_HOME_URL + '/images/concept.jpg', 
     h1 = process.env.NEXT_PUBLIC_SITE_DESCRIPTION,
+    noindex = false,
     children
   }: Props) => {
   return (
@@ -26,7 +28,7 @@ const Layout = ({
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <title>{pageTitle}</title>
-        {process.env.NEXT_PUBLIC_ENV !== 'production' && <meta name="robots" content="noindex, nofollow" />}
+        {(process.env.NEXT_PUBLIC_ENV !== 'production' || noindex) && <meta name="robots" content="noindex, nofollow" />}
         <meta name="description" content={pageDescription} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta charSet="utf-8" />
