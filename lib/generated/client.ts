@@ -17,10 +17,10 @@ export type Scalars = {
 
 export type Category = {
   __typename?: 'Category';
-  id?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
+  id: Scalars['Int'];
+  name: Scalars['String'];
   posts?: Maybe<CategoryToPostConnection>;
-  slug?: Maybe<Scalars['String']>;
+  slug: Scalars['String'];
   uri?: Maybe<Scalars['String']>;
 };
 
@@ -182,14 +182,14 @@ export type RootQueryToPostConnectionWhereArgs = {
 export type GetCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetCategoriesQuery = { __typename?: 'Query', categories?: { __typename?: 'RootQueryToCategoryConnection', edges?: Array<{ __typename?: 'RootQueryToCategoryConnectionEdge', node?: { __typename?: 'Category', id?: number | null, slug?: string | null, name?: string | null, uri?: string | null } | null } | null> | null } | null };
+export type GetCategoriesQuery = { __typename?: 'Query', categories?: { __typename?: 'RootQueryToCategoryConnection', edges?: Array<{ __typename?: 'RootQueryToCategoryConnectionEdge', node?: { __typename?: 'Category', id: number, slug: string, name: string, uri?: string | null } | null } | null> | null } | null };
 
 export type GetCategoryWithPostsQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type GetCategoryWithPostsQuery = { __typename?: 'Query', category?: { __typename?: 'Category', id?: number | null, name?: string | null, slug?: string | null, uri?: string | null, posts?: { __typename?: 'CategoryToPostConnection', edges?: Array<{ __typename?: 'CategoryToPostConnectionEdge', node?: { __typename?: 'Post', id: number, slug: string, title: string, excerpt?: string | null, featuredImage?: { __typename?: 'FeaturedImageConnection', node: { __typename?: 'FeaturedImage', sourceUrl: string } } | null } | null } | null> | null } | null } | null };
+export type GetCategoryWithPostsQuery = { __typename?: 'Query', category?: { __typename?: 'Category', id: number, name: string, slug: string, uri?: string | null, posts?: { __typename?: 'CategoryToPostConnection', edges?: Array<{ __typename?: 'CategoryToPostConnectionEdge', node?: { __typename?: 'Post', id: number, slug: string, title: string, excerpt?: string | null, featuredImage?: { __typename?: 'FeaturedImageConnection', node: { __typename?: 'FeaturedImage', sourceUrl: string } } | null } | null } | null> | null } | null } | null };
 
 export type GetPickedOutPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -202,12 +202,12 @@ export type GetPostQueryVariables = Exact<{
 }>;
 
 
-export type GetPostQuery = { __typename?: 'Query', post?: { __typename?: 'Post', content?: string | null, id: number, title: string, excerpt?: string | null, categories?: { __typename?: 'PostToCategoryConnection', edges?: Array<{ __typename?: 'PostToCategoryConnectionEdge', node?: { __typename?: 'Category', id?: number | null, name?: string | null, slug?: string | null } | null } | null> | null } | null, featuredImage?: { __typename?: 'FeaturedImageConnection', node: { __typename?: 'FeaturedImage', sourceUrl: string } } | null } | null };
+export type GetPostQuery = { __typename?: 'Query', post?: { __typename?: 'Post', content?: string | null, id: number, title: string, excerpt?: string | null, categories?: { __typename?: 'PostToCategoryConnection', edges?: Array<{ __typename?: 'PostToCategoryConnectionEdge', node?: { __typename?: 'Category', id: number, name: string, slug: string } | null } | null> | null } | null, featuredImage?: { __typename?: 'FeaturedImageConnection', node: { __typename?: 'FeaturedImage', sourceUrl: string } } | null } | null };
 
 export type GetPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetPostsQuery = { __typename?: 'Query', posts?: { __typename?: 'RootQueryToPostConnection', edges?: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node?: { __typename?: 'Post', id: number, slug: string, title: string, excerpt?: string | null, date?: string | null, categories?: { __typename?: 'PostToCategoryConnection', edges?: Array<{ __typename?: 'PostToCategoryConnectionEdge', node?: { __typename?: 'Category', id?: number | null, name?: string | null, slug?: string | null } | null } | null> | null } | null, featuredImage?: { __typename?: 'FeaturedImageConnection', node: { __typename?: 'FeaturedImage', sourceUrl: string } } | null } | null } | null> | null } | null };
+export type GetPostsQuery = { __typename?: 'Query', posts?: { __typename?: 'RootQueryToPostConnection', edges?: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node?: { __typename?: 'Post', id: number, slug: string, title: string, excerpt?: string | null, date?: string | null, categories?: { __typename?: 'PostToCategoryConnection', edges?: Array<{ __typename?: 'PostToCategoryConnectionEdge', node?: { __typename?: 'Category', id: number, name: string, slug: string } | null } | null> | null } | null, featuredImage?: { __typename?: 'FeaturedImageConnection', node: { __typename?: 'FeaturedImage', sourceUrl: string } } | null } | null } | null> | null } | null };
 
 
 export const GetCategoriesDocument = gql`

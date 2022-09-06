@@ -80,9 +80,9 @@ type RootQueryToCategoryConnectionEdge {
 }
 
 type Category {
-  id: Int
-  name: String
-  slug: String
+  id: Int!
+  name: String!
+  slug: String!
   uri: String
   posts: CategoryToPostConnection
 }
