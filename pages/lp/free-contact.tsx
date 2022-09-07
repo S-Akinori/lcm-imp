@@ -250,7 +250,7 @@ const LPFreeContactPage = () => {
           <LPTitle>わたしたちの想い</LPTitle>
           <div className="text-center">
             <Image
-              src="/images/image-members.jpg"
+              src="/images/image-members.JPG"
               width={1280}
               height={720}
             />
