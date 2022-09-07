@@ -18,8 +18,7 @@ export const companies = [
     contents: [
       {id: 'company1_name', title: '会社名', content: '株式会社imp'},
       {id: 'company1_address', title: '所在地', content: '〒166-0012 東京都杉並区和田2-33-5'},
-      {id: 'company1_CEO', title: '代表',  content: '取締役 石川和真'},
-      {id: 'company1_date', title: '設立日', content: '2022年6月10日'},
+      {id: 'company1_CEO', title: '責任者',  content: '石川和真'},
       {id: 'company1_email', title: 'メール', content: 'contact@impre.jp'},
       {id: 'company1_tel', title: '電話番号', content: '080-6725-1692'},
       {id: 'company1_url', title: 'ホームページ', content: <a href="https://impre.jp" target="_blank">https://impre.jp</a>},

@@ -105,6 +105,22 @@ const MenuPage = () => {
         <Container>
           <MenuSummary menu={menus} total={total} isButton={true} />
         </Container>
+        <Container className="py-12">
+          <div className="text-sm">
+            <h3>注意事項</h3>
+            <div>
+              <p>次の内容は、現地ロケ撮影プランに含まれません。希望される場合はお客様自身で行っていただきます。</p>
+              <ul>
+                <li>お客様の移動にかかる交通費</li>
+                <li>撮影場所や撮影対象物の使用許可手続き及び使用料のお支払い</li>
+                <li>飲食費のお支払い</li>
+                <li>衣装類や撮影小道具のご準備及びそれに伴う経費のお支払い</li>
+                <li>自動車等の移動手段のレンタル及びレンタル費のお支払い</li>
+                <li>ヘアメイクやスタイリスト等の外部スタッフのご依頼及び依頼費のお支払い</li>
+              </ul>
+            </div>
+          </div>
+        </Container>
         {/* <Container className="py-12">
             <div>
               {menuCategories && menuCategories.map(category => (

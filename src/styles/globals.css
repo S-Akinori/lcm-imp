@@ -29,7 +29,7 @@ body {
   letter-spacing: 0.1em;
   overflow-x: hidden;
   max-width: 100%;
-  font-family: "Source Han Serif", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Serif JP", "Arial", "Meiryo", sans-serif;
+  font-family: "Source Han Serif", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
 }
 main {
   padding-bottom: 3rem;
