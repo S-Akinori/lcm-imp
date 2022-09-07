@@ -37,6 +37,7 @@ import Table from "src/components/parts/Table"
 import TableRow from "src/components/parts/Table/TableRow"
 import TableCell from "src/components/parts/Table/TableRow/TableCell"
 import ButtonRounded from "src/components/parts/Button/ButtonRounded"
+import Image from "next/image"
 
 const setDiscountId = 'setDiscount'
 
@@ -309,6 +310,13 @@ const LPOrderPlanPage = () => {
         </div>
         <Container className="py-20">
           <LPTitle>わたしたちの想い</LPTitle>
+          <div className="text-center">
+            <Image
+              src="/images/image-members.jpg"
+              width={1280}
+              height={720}
+            />
+          </div>
           <p className="whitespace-pre-wrap mx-auto md:w-max">{LPThought.text}</p>
         </Container>
         <div className="bg-lp-main">

@@ -1,5 +1,6 @@
 import { sendClickLPLineButton } from "lib/gtm"
 import Head from "next/head"
+import Image from "next/image"
 import React, { useRef, useState } from "react"
 import { FieldError, SubmitHandler, useForm } from "react-hook-form"
 import Layout from "src/components/Layout"
@@ -13,6 +14,9 @@ import InputGroup from "src/components/parts/Form/InputGroup"
 import Input from "src/components/parts/Form/InputGroup/Input"
 import InputLabel from "src/components/parts/Form/InputGroup/InputLabel"
 import SpeechBalloonWithImage from "src/components/parts/SpeechBalloonWithImage"
+import Table from "src/components/parts/Table"
+import TableRow from "src/components/parts/Table/TableRow"
+import TableCell from "src/components/parts/Table/TableRow/TableCell"
 import TextAndImage from "src/components/parts/TextAndImage"
 import TextAndImageColumn from "src/components/parts/TextAndImage/TextAndImageColumn"
 import TextAndImageOver from "src/components/parts/TextAndImage/TextAndImageOver"
@@ -23,6 +27,7 @@ import LPTitle from "src/components/templates/LP/LPTitle"
 import { contactFormInputs } from "src/contents/contact"
 import { actionButtonContent } from "src/contents/lp/common"
 import { LPFormInputs } from "src/contents/lp/form"
+import { LPPlans } from "src/contents/lp/plan"
 import { LPProblems } from "src/contents/lp/problems"
 import { LPReasons } from "src/contents/lp/reasons"
 import { LPServices } from "src/contents/lp/services"
@@ -198,6 +203,25 @@ const LPFreeContactPage = () => {
             <ActionButton subText={actionButtonContent.subText}>{actionButtonContent.mainText}</ActionButton>
           </div>
         </Container>
+        <Container className="py-12">
+          <LPTitle>プランの例</LPTitle>
+          <div className="md:flex items-stretch">
+            {LPPlans && LPPlans.map(plan => (
+              <div key={plan.id} className="mt-12 md:p-4 md:w-1/3">
+                <div className="relative border border-accent p-4 h-full">
+                  <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 px-2 bg-white text-3xl text-accent" style={{fontFamily: 'Dancing Script'}}>{plan.title}</div>
+                  <div className="py-4 text-accent text-xl text-center">{plan.price}</div>
+                  <ul>
+                    {plan.menus.map((item) => (
+                        <li key={item.id}>【{item.title}】<br /> {item.content}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center text-xs mt-4">料金はすべて税込価格です。</div>
+        </Container>
         <div className="bg-lp-main">
           <Container className="py-12">
             <LPTitle>多くのお客様から素敵なコメントをいただいています</LPTitle>
@@ -224,6 +248,13 @@ const LPFreeContactPage = () => {
         </div>
         <Container className="py-20">
           <LPTitle>わたしたちの想い</LPTitle>
+          <div className="text-center">
+            <Image
+              src="/images/image-members.jpg"
+              width={1280}
+              height={720}
+            />
+          </div>
           <p className="whitespace-pre-wrap mx-auto md:w-max">{LPThought.text}</p>
         </Container>
         <div className="bg-lp-main" ref={ref}>

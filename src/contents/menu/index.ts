@@ -3,7 +3,7 @@ import { MenuObjectProp, MenuProp } from "src/types/MenuProp"
 export const topMenuText = {
   en: 'MENU',
   h2: '思い出を最高のカタチで残す',
-  text: `プロのカメラマンと編集者によるオーダーメイドの結婚式ムービーを制作いたします。\n新郎新婦様、出席される方々全員が思い出に残るムービーを一緒制作していきましょう。`,
+  text: `プロのカメラマンと編集者によるオーダーメイドの結婚式ムービーを制作します。\n新郎新婦様、出席される方々全員が思い出に残るムービーを一緒に制作していきましょう。`,
   href: '/menu',
   linkText: 'メニューへ'
 }
