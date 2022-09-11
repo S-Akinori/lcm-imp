@@ -24,16 +24,19 @@ import MenuDetail from "src/components/templates/Menu/MenuDetail"
 import MenuSummary from "src/components/templates/Menu/MenuSummary"
 import MenuForm from "src/components/templates/MenuForm"
 import { subConceptMessages, subConceptText } from "src/contents/concept"
-import { discountOptions, locationDetail, menuCategories, menuLocations, menuMovies, menuOptions, menus, movieDetails, movieIntroductions, optionDetails } from "src/contents/menu"
+import { discountOptions, locationDetail, menuCategories, menuLocations, menuLocationsOptions, menuMovies, menuOptions, menus, movieDetails, movieIntroductions, optionDetails } from "src/contents/menu"
 import { MenuObjectProp, MenuProp } from "src/types/MenuProp"
 
 const setDiscountId = 'setDiscount'
 
 const MenuPage = () => {
-  const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState(menuLocationsOptions[0].price);
   const [menus, setMenus] = useState<MenuObjectProp>({
     movies: [],
     locations: [],
+    locationOptions: [
+      menuLocationsOptions[0]
+    ],
     options: [],
     discounts: [],
   });

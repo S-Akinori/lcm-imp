@@ -96,7 +96,7 @@ ul li::before, .list .list-item::before {
   height: 2px;
 }
 
-input:not([type="checkbox"]), textarea {
+input:not([type="checkbox"]), textarea, select {
   display: block;
   background: var(--base-background);
   padding: 0.5rem;

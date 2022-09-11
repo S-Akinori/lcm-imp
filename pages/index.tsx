@@ -52,36 +52,38 @@ const Home: NextPage = () => {
           </section>
         </AnimationTrigger>
       </AnimationTrigger>
-      <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
-        <section className='relative py-14 md:py-20'>
-          <Container>
-              <Title en={topMenuText.en} h2={topMenuText.h2} />
-              <div className='text'>{topMenuText.text}</div>
-          </Container>
-          {/* <div className='mt-8'>
-            {menus && menus.map((menu, index) => (
-              (menu.isTop && (
-              <TextAndImageOver
-                src={menu.src}
-                image={menu.thumbnail}
-                key={menu.id}
-                rtl={index % 2 == 0 ? true : false}
-                className="mb-24 md:mb-32"
-              >
-                <div>
-                  <h3 className='pb-0 mb-0 text-accent'>{menu.title}</h3>
-                  <div className='mb-4'>{menu.price}</div>
-                  <div>{menu.text}</div>
-                  <div className='mt-12'><Button href={menu.link}>詳細を見る</Button></div>
-                </div>
-              </TextAndImageOver>
-              ))
-            ))}
-          </div> */}
-          <Container>
-            <div><Button href={topMenuText.href}>{topMenuText.linkText}</Button></div>
-          </Container>
-        </section>
+      <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-150px' triggerOnce>
+        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
+          <section className='relative py-14 md:py-20'>
+            <Container>
+                <Title en={topMenuText.en} h2={topMenuText.h2} />
+                <div className='text'>{topMenuText.text}</div>
+            </Container>
+            {/* <div className='mt-8'>
+              {menus && menus.map((menu, index) => (
+                (menu.isTop && (
+                <TextAndImageOver
+                  src={menu.src}
+                  image={menu.thumbnail}
+                  key={menu.id}
+                  rtl={index % 2 == 0 ? true : false}
+                  className="mb-24 md:mb-32"
+                >
+                  <div>
+                    <h3 className='pb-0 mb-0 text-accent'>{menu.title}</h3>
+                    <div className='mb-4'>{menu.price}</div>
+                    <div>{menu.text}</div>
+                    <div className='mt-12'><Button href={menu.link}>詳細を見る</Button></div>
+                  </div>
+                </TextAndImageOver>
+                ))
+              ))}
+            </div> */}
+            <Container>
+              <div><Button href={topMenuText.href}>{topMenuText.linkText}</Button></div>
+            </Container>
+          </section>
+        </AnimationTrigger>
       </AnimationTrigger>
       {/* <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-150px' triggerOnce>
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>

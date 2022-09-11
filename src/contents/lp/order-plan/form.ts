@@ -141,6 +141,9 @@ const generateOrderDataText = (orderData: FormInputData) => {
 
   【ロケーション】
   ${orderData.menu.locations.map(item => (item.title))}
+  
+  【ロケーションの数】
+  ${orderData.menu.locationOptions.map(item => (item.title))}
 
   【オプション】
   ${orderData.menu.options.map(item => (item.title))}

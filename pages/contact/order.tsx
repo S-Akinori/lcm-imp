@@ -79,6 +79,9 @@ const ContactOrderPage = () => {
     【ロケーション】
     ${menu?.locations.map(item => item.title)}
 
+    【ロケーションの数】
+    ${menu?.locationOptions.map(item => (item.title))}
+
     【オプション】
     ${menu?.options.map(item => item.title)}
 

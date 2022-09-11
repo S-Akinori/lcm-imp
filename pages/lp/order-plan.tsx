@@ -32,7 +32,7 @@ import MenuForm from "src/components/templates/MenuForm"
 import { MenuObjectProp, MenuProp } from "src/types/MenuProp"
 import MenuSummary from "src/components/templates/Menu/MenuSummary"
 import MenuDetail from "src/components/templates/Menu/MenuDetail"
-import { discountOptions, locationDetail, movieDetails, movieIntroductions, optionDetails } from "src/contents/menu"
+import { discountOptions, locationDetail, menuLocationsOptions, movieDetails, movieIntroductions, optionDetails } from "src/contents/menu"
 import Table from "src/components/parts/Table"
 import TableRow from "src/components/parts/Table/TableRow"
 import TableCell from "src/components/parts/Table/TableRow/TableCell"
@@ -53,11 +53,14 @@ const LPOrderPlanPage = () => {
   const {register, handleSubmit, formState: {errors}} = useForm<InputData>()
   const [submimtMessage, setSubmitMessage] = useState<React.ReactNode>()
   const [loading, setLoading] = useState(false);
-  const [total, setTotal] = useState(0);
   const [canSubmit, setCanSubmit] = useState(false);
+  const [total, setTotal] = useState(menuLocationsOptions[0].price);
   const [menu, setMenu] = useState<MenuObjectProp>({
     movies: [],
     locations: [],
+    locationOptions: [
+      menuLocationsOptions[0]
+    ],
     options: [],
     discounts: [],
   });
@@ -78,6 +81,9 @@ const LPOrderPlanPage = () => {
 
     【ロケーション】
     ${menu?.locations.map(item => item.title)}
+
+    【ロケーションの数】
+    ${menu?.locationOptions.map(item => (item.title))}
 
     【オプション】
     ${menu?.options.map(item => item.title)}

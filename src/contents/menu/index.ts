@@ -3,7 +3,7 @@ import { MenuObjectProp, MenuProp } from "src/types/MenuProp"
 export const topMenuText = {
   en: 'MENU',
   h2: '思い出を最高のカタチで残す',
-  text: `プロのカメラマンと編集者によるオーダーメイドの結婚式ムービーを制作します。\n新郎新婦様、出席される方々全員が思い出に残るムービーを一緒に制作していきましょう。`,
+  text: `プロのカメラマンと編集者によるオーダーメイドの結婚式ムービーを制作します。ドローン撮影やドキュメンタリー企画など、お好きなオプションを付けていくことで自分の料金プランを作ることができます。新郎新婦様、出席される方々全員が思い出に残るムービーを一緒に制作していきましょう。`,
   href: '/menu',
   linkText: 'メニューへ'
 }
@@ -19,6 +19,7 @@ export const menuMovies : MenuProp[] = [
   // },
   {
     id: 'profileMovie',
+    name: 'profileMovie',
     title: 'プロフィールムービー',
     priceText: '159,500円',
     price: 159500,
@@ -27,6 +28,7 @@ export const menuMovies : MenuProp[] = [
   },
   {
     id: 'openingMovie',
+    name: 'openingMovie',
     title: 'オープニングムービー',
     priceText: '139,700円',
     price: 139700,
@@ -35,6 +37,7 @@ export const menuMovies : MenuProp[] = [
   },
   {
     id: 'endingMovie',
+    name: 'endingMovie',
     title: 'エンドロールムービー',
     priceText: '139,700円',
     price: 139700,
@@ -46,25 +49,67 @@ export const menuMovies : MenuProp[] = [
 export const menuLocations : MenuProp[]  = [
   {
     id: 'kantoArea',
+    name: 'location',
     title: '関東',
-    priceText: '22,000円',
-    price: 22000,
+    priceText: '交通費0円',
+    price: 0,
     category: 'locations',
     disabled: false,
   },
   {
     id: 'outsideKantoArea',
+    name: 'location',
     title: '関東以外',
-    priceText: '料金別途相談',
+    priceText: '交通費別途相談',
     price: 0,
     category: 'locations',
     disabled: false,
   },
 ]
 
+export const menuLocationsOptions : MenuProp[] = [
+  {
+    id: 'locationOption1',
+    name: 'locationOption',
+    title: '1カ所',
+    priceText: '22,000円',
+    price: 22000,
+    category: 'locationOptions',
+    disabled: false
+  },
+  {
+    id: 'locationOption2',
+    name: 'locationOption',
+    title: '2カ所',
+    priceText: '44,000円',
+    price: 44000,
+    category: 'locationOptions',
+    disabled: false
+  },
+  {
+    id: 'locationOption3',
+    name: 'locationOption',
+    title: '3カ所',
+    priceText: '66,000円',
+    price: 66000,
+    category: 'locationOptions',
+    disabled: false
+  },
+  {
+    id: 'locationOption4',
+    name: 'locationOption',
+    title: '4カ所',
+    priceText: '88,000円',
+    price: 88000,
+    category: 'locationOptions',
+    disabled: false
+  },
+]
+
 export const menuOptions : MenuProp[] = [
   {
     id: 'prePhoto',
+    name: 'prePhoto',
     title: '前撮り',
     priceText: '59,400円',
     price: 59400,
@@ -73,6 +118,7 @@ export const menuOptions : MenuProp[] = [
   },
   {
     id: 'option1',
+    name: 'option1',
     title: '休日、祝日撮影',
     priceText: '33,000円',
     price: 33000,
@@ -81,6 +127,7 @@ export const menuOptions : MenuProp[] = [
   },
   {
     id: 'option2',
+    name: 'option2',
     title: 'ドローン撮影',
     priceText: '44,000円',
     price: 44000,
@@ -89,22 +136,26 @@ export const menuOptions : MenuProp[] = [
   },
   {
     id: 'option3',
+    name: 'option3',
     title: 'FPVドローン撮影',
     priceText: '88,000円',
     price: 88000,
     category: 'options',
     disabled: false,
   },
-  {
-    id: 'option4',
-    title: 'ロケーション1カ所追加',
-    priceText: '22,000円',
-    price: 22000,
-    category: 'options',
-    disabled: false,
-  },
+  // {
+  //   id: 'option4',
+  //   name: 'option4',
+  //   title: 'ロケーション1カ所追加',
+  //   text: '1カ所追加ごとに料金が発生します。複数カ所追加する場合はご相談ください。',
+  //   priceText: '22,000円',
+  //   price: 22000,
+  //   category: 'options',
+  //   disabled: false,
+  // },
   {
     id: 'option5',
+    name: 'option5',
     title: 'ドキュメンタリープラン',
     priceText: '77,000円',
     price: 77000,
@@ -116,6 +167,7 @@ export const menuOptions : MenuProp[] = [
 export const discountOptions : MenuProp[] = [
   {
     id: 'discountOption1',
+    name: 'discountOption1',
     title: '早割',
     text: '挙式日の6か月前までにご予約された方が対象',
     priceText: '16,500円',
@@ -125,6 +177,7 @@ export const discountOptions : MenuProp[] = [
   },
   {
     id: 'discountOption2',
+    name: 'discountOption2',
     title: 'SNS掲載割',
     text: '弊社のHP等での掲載、およびお客様のSNSでの掲載が可能な方が対象',
     priceText: '16,500円',
@@ -143,6 +196,7 @@ export const discountOptions : MenuProp[] = [
   // },
   {
     id: 'setDiscount',
+    name: 'setDiscount',
     title: 'ムービー2種セット割り',
     text: 'ムービーを2種類以上ご注文された方が対象',
     priceText: '37,400円',

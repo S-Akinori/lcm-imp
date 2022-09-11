@@ -26,60 +26,70 @@ const MenuSummary = ({menu, total, isButton = false}: Props) => {
   return (
     <Box className="px-4 py-8">
       <h2 className="text-center mb-4">お客様の撮影プラン</h2>
-      <div className="mb-4 px-4 text-center">
-        <div>合計: <span className="text-accent text-3xl">{total.toLocaleString()}</span>円 (税込)</div>
-        {menu.locations.find(item => item.id === 'outsideKantoArea') && <div className="text-sm">関東以外の撮影では別途交通費がかかります</div>}
-      </div>
-      <div className="md:flex flex-wrap mb-4">
-        <div className="p-4 md:w-1/2 lg:w-1/4">
-          <div><VideocamIcon className="text-accent" /> ムービーの種類</div>
-          <ul>
-            {menu.movies.length > 0 && menu.movies.map(item => (
-              <li key={item.id}>{item.title}</li>
-            ))}
-            {menu.movies.length === 0 && (
-              <li>なし</li>
-            )}
-          </ul>
+      {menu.movies.length > 0 && menu.locations.length > 0 && (
+        <div>
+          <div className="mb-4 px-4 text-center">
+            <div>合計: <span className="text-accent text-3xl">{total.toLocaleString()}</span>円 (税込)</div>
+            {menu.locations.find(item => item.id === 'outsideKantoArea') && <div className="text-sm">関東以外の撮影では別途交通費がかかります</div>}
+          </div>
+          <div className="md:flex flex-wrap mb-4">
+            <div className="p-4 md:w-1/2 lg:w-1/4">
+              <div><VideocamIcon className="text-accent" /> ムービーの種類</div>
+              <ul>
+                {menu.movies.length > 0 && menu.movies.map(item => (
+                  <li key={item.id}>{item.title}</li>
+                ))}
+                {menu.movies.length === 0 && (
+                  <li>なし</li>
+                )}
+              </ul>
+            </div>
+            <div className="p-4 md:w-1/2 lg:w-1/4">
+              <div><LocationOnIcon className="text-accent" /> ロケーション</div>
+              <ul>
+                {menu.locations.length > 0 && menu.locations.map(item => (
+                  <li key={item.id}>{item.title}</li>
+                ))}
+                {menu.locations.length === 0 && (
+                  <li>なし</li>
+                )}
+                {menu.locationOptions.length > 0 && menu.locationOptions.map(item => (
+                  <li key={item.id}>{item.title}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="p-4 md:w-1/2 lg:w-1/4">
+              <div><VideoCallIcon className="text-accent" /> オプション</div>
+              <ul>
+                {menu.options.length > 0 && menu.options.map(item => (
+                  <li key={item.id}>{item.title}</li>
+                ))}
+                {menu.options.length === 0 && (
+                  <li>なし</li>
+                )}
+              </ul>
+            </div>
+            <div className="p-4 md:w-1/2 lg:w-1/4">
+              <div><ThumbUpAltIcon className="text-accent" /> 割引</div>
+              <ul>
+                {menu.discounts.length > 0 && menu.discounts.map(item => (
+                  <li key={item.id}>{item.title}</li>
+                ))}
+                {menu.discounts.length === 0 && (
+                  <li>なし</li>
+                )}
+              </ul>
+            </div>
+          </div>
+          {isButton && (
+            <div className="text-center">
+              <Button color="accent" onClick={onClick}>このプランで依頼をする</Button>
+            </div>
+          )}
         </div>
-        <div className="p-4 md:w-1/2 lg:w-1/4">
-          <div><LocationOnIcon className="text-accent" /> ロケーション</div>
-          <ul>
-            {menu.locations.length > 0 && menu.locations.map(item => (
-              <li key={item.id}>{item.title}</li>
-            ))}
-            {menu.locations.length === 0 && (
-              <li>なし</li>
-            )}
-          </ul>
-        </div>
-        <div className="p-4 md:w-1/2 lg:w-1/4">
-          <div><VideoCallIcon className="text-accent" /> オプション</div>
-          <ul>
-            {menu.options.length > 0 && menu.options.map(item => (
-              <li key={item.id}>{item.title}</li>
-            ))}
-            {menu.options.length === 0 && (
-              <li>なし</li>
-            )}
-          </ul>
-        </div>
-        <div className="p-4 md:w-1/2 lg:w-1/4">
-          <div><ThumbUpAltIcon className="text-accent" /> 割引</div>
-          <ul>
-            {menu.discounts.length > 0 && menu.discounts.map(item => (
-              <li key={item.id}>{item.title}</li>
-            ))}
-            {menu.discounts.length === 0 && (
-              <li>なし</li>
-            )}
-          </ul>
-        </div>
-      </div>
-      {isButton && (
-        <div className="text-center">
-          <Button color="accent" onClick={onClick}>このプランで依頼をする</Button>
-        </div>
+      )}
+      {(menu.movies.length === 0 || menu.locations.length === 0 ) && (
+        <div className="text-center">ムービーの種類と撮影場所を選ぶと、ここにプランの総額と内容が表示されます。</div>
       )}
     </Box>
   )
