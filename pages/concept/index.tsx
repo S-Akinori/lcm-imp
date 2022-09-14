@@ -1,3 +1,5 @@
+import { fetchAPI } from "lib/fetchAPI"
+import { GetStaticProps } from "next"
 import Layout from "src/components/Layout"
 import AnimationTrigger from "src/components/parts/AnimationTrigger"
 import Container from "src/components/parts/Container"
@@ -5,8 +7,13 @@ import FV from "src/components/parts/FV"
 import TextAndImage from "src/components/parts/TextAndImage"
 import TitleAndText from "src/components/parts/TitleAndText"
 import { subConceptMessages, subConceptText } from "src/contents/concept"
+import { ConceptText } from "src/types/ConceptText"
 
-const ConceptPage = () => {
+interface Props {
+  conceptText: ConceptText
+}
+
+const ConceptPage = ({conceptText}: Props) => {
   return (
     <>
       <Layout
@@ -21,7 +28,7 @@ const ConceptPage = () => {
           <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
             <Container>
               <section className="py-14">
-                <TitleAndText h2={subConceptText.h2}>{subConceptText.text}</TitleAndText>
+                <TitleAndText h2={conceptText.object.title}>{conceptText.object.text}</TitleAndText>
               </section>
             </Container>
           </AnimationTrigger>
@@ -50,6 +57,15 @@ const ConceptPage = () => {
       </Layout>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const conceptText: ConceptText = await fetchAPI('admin/content/bMQvHyXN94cEQWR7Kkm2');
+  return {
+    props: {
+      conceptText
+    }
+  }
 }
 
 export default ConceptPage
