@@ -38,6 +38,7 @@ import TableRow from "src/components/parts/Table/TableRow"
 import TableCell from "src/components/parts/Table/TableRow/TableCell"
 import ButtonRounded from "src/components/parts/Button/ButtonRounded"
 import Image from "next/image"
+import AnimationTrigger from "src/components/parts/AnimationTrigger"
 
 const setDiscountId = 'setDiscount'
 
@@ -234,212 +235,228 @@ const LPOrderPlanPage = () => {
             </div>
           </div>
         </LPFV>
-        <Container className="py-12">
-          <LPTitle>こんなお悩み・ご希望ありませんか？</LPTitle>
-          <div className="md:flex flex-wrap">
-            {LPProblems && LPProblems.map(item => (
-              <div key={item.id} className="md:w-1/3 p-4 mb-8">
-                <SpeechBalloonWithImage src={item.src} alt={item.text}>
-                  {item.text}
-                </SpeechBalloonWithImage>
-              </div>
-            ))}
-          </div>
-          <div className="my-12 w-px h-12 bg-accent mx-auto"></div>
-          <div className="text-xl text-center">わたしたち<br className="md:hidden" />「リンリン（RING RING）」<br className="md:hidden" />にお任せください</div>
-        </Container>
-        <div className="relative reasonsSection">
+        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
           <Container className="py-12">
-            <LPTitle>リンリンが選ばれる理由</LPTitle>
-            <div className="md:flex flex-wrap mb-4">
-              {LPReasons && LPReasons.map((item, index) => (
-                <div key={item.id} className="mb-8 md:w-1/3 p-4 relative">
-                  <TextAndImageColumn src={item.src} alt={item.title}>
-                    <h3 className="mb-0">{item.title}</h3>
-                    <div>
-                      <div>{item.text}</div>
-                    </div>
-                  </TextAndImageColumn>
-                  <div className="absolute right-4 bottom-0 text-accent opacity-30" style={{fontFamily: 'Dancing Script, cursive', fontSize: '5rem', lineHeight: '1'}}>0{index + 1}</div>
+            <LPTitle>こんなお悩み・ご希望ありませんか？</LPTitle>
+            <div className="md:flex flex-wrap">
+              {LPProblems && LPProblems.map(item => (
+                <div key={item.id} className="md:w-1/3 p-4 mb-8">
+                  <SpeechBalloonWithImage src={item.src} alt={item.text}>
+                    {item.text}
+                  </SpeechBalloonWithImage>
                 </div>
               ))}
             </div>
-            <div className="text-center">
-              <ActionButton subText={actionButtonContent.subText} onClick={onClick}>{actionButtonContent.mainText}</ActionButton>
-            </div>
           </Container>
-        </div>
-        <Container className="py-12">
-          <LPTitle>リンリンは新郎新婦さまに寄り添い、「やりたい」を叶えます</LPTitle>
-          <div className="mt-12">
-            {LPServices && LPServices.map((item, index) => (
-              <div key={item.id} className="mb-12 relative w-full md:p-4">
-                <TextAndImageRow src={item.src} alt={item.title}>
-                  <div className="md:mt-12 whitespace-pre-wrap">
-                    <h3 className="title-border">{item.title}</h3>
-                    <div>
-                      <div>{item.text}</div>
-                    </div>
+        </AnimationTrigger>
+        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
+          <Container>
+            <div className="my-12 w-px h-12 bg-accent mx-auto"></div>
+            <div className="text-xl text-center">わたしたち<br className="md:hidden" />「リンリン（RING RING）」<br className="md:hidden" />にお任せください</div>
+          </Container>
+        </AnimationTrigger>
+        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
+          <div className="relative reasonsSection">
+            <Container className="py-12">
+              <LPTitle>リンリンが選ばれる理由</LPTitle>
+              <div className="md:flex flex-wrap mb-4">
+                {LPReasons && LPReasons.map((item, index) => (
+                  <div key={item.id} className="mb-8 md:w-1/3 p-4 relative">
+                    <TextAndImageColumn src={item.src} alt={item.title}>
+                      <h3 className="mb-0">{item.title}</h3>
+                      <div>
+                        <div>{item.text}</div>
+                      </div>
+                    </TextAndImageColumn>
+                    <div className="absolute right-4 bottom-0 text-accent opacity-30" style={{fontFamily: 'Dancing Script, cursive', fontSize: '5rem', lineHeight: '1'}}>0{index + 1}</div>
                   </div>
-                  <div className="absolute right-0 -top-6 rotate-12 text-accent leading-none text-5xl md:-right-8 md:top-0" style={{fontFamily: 'Dancing Script'}}>POINT{index + 1}</div>
-                </TextAndImageRow>
+                ))}
               </div>
-            ))}
+              <div className="text-center">
+                <ActionButton subText={actionButtonContent.subText} onClick={onClick}>{actionButtonContent.mainText}</ActionButton>
+              </div>
+            </Container>
           </div>
-          <div className="text-center">
-            <ActionButton subText={actionButtonContent.subText}>{actionButtonContent.mainText}</ActionButton>
-          </div>
-        </Container>
-        <div className="bg-lp-main">
+        </AnimationTrigger>
+        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
           <Container className="py-12">
-            <LPTitle>多くのお客様から素敵なコメントをいただいています</LPTitle>
-            <div className="mt-20">
-              {LPVoices && LPVoices.map((item, index) => (
-                <div key={item.id} className="mb-16 relative md:p-4">
-                  <TextAndImageRotation src={item.src} alt={item.title}>
-                    <div className="whitespace-pre-wrap">
+            <LPTitle>リンリンは新郎新婦さまに寄り添い、「やりたい」を叶えます</LPTitle>
+            <div className="mt-12">
+              {LPServices && LPServices.map((item, index) => (
+                <div key={item.id} className="mb-12 relative w-full md:p-4">
+                  <TextAndImageRow src={item.src} alt={item.title}>
+                    <div className="md:mt-12 whitespace-pre-wrap">
                       <h3 className="title-border">{item.title}</h3>
                       <div>
                         <div>{item.text}</div>
                       </div>
                     </div>
-                    <div className="mt-8 text-sm">
-                      お名前: {item.person.name}<br />
-                      ムービーの種類: {item.person.movieType}<br />
-                      撮影場所: {item.person.location}<br />
-                    </div>
-                  </TextAndImageRotation>
+                    <div className="absolute right-0 -top-6 rotate-12 text-accent leading-none text-5xl md:-right-8 md:top-0" style={{fontFamily: 'Dancing Script'}}>POINT{index + 1}</div>
+                  </TextAndImageRow>
                 </div>
               ))}
             </div>
+            <div className="text-center">
+              <ActionButton subText={actionButtonContent.subText}>{actionButtonContent.mainText}</ActionButton>
+            </div>
           </Container>
-        </div>
-        <Container className="py-20">
-          <LPTitle>わたしたちの想い</LPTitle>
-          <div className="text-center">
-            <Image
-              src="/images/image-members.jpg"
-              width={1280}
-              height={720}
-            />
-          </div>
-          <p className="whitespace-pre-wrap mx-auto md:w-max">{LPThought.text}</p>
-        </Container>
-        <div className="bg-lp-main">
-          <Container className="py-12">
-            <LPTitle>月4組限定です！一緒に最高の結婚式ムービーを創りましょう！</LPTitle>
-            <p>新郎新婦さまに寄り添って制作を行うため、毎月の申し込み数を4組までとさせていただいております。ご相談は無料で行っていますので、まずはご相談ください！</p>
-            <div className="mt-12">
-              <div>
-                <LPTitle heading="h3">各ウェディングムービーについて</LPTitle>
-                {movieIntroductions && movieIntroductions.map(item => (
-                  <div className="mb-6" key={item.id}>
-                    <h4>【{item.title}】</h4>
-                    <p>{item.content}</p>
-                  </div>
-                ))}
-                <Table>
-                  {movieDetails && movieDetails.map(item => (
-                    <TableRow className="!border-b-0" key={item.id}>
-                      <TableCell className="bg-main" type="th">{item.title}</TableCell>
-                      <TableCell>{item.content}</TableCell>
-                    </TableRow>
-                  ))}
-                </Table>
-              </div>
-              <div className="mt-12">
-                <LPTitle heading="h3">{locationDetail.title}</LPTitle>
-                <p className="whitespace-pre-wrap">{locationDetail.content}</p>
-              </div>
-              <div className="mt-12">
-                <LPTitle heading="h3">オプションについて</LPTitle>
-                {optionDetails && optionDetails.map(item => (
-                  <div className="mb-6" key={item.id}>
-                    <h4>【{item.title}】</h4>
-                    <p>{item.content}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div ref={ref} className="mt-8">
-              <LPTitle>自分にあったプランを決める</LPTitle>
-              <MenuForm menuState={{menu: menu, setMenu: setMenu}} totalState={{total: total, setTotal: setTotal}} />
-            </div>
-            <MenuSummary menu={menu} total={total} />
-            {canSubmit && (
-              <div className="text-center mt-8">
-                <div className="mb-4">LINEでお申込みの際は「プランをコピー」を押してください。その後ラインを追加いただきそのままペーストしてお送りください。</div>
-                <div>
-                  <ButtonRounded onClick={onClickCopyText} className="mb-8" color="main">プラン内容をコピー</ButtonRounded>
-                </div>
-                <ActionButton href={actionButtonContent.href} subText={actionButtonContent.subText}>LINEで依頼する</ActionButton>
-              </div>
-            )}
-            <div className="mt-12">
-              <h3 className="text-center">メールで依頼する</h3>
-              <Form onSubmit={handleSubmit(onSubmit)}>
-                {LPFormInputs && LPFormInputs.map(formInput => (
-                  <div key={formInput.id} className="mb-8">
-                    {formInput.inputs && <div className="p-2 md:w-48 md:shrink-0">{formInput.title}</div>}
-                    {!formInput.inputs && <InputLabel className="md:w-48 md:shrink-0" htmlFor={formInput.id}>{formInput.title}</InputLabel>}
-                    {formInput.type === 'checkbox' && (
-                      <>
-                        <div> 
-                          {formInput.inputs && formInput.inputs.map(input => (
-                            <InputGroup className="items-center mb-0" key={input.id}>
-                              <Input register={register} validation={formInput.validation} name={input.name} id={input.id} type='checkbox' defaultValue={input.title} />
-                              <InputLabel htmlFor={input.id}>{input.title}</InputLabel>
-                            </InputGroup>
-                          ))}
-                          {errors[formInput.name as keyof typeof errors] && (<Error>{(errors[formInput.name as keyof typeof errors] as FieldError).message}</Error>) }
+        </AnimationTrigger>
+        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
+          <div className="bg-lp-main">
+            <Container className="py-12">
+              <LPTitle>多くのお客様から素敵なコメントをいただいています</LPTitle>
+              <div className="mt-20">
+                {LPVoices && LPVoices.map((item, index) => (
+                  <div key={item.id} className="mb-16 relative md:p-4">
+                    <TextAndImageRotation src={item.src} alt={item.title}>
+                      <div className="whitespace-pre-wrap">
+                        <h3 className="title-border">{item.title}</h3>
+                        <div>
+                          <div>{item.text}</div>
                         </div>
-                      </>
-                    )}
-                    {formInput.type !== 'checkbox' && (
-                      <>
-                        {!formInput.inputs && (
-                          <div className="w-full">
-                            <Input 
-                              register={register} 
-                              validation={formInput.validation} 
-                              id={formInput.id}
-                              name={formInput.name}
-                              type={formInput.type}
-                              placeholder={formInput.placeholder}
-                            />
+                      </div>
+                      <div className="mt-8 text-sm">
+                        お名前: {item.person.name}<br />
+                        ムービーの種類: {item.person.movieType}<br />
+                        撮影場所: {item.person.location}<br />
+                      </div>
+                    </TextAndImageRotation>
+                  </div>
+                ))}
+              </div>
+            </Container>
+          </div>
+        </AnimationTrigger>
+        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
+          <Container className="py-20">
+            <LPTitle>わたしたちの想い</LPTitle>
+            <div className="text-center mb-8">
+              <Image
+                src="/images/image-members.jpg"
+                width={1280}
+                height={720}
+              />
+            </div>
+            <p className="whitespace-pre-wrap mx-auto md:w-max">{LPThought.text}</p>
+          </Container>
+        </AnimationTrigger>
+        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
+          <div className="bg-lp-main">
+            <Container className="py-12">
+              <LPTitle>月4組限定です！一緒に最高の結婚式ムービーを創りましょう！</LPTitle>
+              <p>新郎新婦さまに寄り添って制作を行うため、毎月の申し込み数を4組までとさせていただいております。ご相談は無料で行っていますので、まずはご相談ください！</p>
+              <div className="mt-12">
+                <div>
+                  <LPTitle heading="h3">各ウェディングムービーについて</LPTitle>
+                  {movieIntroductions && movieIntroductions.map(item => (
+                    <div className="mb-6" key={item.id}>
+                      <h4>【{item.title}】</h4>
+                      <p>{item.content}</p>
+                    </div>
+                  ))}
+                  <Table>
+                    {movieDetails && movieDetails.map(item => (
+                      <TableRow className="!border-b-0" key={item.id}>
+                        <TableCell className="bg-main" type="th">{item.title}</TableCell>
+                        <TableCell>{item.content}</TableCell>
+                      </TableRow>
+                    ))}
+                  </Table>
+                </div>
+                <div className="mt-12">
+                  <LPTitle heading="h3">{locationDetail.title}</LPTitle>
+                  <p className="whitespace-pre-wrap">{locationDetail.content}</p>
+                </div>
+                <div className="mt-12">
+                  <LPTitle heading="h3">オプションについて</LPTitle>
+                  {optionDetails && optionDetails.map(item => (
+                    <div className="mb-6" key={item.id}>
+                      <h4>【{item.title}】</h4>
+                      <p>{item.content}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div ref={ref} className="mt-8">
+                <LPTitle>自分にあったプランを決める</LPTitle>
+                <MenuForm menuState={{menu: menu, setMenu: setMenu}} totalState={{total: total, setTotal: setTotal}} />
+              </div>
+              <MenuSummary menu={menu} total={total} />
+              {canSubmit && (
+                <div className="text-center mt-8">
+                  <div className="mb-4">LINEでお申込みの際は「プランをコピー」を押してください。その後ラインを追加いただきそのままペーストしてお送りください。</div>
+                  <div>
+                    <ButtonRounded onClick={onClickCopyText} className="mb-8" color="main">プラン内容をコピー</ButtonRounded>
+                  </div>
+                  <ActionButton href={actionButtonContent.href} subText={actionButtonContent.subText}>LINEで依頼する</ActionButton>
+                </div>
+              )}
+              <div className="mt-12">
+                <h3 className="text-center">メールで依頼する</h3>
+                <Form onSubmit={handleSubmit(onSubmit)}>
+                  {LPFormInputs && LPFormInputs.map(formInput => (
+                    <div key={formInput.id} className="mb-8">
+                      {formInput.inputs && <div className="p-2 md:w-48 md:shrink-0">{formInput.title}</div>}
+                      {!formInput.inputs && <InputLabel className="md:w-48 md:shrink-0" htmlFor={formInput.id}>{formInput.title}</InputLabel>}
+                      {formInput.type === 'checkbox' && (
+                        <>
+                          <div> 
+                            {formInput.inputs && formInput.inputs.map(input => (
+                              <InputGroup className="items-center mb-0" key={input.id}>
+                                <Input register={register} validation={formInput.validation} name={input.name} id={input.id} type='checkbox' defaultValue={input.title} />
+                                <InputLabel htmlFor={input.id}>{input.title}</InputLabel>
+                              </InputGroup>
+                            ))}
                             {errors[formInput.name as keyof typeof errors] && (<Error>{(errors[formInput.name as keyof typeof errors] as FieldError).message}</Error>) }
                           </div>
-                        )}
-                        {formInput.inputs && (
-                          <>
+                        </>
+                      )}
+                      {formInput.type !== 'checkbox' && (
+                        <>
+                          {!formInput.inputs && (
                             <div className="w-full">
-                              {formInput.inputs?.map((input, index) => (
-                                <InputGroup key={input.id}>
-                                  <InputLabel className="md:shrink-0" htmlFor={input.id}>{input.title}</InputLabel>
-                                  <Input register={register} validation={input.validation} name={input.name} id={input.id} type={input.type} placeholder={input.placeholder} />
-                                </InputGroup>
-                              ))}
+                              <Input 
+                                register={register} 
+                                validation={formInput.validation} 
+                                id={formInput.id}
+                                name={formInput.name}
+                                type={formInput.type}
+                                placeholder={formInput.placeholder}
+                              />
+                              {errors[formInput.name as keyof typeof errors] && (<Error>{(errors[formInput.name as keyof typeof errors] as FieldError).message}</Error>) }
                             </div>
-                          </>
-                        )}
-                      </>
-                    )}
+                          )}
+                          {formInput.inputs && (
+                            <>
+                              <div className="w-full">
+                                {formInput.inputs?.map((input, index) => (
+                                  <InputGroup key={input.id}>
+                                    <InputLabel className="md:shrink-0" htmlFor={input.id}>{input.title}</InputLabel>
+                                    <Input register={register} validation={input.validation} name={input.name} id={input.id} type={input.type} placeholder={input.placeholder} />
+                                  </InputGroup>
+                                ))}
+                              </div>
+                            </>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  ))}
+                  <div className="text-center">
+                    プランはこの後の打ち合わせで変更可能です。<br />
+                    確認画面はございませんので、送信する前に内容をご確認ください。
                   </div>
-                ))}
-                <div className="text-center">
-                  プランはこの後の打ち合わせで変更可能です。<br />
-                  確認画面はございませんので、送信する前に内容をご確認ください。
-                </div>
-                <div className="text-center mt-8">
-                  <LoadingButton disabled={!canSubmit} loading={loading} color="accent" className="bg-accent text-accent-cont">
-                    {!canSubmit ? 'プランをお決めください' : '送信する'}
-                  </LoadingButton>
-                </div>
-                {submimtMessage && (<div className="mt-4 p-4 border border-accent">{submimtMessage}</div>)}
-              </Form>
-            </div>
-          </Container>
-        </div>
+                  <div className="text-center mt-8">
+                    <LoadingButton disabled={!canSubmit} loading={loading} color="accent" className="bg-accent text-accent-cont">
+                      {!canSubmit ? 'プランをお決めください' : '送信する'}
+                    </LoadingButton>
+                  </div>
+                  {submimtMessage && (<div className="mt-4 p-4 border border-accent">{submimtMessage}</div>)}
+                </Form>
+              </div>
+            </Container>
+          </div>
+        </AnimationTrigger>
       </LPLayout>
     </>
   )
