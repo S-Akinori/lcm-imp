@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['wedding-wp.impre.jp']
+    domains: ['wedding-wp.impre.jp', 'firebasestorage.googleapis.com']
   }
 }
 

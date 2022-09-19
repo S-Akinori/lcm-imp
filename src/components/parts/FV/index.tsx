@@ -8,9 +8,10 @@ interface Props {
   title?: string
   text?: string
   src: string
+  objectPosition?: string
 }
 
-const FV = ({en, title, text, src}: Props) => {
+const FV = ({en, title, text, src, objectPosition = 'center center'}: Props) => {
   let fileType = '';
   if(validateImage(src)) {
     fileType = 'image'
@@ -41,7 +42,7 @@ const FV = ({en, title, text, src}: Props) => {
       `}</style>
       <div className="fv-container">
         <div className="text-center">
-          {fileType == 'image' && <Image src={src} layout="fill" objectFit='cover' objectPosition="center center" />}
+          {fileType == 'image' && <Image src={src} layout="fill" objectFit='cover' objectPosition={objectPosition} />}
           {fileType == 'video' && <video src={src} autoPlay loop muted className={`md:h-screen object-cover object-center`}></video>}
         </div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-center">

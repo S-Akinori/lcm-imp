@@ -1,8 +1,14 @@
-import { CommonContent } from "./CommonProps"
+import { CommonContent, ImageObject } from "./CommonProps"
 
 export interface ConceptText extends CommonContent {
-  object: {
+  title: string
+  text: string
+}
+
+export interface ConceptMain {
+  fieldset: {
     title: string
     text: string
-  }
+    image: ImageObject
+  }[]
 }

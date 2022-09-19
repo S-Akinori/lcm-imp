@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Image from 'next/image'
 import MV from 'src/components/parts/MV'
 import Title from 'src/components/parts/Title'
@@ -25,8 +25,20 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import TextAndImageOver from 'src/components/parts/TextAndImage/TextAndImageOver'
+import { ConceptTop, ConceptTopContent } from 'src/types/Concept'
+import { fetchAPI } from 'lib/fetchAPI'
+import { MenuTop } from 'src/types/Menu'
+import { FlowTop } from 'src/types/Flow'
+import { ContactTop } from 'src/types/Contact'
 
-const Home: NextPage = () => {
+interface Props {
+  conceptTop: ConceptTopContent
+  menuTop: MenuTop
+  flowTop: FlowTop
+  contactTop: ContactTop
+}
+
+const Home = ({conceptTop, menuTop, flowTop, contactTop}: Props) => {
   return (
     <Layout
       h1={process.env.NEXT_PUBLIC_SITE_NAME}
@@ -38,15 +50,15 @@ const Home: NextPage = () => {
           <section className='py-14 md:py-24'>
             <Container>
               <TextAndImage
-                src='/images/concept.jpg'
-                alt={conceptData.h2}
-                width={600}
-                height={400}
+                src={conceptTop.image.url}
+                alt={conceptTop.titleJa}
+                width={conceptTop.image.width}
+                height={conceptTop.image.height}
                 col={2}
               >
-                <Title en={conceptData.en} h2={conceptData.h2} />
-                <div className='text'>{conceptData.text}</div>
-                <div className='px-4'><Button href={conceptData.href}>{conceptData.linkText}</Button></div>
+                <Title en={conceptTop.titleEn} h2={conceptTop.titleJa} />
+                <div className='text'>{conceptTop.text}</div>
+                <div className='px-4'><Button href={conceptTop.href}>{conceptTop.linkText}</Button></div>
               </TextAndImage>
             </Container>
           </section>
@@ -56,8 +68,8 @@ const Home: NextPage = () => {
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
           <section className='relative py-14 md:py-20'>
             <Container>
-                <Title en={topMenuText.en} h2={topMenuText.h2} />
-                <div className='text'>{topMenuText.text}</div>
+                <Title en={menuTop.titleEn} h2={menuTop.titleJa} />
+                <div className='text'>{menuTop.text}</div>
             </Container>
             {/* <div className='mt-8'>
               {menus && menus.map((menu, index) => (
@@ -80,7 +92,7 @@ const Home: NextPage = () => {
               ))}
             </div> */}
             <Container>
-              <div><Button href={topMenuText.href}>{topMenuText.linkText}</Button></div>
+              <div><Button href={menuTop.href}>{menuTop.linkText}</Button></div>
             </Container>
           </section>
         </AnimationTrigger>
@@ -144,25 +156,25 @@ const Home: NextPage = () => {
         <section className='py-14 md:py-20'>
           <Container>
             <div>
-              <Title en={topFlowText.en} h2={topFlowText.h2} />
+              <Title en={flowTop.titleEn} h2={flowTop.titleJa} />
             </div>
             <div>
-              {flowContents && flowContents.map((flow, index) => (
-                <div key={flow.id} className={`relative ${index !== flowContents.length - 1 ? 'my-24' : ''}`}>
+              {flowTop.fieldset && flowTop.fieldset.map((flow, index) => (
+                <div key={index} className={`relative ${index !== flowTop.fieldset.length - 1 ? 'my-24' : ''}`}>
                   <div className='absolute left-0 -top-8 text-accent'>{flow.label}</div>
                   <Box className='md:flex'>
                     <div className='p-4 md:w-80 shrink-0'>
                       <Image 
-                        src={flow.src}
-                        width={600}
-                        height={400}
+                        src={flow.image.url}
+                        width={flow.image.width}
+                        height={flow.image.height}
                         alt={flow.title}
                       />
                     </div>
                     <div className='p-4'>
                       <div className='text-accent text-lg'>{flow.title}</div>
                       <div className='whitespace-pre-wrap'>{flow.text}</div>
-                      {flow.notes && <div className='mt-4 whitespace-pre-wrap text-sm'>{flow.notes}</div>}
+                      {/* {flow.notes && <div className='mt-4 whitespace-pre-wrap text-sm'>{flow.notes}</div>} */}
                     </div>
                   </Box>
                 </div>
@@ -197,12 +209,12 @@ const Home: NextPage = () => {
             <Container>
               <Flex>
                 <div className='md:w-2/3'>
-                  <Title en={topContactText.en} h2={topContactText.h2} />
-                  <div className='text'>{topContactText.text}</div>
+                  <Title en={contactTop.titleEn} h2={contactTop.titleJa} />
+                  <div className='text'>{contactTop.text}</div>
                 </div>
                 <div className='md:w-1/3'>
-                  {contactContents && contactContents.map(contact => (
-                    <div key={contact.id} className="mb-8"><Button href={contact.href}>{contact.linkText}</Button></div>
+                  {contactTop.fieldset && contactTop.fieldset.map((contact, index) => (
+                    <div key={index} className="mb-8"><Button href={contact.href}>{contact.linkText}</Button></div>
                   ))}
                 </div>
               </Flex>
@@ -212,6 +224,22 @@ const Home: NextPage = () => {
       </AnimationTrigger>
     </Layout>
   )
+}
+
+export const getStaticProps: GetStaticProps = async() => {
+  const conceptTop = await fetchAPI<ConceptTopContent>('admin/content/etzOoIxcQkqwqviTHU5Z');
+  const menuTop = await fetchAPI<MenuTop>('admin/content/8rB6ZflhMCS1XCRhxqJx')
+  const flowTop = await fetchAPI<FlowTop>('admin/content/S5CiokTIYvwZGsVpKLYS')
+  const contactTop = await fetchAPI<ContactTop>('admin/content/wxOHDpxRaQCual4NUZr7')
+
+  return {
+    props: {
+      conceptTop,
+      menuTop,
+      flowTop,
+      contactTop
+    }
+  }
 }
 
 export default Home

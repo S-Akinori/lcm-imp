@@ -7,13 +7,14 @@ import FV from "src/components/parts/FV"
 import TextAndImage from "src/components/parts/TextAndImage"
 import TitleAndText from "src/components/parts/TitleAndText"
 import { subConceptMessages, subConceptText } from "src/contents/concept"
-import { ConceptText } from "src/types/ConceptText"
+import { ConceptMain, ConceptText } from "src/types/ConceptText"
 
 interface Props {
   conceptText: ConceptText
+  conceptMain: ConceptMain
 }
 
-const ConceptPage = ({conceptText}: Props) => {
+const ConceptPage = ({conceptText, conceptMain}: Props) => {
   return (
     <>
       <Layout
@@ -28,27 +29,27 @@ const ConceptPage = ({conceptText}: Props) => {
           <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
             <Container>
               <section className="py-14">
-                <TitleAndText h2={conceptText.object.title}>{conceptText.object.text}</TitleAndText>
+                <TitleAndText h2={conceptText.title}>{conceptText.text}</TitleAndText>
               </section>
             </Container>
           </AnimationTrigger>
         </AnimationTrigger>
         <Container>
-          {subConceptMessages && subConceptMessages.map((message, index)=> (
-            <AnimationTrigger key={message.id} animation='fadeInBottom' startClass='opacity-0' rootMargin='-100px' triggerOnce>
+          {conceptMain.fieldset && conceptMain.fieldset.map((item, index)=> (
+            <AnimationTrigger key={index} animation='fadeInBottom' startClass='opacity-0' rootMargin='-100px' triggerOnce>
               <section className="py-4 md:py-12">
                 <TextAndImage
-                  src={message.src}
-                  alt={message.title}
+                  src={item.image.url}
+                  alt={item.title}
                   col={2}
-                  width={800}
-                  height={400}
+                  width={item.image.width}
+                  height={item.image.height}
                   rtl={index % 2 !== 0 ? true : false}
                   ttb
                   classNames={{TextAndImage__image: 'bg-mage'}}
                 >
-                  <h3 className="title-border-b">{message.title}</h3>
-                  <div className="whitespace-pre-wrap">{message.text}</div>
+                  <h3 className="title-border-b">{item.title}</h3>
+                  <div className="whitespace-pre-wrap">{item.text}</div>
                 </TextAndImage>
               </section>
             </AnimationTrigger>
@@ -60,10 +61,12 @@ const ConceptPage = ({conceptText}: Props) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const conceptText: ConceptText = await fetchAPI('admin/content/bMQvHyXN94cEQWR7Kkm2');
+  const conceptText = await fetchAPI<ConceptText>('admin/content/bMQvHyXN94cEQWR7Kkm2');
+  const conceptMain = await fetchAPI<ConceptMain>('admin/content/GMD6gBKHF3rM2NCxgU3D');
   return {
     props: {
-      conceptText
+      conceptText,
+      conceptMain
     }
   }
 }

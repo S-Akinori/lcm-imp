@@ -1,26 +1,31 @@
 export const gnav = [
   {
-    id: 'nav1',
+    id: 'navConcept',
     href: '/concept',
     linkText: 'CONCEPT',
   },
   {
-    id: 'nav2',
+    id: 'navMenu',
     href: '/menu',
     linkText: 'MENU',
   },
   {
-    id: 'nav3',
+    id: 'navFlow',
     href: '/flow',
     linkText: 'FLOW',
   },
   {
-    id: 'nav4',
+    id: 'navMember',
+    href: '/member',
+    linkText: 'MEMBER',
+  },
+  {
+    id: 'navBlog',
     href: '/blog',
     linkText: 'BLOG',
   },
   {
-    id: 'nav5',
+    id: 'navCompany',
     href: '/company',
     linkText: 'COMPANY',
   },

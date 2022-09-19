@@ -12,3 +12,15 @@ export interface CommonContent {
   title: string
   typeId: string
 }
+
+export interface ImageObject {
+  path: string
+  url: string
+  width: number
+  height: number
+}
+
+export interface TitleTextContentType {
+  title: string
+  text: string
+}
