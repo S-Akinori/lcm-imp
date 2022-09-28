@@ -1,5 +1,5 @@
 type Query {
-  posts(where: RootQueryToPostConnectionWhereArgs): RootQueryToPostConnection
+  posts(first: Int, where: RootQueryToPostConnectionWhereArgs): RootQueryToPostConnection
   post(id: ID!, idType: PostIdType = SLUG): Post
   categories: RootQueryToCategoryConnection
   category (id: ID!, idType: CategoryIdType): Category

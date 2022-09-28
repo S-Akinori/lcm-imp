@@ -1,5 +1,5 @@
 query getPosts {
-  posts {
+  posts(first: 100) {
     edges {
       node {
         id

@@ -152,6 +152,7 @@ export type QueryPostArgs = {
 
 
 export type QueryPostsArgs = {
+  first?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<RootQueryToPostConnectionWhereArgs>;
 };
 
@@ -306,7 +307,7 @@ export const GetPostDocument = gql`
     `;
 export const GetPostsDocument = gql`
     query getPosts {
-  posts {
+  posts(first: 100) {
     edges {
       node {
         id
