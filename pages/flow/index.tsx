@@ -39,19 +39,21 @@ const FlowPage = ({flowText, flow}: Props) => {
             <AnimationTrigger key={index} animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
               <div className='relative mb-24'>
                 <div className='absolute left-0 -top-8 text-accent'>{flow.label}</div>
-                <Box className='md:flex'>
-                  <div className='p-4 md:w-80 shrink-0'>
-                    <Image
-                      src={flow.image.url}
-                      width={flow.image.width}
-                      height={flow.image.height}
-                      alt={flow.title}
-                    />
-                  </div>
-                  <div className='p-4'>
-                    <div className='text-accent text-lg'>{flow.title}</div>
-                    <div className='whitespace-pre-wrap'>{flow.text}</div>
-                    {/* {flow.notes && <div className='mt-4 whitespace-pre-wrap text-sm'>{flow.notes}</div>} */}
+                <Box>
+                  <div className='md:flex'>
+                    <div className='p-4 md:w-80 shrink-0'>
+                      <Image
+                        src={flow.image.url}
+                        width={flow.image.width}
+                        height={flow.image.height}
+                        alt={flow.title}
+                      />
+                    </div>
+                    <div className='p-4'>
+                      <div className='text-accent text-lg'>{flow.title}</div>
+                      <div className='whitespace-pre-wrap'>{flow.text}</div>
+                      {/* {flow.notes && <div className='mt-4 whitespace-pre-wrap text-sm'>{flow.notes}</div>} */}
+                    </div>
                   </div>
                 </Box>
               </div>

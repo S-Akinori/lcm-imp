@@ -1,31 +1,36 @@
 export const fnav = [
   {
-    id: 'nav1',
+    id: 'navConcept',
     href: '/concept',
     linkText: 'CONCEPT',
   },
   {
-    id: 'nav2',
+    id: 'navMenu',
     href: '/menu',
     linkText: 'MENU',
   },
   {
-    id: 'nav3',
+    id: 'navFlow',
     href: '/flow',
     linkText: 'FLOW',
   },
-  // {
-  //   id: 'nav4',
-  //   href: '/news',
-  //   linkText: 'NEWS',
-  // },
-  // {
-  //   id: 'nav5',
-  //   href: '/gallery',
-  //   linkText: 'GALLERY',
-  // },
   {
-    id: 'nav6',
+    id: 'navMember',
+    href: '/member',
+    linkText: 'MEMBER',
+  },
+  {
+    id: 'review',
+    href: '/review',
+    linkText: 'REVIEW',
+  },
+  {
+    id: 'navBlog',
+    href: '/blog',
+    linkText: 'BLOG',
+  },
+  {
+    id: 'navCompany',
     href: '/company',
     linkText: 'COMPANY',
   },

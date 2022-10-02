@@ -12,7 +12,7 @@ const Footer = () => {
     <footer className="py-12 px-4 border-t border-main bg-main w-full">
       <Container className="mb-8 w-max text-center md:w-auto md:text-left">
         <Flex className="justify-between">
-          <div className="text-3xl font-en" style={{fontFamily: 'Cookie'}}>RING RING</div>
+          <div className="text-3xl font-en" style={{fontFamily: 'Cookie'}}>Ring Ring</div>
           <div>
             <div className="mb-4">{company.address}</div>
             <div className="flex justify-center mb-4 md:justify-start">

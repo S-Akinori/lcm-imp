@@ -6,7 +6,6 @@ import Container from "src/components/parts/Container"
 import FV from "src/components/parts/FV"
 import TextAndImage from "src/components/parts/TextAndImage"
 import TitleAndText from "src/components/parts/TitleAndText"
-import { subConceptMessages, subConceptText } from "src/contents/concept"
 import { ConceptMain, ConceptText } from "src/types/ConceptText"
 
 interface Props {

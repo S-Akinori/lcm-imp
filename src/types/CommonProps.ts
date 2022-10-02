@@ -1,6 +1,12 @@
+import React from "react"
+
 export interface CommonProps {
   className?: string
   style?: React.CSSProperties
+}
+
+export interface CommonChildrenProps {
+  children: React.ReactNode
 }
 
 export interface CommonContent {

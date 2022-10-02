@@ -20,6 +20,11 @@ export const gnav = [
     linkText: 'MEMBER',
   },
   {
+    id: 'review',
+    href: '/review',
+    linkText: 'REVIEW',
+  },
+  {
     id: 'navBlog',
     href: '/blog',
     linkText: 'BLOG',

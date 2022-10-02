@@ -1,0 +1,73 @@
+.review h1 {
+  margin-bottom: 0;
+}
+
+.review p {
+  margin-bottom: 1.5rem;
+}
+
+/* .review a {
+  color: #4cb7c3;
+} */
+
+.review h2 {
+  padding: .5rem 1rem;
+  margin: 3rem 0 1rem;
+  background: var(--accent-color);
+  color: var(--accent-cont);
+  position: relative;
+}
+.review h2::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--base-color);
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+}
+
+/* .review h3 {
+  padding: .5rem;
+  margin: 3rem 0 1rem;
+  border-top: 1px solid var(--accent-color);
+  border-bottom: 1px solid var(--accent-color);
+  position: relative;
+} */
+
+.review ul {
+  padding: 1rem;
+  margin: 1rem 0 2rem;
+}
+
+.review .btn {
+  display: block;
+  width: max-content;
+  padding: .5rem 1rem;
+  background: var(--accent-color);
+  color: var(--accent-cont);
+  border-radius: 1000vh;
+}
+.review .btn.center {
+  margin: auto;
+}
+
+.review .point {
+  position: relative;
+  padding-left: 2rem;
+  margin: 1.25rem 0 1rem;
+}
+
+.review .point::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: url(/images/check-icon.png) center center / cover no-repeat;
+}

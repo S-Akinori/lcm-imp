@@ -21,7 +21,12 @@
   animation: growBorder 1.5s ease-in-out 300ms both, fadeOut 300ms ease-in-out 2.5s both;
 }
 .text {
-  animation: fadeOut 300ms ease-in-out 2.5s both;
+  opacity: 0;
+  transition: all 300ms;
+  animation: fadeOut 300ms ease-in-out 2.5s forwards;
+}
+.text.active {
+  opacity: 1;
 }
 
 @keyframes growBorder {

@@ -26,8 +26,8 @@ const TextAndImage = ({src, alt, children, rtl = false, ttb = false, width, heig
   const colWidth = col ? `md:w-1/${col}` : ''
   return (
     <div className={`flex ${directionX} ${directionY} ${className}`} style={style}>
-      <div className={`p-4 mb-12 md:mb-0 ${colWidth}`}>{children}</div>
-      <div className={`${classNames?.TextAndImage__image || ''} p-4 relative ${colWidth}`} style={styles?.TextAndImage__image}>
+      <div className={`py-4 md:p-4 mb-12 md:mb-0 ${colWidth}`}>{children}</div>
+      <div className={`${classNames?.TextAndImage__image || ''} py-4 md:p-4 relative ${colWidth}`} style={styles?.TextAndImage__image}>
         <Image
           src={src}
           width={width}

@@ -4,6 +4,7 @@ import styles from './index.module.css'
 
 const PageLoading = () => {
   const [show, setShow] = useState(true)
+  const [textAnimClass, setTextAnimClass] = useState('');
   const {visited, setVisited} = useContext(visitContext);
   
   useEffect(() => {
@@ -12,6 +13,7 @@ const PageLoading = () => {
       localStorage.setItem('visited', 'true');
       if(setVisited) setVisited(true)
     }, 3000)
+    setTextAnimClass(styles.active)
   }, [])
   return (
     <>
@@ -19,7 +21,7 @@ const PageLoading = () => {
         <div className="fixed top-0 left-0 z-50 w-full h-full">
           <div className={`${styles.backgroundAnim} ${styles.backgroundAnimTop}`}></div>
           <div className={`${styles.backgroundAnim} ${styles.backgroundAnimBottom}`}></div>
-          <div className={`${styles.text} absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl`}>RING RING</div>
+          <div className={`${styles.text} absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl ${textAnimClass}`} style={{fontFamily: 'Cookie'}}>Ring Ring</div>
           <div className={styles.borderAnim}></div>
         </div>
       )}

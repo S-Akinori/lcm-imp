@@ -20,6 +20,7 @@
     "@mui/material": "^5.10.2",
     "@types/gtag.js": "^0.0.10",
     "@types/react-datepicker": "^4.4.2",
+    "clsx": "^1.2.1",
     "graphql": "^16.6.0",
     "graphql-request": "^5.0.0",
     "lightgallery": "^2.4.0",

@@ -6,6 +6,11 @@ export const topGalleryText = {
   linkText: 'お客様の声へ'
 }
 
+export const galleryText = {
+  title: 'お客様から多くの声をいただいています',
+  text: '過去に制作したものやお客様の感想を公開しております。\nウェディングムービー制作のご参考にしてください。',
+}
+
 export const galleryContents = [
   {
     id: 'gallery1',

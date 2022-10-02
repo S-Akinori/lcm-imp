@@ -13,7 +13,7 @@ const Header = () => {
     <>
       <header className="flex items-center fixed top-0 z-40 px-4 bg-main border-b border-main w-full h-16">
         <div className='flex justify-between items-center w-full'>
-          <div className='text-xl' style={{fontFamily: 'Cookie'}}><Link href='/'>RING RING</Link></div>
+          <div className='text-xl' style={{fontFamily: 'Cookie'}}><Link href='/'>Ring Ring</Link></div>
           <Nav className='hidden lg:block' nav={gnav} />
           <div className='flex items-center'>
             <div className='pr-2'><ButtonRounded href="/contact">お問い合わせ</ButtonRounded></div>
