@@ -4,6 +4,7 @@ query getPost($id: ID!, $idType: PostIdType = SLUG) {
     id
     title
     excerpt
+    slug
     categories {
       edges {
         node {

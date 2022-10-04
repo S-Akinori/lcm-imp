@@ -52,6 +52,11 @@ export type FeaturedImageConnection = {
   node: FeaturedImage;
 };
 
+export type MediaItem = {
+  __typename?: 'MediaItem';
+  sourceUrl: Scalars['String'];
+};
+
 export type Menu = {
   __typename?: 'Menu';
   id: Scalars['String'];
@@ -113,6 +118,40 @@ export enum PostIdType {
   Uri = 'URI'
 }
 
+export type PostReview = {
+  __typename?: 'PostReview';
+  content?: Maybe<Scalars['String']>;
+  date?: Maybe<Scalars['String']>;
+  excerpt?: Maybe<Scalars['String']>;
+  featuredImage?: Maybe<FeaturedImageConnection>;
+  id: Scalars['Int'];
+  imageUrl?: Maybe<Scalars['String']>;
+  reviewField: PostReview_Reviewfield;
+  slug: Scalars['String'];
+  title: Scalars['String'];
+};
+
+export enum PostReviewIdType {
+  DatabaseId = 'DATABASE_ID',
+  Id = 'ID',
+  Slug = 'SLUG',
+  Uri = 'URI'
+}
+
+export type PostReview_Reviewfield = {
+  __typename?: 'PostReview_Reviewfield';
+  date: Scalars['String'];
+  image1: MediaItem;
+  image2: MediaItem;
+  movieType: Scalars['String'];
+  name: Scalars['String'];
+  reviewAll: Scalars['String'];
+  reviewMovie: Scalars['String'];
+  satisficationMovie: Scalars['Int'];
+  satisficationShoot: Scalars['Int'];
+  videoUrl: Scalars['String'];
+};
+
 export type PostToCategoryConnection = {
   __typename?: 'PostToCategoryConnection';
   edges?: Maybe<Array<Maybe<PostToCategoryConnectionEdge>>>;
@@ -129,6 +168,8 @@ export type Query = {
   category?: Maybe<Category>;
   menu?: Maybe<Menu>;
   post?: Maybe<Post>;
+  postReview?: Maybe<PostReview>;
+  postReviews?: Maybe<RootQueryToPostReviewConnection>;
   posts?: Maybe<RootQueryToPostConnection>;
 };
 
@@ -148,6 +189,17 @@ export type QueryMenuArgs = {
 export type QueryPostArgs = {
   id: Scalars['ID'];
   idType?: InputMaybe<PostIdType>;
+};
+
+
+export type QueryPostReviewArgs = {
+  id: Scalars['ID'];
+  idType?: InputMaybe<PostReviewIdType>;
+};
+
+
+export type QueryPostReviewsArgs = {
+  first?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -180,6 +232,16 @@ export type RootQueryToPostConnectionWhereArgs = {
   categoryName?: InputMaybe<Scalars['String']>;
 };
 
+export type RootQueryToPostReviewConnection = {
+  __typename?: 'RootQueryToPostReviewConnection';
+  edges?: Maybe<Array<RootQueryToPostReviewConnectionEdge>>;
+};
+
+export type RootQueryToPostReviewConnectionEdge = {
+  __typename?: 'RootQueryToPostReviewConnectionEdge';
+  node: PostReview;
+};
+
 export type GetCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -203,12 +265,25 @@ export type GetPostQueryVariables = Exact<{
 }>;
 
 
-export type GetPostQuery = { __typename?: 'Query', post?: { __typename?: 'Post', content?: string | null, id: number, title: string, excerpt?: string | null, categories?: { __typename?: 'PostToCategoryConnection', edges?: Array<{ __typename?: 'PostToCategoryConnectionEdge', node?: { __typename?: 'Category', id: number, name: string, slug: string } | null } | null> | null } | null, featuredImage?: { __typename?: 'FeaturedImageConnection', node: { __typename?: 'FeaturedImage', sourceUrl: string } } | null } | null };
+export type GetPostQuery = { __typename?: 'Query', post?: { __typename?: 'Post', content?: string | null, id: number, title: string, excerpt?: string | null, slug: string, categories?: { __typename?: 'PostToCategoryConnection', edges?: Array<{ __typename?: 'PostToCategoryConnectionEdge', node?: { __typename?: 'Category', id: number, name: string, slug: string } | null } | null> | null } | null, featuredImage?: { __typename?: 'FeaturedImageConnection', node: { __typename?: 'FeaturedImage', sourceUrl: string } } | null } | null };
 
 export type GetPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetPostsQuery = { __typename?: 'Query', posts?: { __typename?: 'RootQueryToPostConnection', edges?: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node?: { __typename?: 'Post', id: number, slug: string, title: string, excerpt?: string | null, date?: string | null, categories?: { __typename?: 'PostToCategoryConnection', edges?: Array<{ __typename?: 'PostToCategoryConnectionEdge', node?: { __typename?: 'Category', id: number, name: string, slug: string } | null } | null> | null } | null, featuredImage?: { __typename?: 'FeaturedImageConnection', node: { __typename?: 'FeaturedImage', sourceUrl: string } } | null } | null } | null> | null } | null };
+
+export type GetReviewPostQueryVariables = Exact<{
+  id: Scalars['ID'];
+  idType?: InputMaybe<PostReviewIdType>;
+}>;
+
+
+export type GetReviewPostQuery = { __typename?: 'Query', postReview?: { __typename?: 'PostReview', content?: string | null, id: number, title: string, excerpt?: string | null, slug: string, featuredImage?: { __typename?: 'FeaturedImageConnection', node: { __typename?: 'FeaturedImage', sourceUrl: string } } | null, reviewField: { __typename?: 'PostReview_Reviewfield', movieType: string, name: string, date: string, videoUrl: string, satisficationShoot: number, satisficationMovie: number, reviewAll: string, reviewMovie: string, image1: { __typename?: 'MediaItem', sourceUrl: string }, image2: { __typename?: 'MediaItem', sourceUrl: string } } } | null };
+
+export type GetReviewPostsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetReviewPostsQuery = { __typename?: 'Query', postReviews?: { __typename?: 'RootQueryToPostReviewConnection', edges?: Array<{ __typename?: 'RootQueryToPostReviewConnectionEdge', node: { __typename?: 'PostReview', id: number, slug: string, title: string, excerpt?: string | null, date?: string | null, featuredImage?: { __typename?: 'FeaturedImageConnection', node: { __typename?: 'FeaturedImage', sourceUrl: string } } | null, reviewField: { __typename?: 'PostReview_Reviewfield', movieType: string, name: string, date: string } } }> | null } | null };
 
 
 export const GetCategoriesDocument = gql`
@@ -288,6 +363,7 @@ export const GetPostDocument = gql`
     id
     title
     excerpt
+    slug
     categories {
       edges {
         node {
@@ -334,6 +410,63 @@ export const GetPostsDocument = gql`
   }
 }
     `;
+export const GetReviewPostDocument = gql`
+    query getReviewPost($id: ID!, $idType: PostReviewIdType = SLUG) {
+  postReview(idType: $idType, id: $id) {
+    content
+    id
+    title
+    excerpt
+    slug
+    featuredImage {
+      node {
+        sourceUrl
+      }
+    }
+    reviewField {
+      movieType
+      name
+      date
+      videoUrl
+      image1 {
+        sourceUrl
+      }
+      image2 {
+        sourceUrl
+      }
+      satisficationShoot
+      satisficationMovie
+      reviewAll
+      reviewMovie
+    }
+  }
+}
+    `;
+export const GetReviewPostsDocument = gql`
+    query getReviewPosts {
+  postReviews(first: 100) {
+    edges {
+      node {
+        id
+        slug
+        title
+        excerpt
+        date
+        featuredImage {
+          node {
+            sourceUrl
+          }
+        }
+        reviewField {
+          movieType
+          name
+          date
+        }
+      }
+    }
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
@@ -356,6 +489,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getPosts(variables?: GetPostsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPostsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetPostsQuery>(GetPostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPosts', 'query');
+    },
+    getReviewPost(variables: GetReviewPostQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetReviewPostQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetReviewPostQuery>(GetReviewPostDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getReviewPost', 'query');
+    },
+    getReviewPosts(variables?: GetReviewPostsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetReviewPostsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetReviewPostsQuery>(GetReviewPostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getReviewPosts', 'query');
     }
   };
 }

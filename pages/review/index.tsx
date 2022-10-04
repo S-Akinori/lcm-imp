@@ -1,3 +1,6 @@
+import { RootQueryToPostReviewConnection } from "lib/generated/client"
+import sdk from "lib/wpSdk"
+import { GetStaticProps } from "next"
 import Layout from "src/components/Layout"
 import AnimationTrigger from "src/components/parts/AnimationTrigger"
 import Box from "src/components/parts/Box"
@@ -7,7 +10,12 @@ import TitleAndText from "src/components/parts/TitleAndText"
 import ReviewPostBox from "src/components/templates/ReviewPostBox"
 import { reviewText } from "src/contents/review"
 
-const ReviewPage = () => {
+interface Props {
+  posts: RootQueryToPostReviewConnection
+}
+
+const ReviewPage = ({posts}: Props) => {
+  const {edges} = posts
   return (
     <Layout
       pageTitle="テンプレートのない結婚式ムービーのお客様の声"
@@ -29,16 +37,34 @@ const ReviewPage = () => {
       <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
         <Container>
           <div className="md:flex flex-wrap">
-            <div className="md:w-1/2">
-              <ReviewPostBox imageSrc='/images/review/image_review1.jpg' title="映画のような引き込まれる世界観！" name="Hご夫妻 (兵庫県)" date="2022年9月23日" movieType="オープニングムービー">
-                映画のような引き込まれる世界観で完成度の高いムービーを作って頂きました！スタッフさんも明るく楽しい撮影で、とてもいい思い出になりました✨
-              </ReviewPostBox>
-            </div>
+            {edges && edges.map(edge => (
+              <div key={edge?.node?.id} className="md:w-1/2">
+                <ReviewPostBox 
+                  imageSrc={edge.node.featuredImage?.node?.sourceUrl ? post?.featuredImage?.node?.sourceUrl  : '/images/no-image.jpg'} 
+                  title={edge.node.title} 
+                  name={edge.node.reviewField.name} 
+                  date={edge.node.reviewField.date}
+                  movieType={edge.node.reviewField.movieType}
+                >
+                  {edge.node.excerpt && <div dangerouslySetInnerHTML={{__html: edge.node.excerpt}} /> }
+                </ReviewPostBox>
+              </div>
+            ))}
           </div>
         </Container>
       </AnimationTrigger>
     </Layout>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await sdk.getReviewPosts();
+  const posts = res.postReviews
+  return {
+    props: {
+      posts
+    }
+  }
 }
 
 export default ReviewPage

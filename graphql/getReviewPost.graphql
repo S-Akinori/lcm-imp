@@ -1,0 +1,30 @@
+query getReviewPost($id: ID!, $idType: PostReviewIdType = SLUG) {
+  postReview(idType: $idType, id: $id) {
+    content
+    id
+    title
+    excerpt
+    slug
+    featuredImage {
+      node {
+        sourceUrl
+      }
+    }
+    reviewField {
+      movieType
+      name
+      date
+      videoUrl
+      image1 {
+        sourceUrl
+      }
+      image2 {
+        sourceUrl
+      }
+      satisficationShoot
+      satisficationMovie
+      reviewAll
+      reviewMovie
+    }
+  }
+}

@@ -1,6 +1,8 @@
 type Query {
   posts(first: Int, where: RootQueryToPostConnectionWhereArgs): RootQueryToPostConnection
   post(id: ID!, idType: PostIdType = SLUG): Post
+  postReview(id: ID!, idType: PostReviewIdType = SLUG): PostReview
+  postReviews(first: Int): RootQueryToPostReviewConnection
   categories: RootQueryToCategoryConnection
   category (id: ID!, idType: CategoryIdType): Category
   menu(id: ID! = "pickedOutPosts", idType: MenuNodeIdTypeEnum = NAME ): Menu
@@ -122,4 +124,51 @@ type MenuItem {
 
 type MenuItemToMenuItemLinkableConnectionEdge {
   node: Post
+}
+
+#PostReview
+
+enum PostReviewIdType {
+  DATABASE_ID
+  ID
+  SLUG
+  URI  
+}
+
+type PostReview {
+  id: Int!
+  title: String!
+  slug: String!
+  content: String
+  excerpt: String
+  date: String
+  imageUrl: String
+  featuredImage: FeaturedImageConnection
+  reviewField: PostReview_Reviewfield!
+}
+
+type RootQueryToPostReviewConnection{
+  edges: [RootQueryToPostReviewConnectionEdge!]
+}
+
+type RootQueryToPostReviewConnectionEdge {
+  node: PostReview!
+}
+
+
+type PostReview_Reviewfield {
+  date: String!
+  image1: MediaItem!
+  image2: MediaItem!
+  movieType: String!
+  name: String!
+  reviewAll: String!
+  reviewMovie: String!
+  satisficationMovie: Int!
+  satisficationShoot: Int!
+  videoUrl: String!
+}
+
+type MediaItem {
+  sourceUrl: String!
 }

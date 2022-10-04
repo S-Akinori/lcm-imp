@@ -1,0 +1,23 @@
+query getReviewPosts {
+  postReviews(first: 100) {
+    edges {
+      node {
+        id
+        slug
+        title
+        excerpt
+        date
+        featuredImage {
+          node {
+            sourceUrl
+          }
+        }
+        reviewField {
+          movieType
+          name
+          date
+        }
+      }
+    }
+  }
+}

@@ -44,7 +44,7 @@ const Home = ({conceptTop, menuTop, flowTop, contactTop}: Props) => {
       h1={process.env.NEXT_PUBLIC_SITE_NAME}
     >
       <PageLoading />
-      <MV src='/videos/mv.mp4' title={`世界にたったひとつの\nウェディングムービー`} text="結婚式ムービーの「Ring Ring」" />
+      <MV src='/videos/top.mp4' title={`世界にたったひとつの\nウェディングムービー`} text="結婚式ムービーの「Ring Ring」" />
       <AnimationTrigger animation='bg-rect active' rootMargin='-150px' triggerOnce>
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
           <section className='py-14 md:py-24'>

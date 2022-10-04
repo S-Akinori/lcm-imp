@@ -52,10 +52,11 @@ interface ReviewBoxListProps {
 
 const markedClass = 'bg-main'
 export const ReviewBoxList = ({listItems, markedIndex}: ReviewBoxListProps) => {
+  const modifiedMarkedIndex = 5 - markedIndex
   return (
     <ul>
       {listItems.map((item, index) => (
-        <li key={index} className={clsx(["border-b border-accent border-dashed before:hidden", markedIndex === index ? markedClass : ''])}>{item}</li>
+        <li key={index} className={clsx(["border-b border-accent border-dashed before:hidden", modifiedMarkedIndex === index ? markedClass : ''])}>{item}</li>
       ))}
     </ul>
   )
