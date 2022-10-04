@@ -40,7 +40,7 @@ const ReviewPage = ({posts}: Props) => {
             {edges && edges.map(edge => (
               <div key={edge?.node?.id} className="md:w-1/2">
                 <ReviewPostBox 
-                  imageSrc={edge.node.featuredImage?.node?.sourceUrl ? post?.featuredImage?.node?.sourceUrl  : '/images/no-image.jpg'} 
+                  imageSrc={edge.node.featuredImage?.node?.sourceUrl ? edge.node.featuredImage?.node?.sourceUrl  : '/images/no-image.jpg'} 
                   title={edge.node.title} 
                   name={edge.node.reviewField.name} 
                   date={edge.node.reviewField.date}
