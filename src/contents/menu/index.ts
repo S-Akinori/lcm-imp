@@ -236,11 +236,11 @@ export const movieDetails = [
     title: '納品形式',
     content: 'データ + DVD'
   },
-  {
-    id: 'movieDetail3',
-    title: '画面比率',
-    content: '16:9または4:3（上下に黒帯が入ります）'
-  },
+  // {
+  //   id: 'movieDetail3',
+  //   title: '画面比率',
+  //   content: '16:9または4:3（上下に黒帯が入ります）'
+  // },
   {
     id: 'movieDetail4',
     title: '納品日',

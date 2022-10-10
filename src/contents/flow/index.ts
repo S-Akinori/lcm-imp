@@ -27,7 +27,7 @@ export const flowContents = [
     id: 'flow3',
     title: '3. 撮影',
     text: '打ち合わせで決めた場所で撮影を行います。',
-    notes: '※ 当日撮影後、取り直しを行う場合は追加料金が発生します。',
+    notes: '※ 撮影後、撮り直しを行う場合は追加料金が発生します。',
     label: '挙式4週間前まで',
     src: '/images/flow3.jpg',
   },
