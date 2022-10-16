@@ -2,13 +2,14 @@ export const LPVoices = [
   {
     id: 'voice1',
     src: '/images/lp/image-voice1.jpg',
-    title: '会場の人全員が「感動した！」',
-    text: '本当にドラマを見ているみたいで感動しました！会場で泣いてくれる方も多くいて、そんな素敵な動画を作っていただけて本当にうれしいです。一生の思い出になりました！',
+    title: '映画のような引き込まれる世界観！',
+    text: '映画のような引き込まれる世界観で完成度の高いムービーを作って頂きました！スタッフさんも明るく楽しい撮影で、とてもいい思い出になりました✨',
     person: {
       name: 'Hご夫妻',
       movieType: 'オープニングムービー',
       location: '兵庫県'
-    }
+    },
+    videoSrc: 'https://www.youtube.com/embed/9waTBoguAk4'
   },
   {
     id: 'voice2',
@@ -19,6 +20,7 @@ export const LPVoices = [
       name: 'Nご夫妻',
       movieType: 'プロフィールムービー',
       location: '広島県'
-    }
+    },
+    videoSrc: 'https://www.youtube.com/embed/6k0Zsx2LsNE'
   },
 ]

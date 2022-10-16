@@ -38,8 +38,9 @@ const ReviewPage = ({posts}: Props) => {
         <Container>
           <div className="md:flex flex-wrap">
             {edges && edges.map(edge => (
-              <div key={edge?.node?.id} className="md:w-1/2">
-                <ReviewPostBox 
+              <div key={edge?.node?.id} className="md:w-1/2 p-4">
+                <ReviewPostBox
+                  slug={edge.node.slug}
                   imageSrc={edge.node.featuredImage?.node?.sourceUrl ? edge.node.featuredImage?.node?.sourceUrl  : '/images/no-image.jpg'} 
                   title={edge.node.title} 
                   name={edge.node.reviewField.name} 

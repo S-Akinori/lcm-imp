@@ -23,6 +23,7 @@ import TextAndImageColumn from "src/components/parts/TextAndImage/TextAndImageCo
 import TextAndImageOver from "src/components/parts/TextAndImage/TextAndImageOver"
 import TextAndImageRotation from "src/components/parts/TextAndImage/TextAndImageRotation"
 import TextAndImageRow from "src/components/parts/TextAndImage/TextAndImageRow"
+import Video from "src/components/parts/Video"
 import LPFV from "src/components/templates/LP/FV"
 import LPTitle from "src/components/templates/LP/LPTitle"
 import { contactFormInputs } from "src/contents/contact"
@@ -148,6 +149,12 @@ const LPFreeContactPage = () => {
             </div>
           </div>
         </LPFV>
+        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
+          <Container className="py-12">
+            <LPTitle>まずはムービーをご覧ください</LPTitle>
+            <Video src="https://www.youtube.com/embed/6k0Zsx2LsNE"></Video>
+          </Container>
+        </AnimationTrigger>
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
           <Container className="py-12">
             <LPTitle>こんなお悩み・ご希望ありませんか？</LPTitle>

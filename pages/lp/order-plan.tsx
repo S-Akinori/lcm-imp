@@ -39,6 +39,8 @@ import TableCell from "src/components/parts/Table/TableRow/TableCell"
 import ButtonRounded from "src/components/parts/Button/ButtonRounded"
 import Image from "next/image"
 import AnimationTrigger from "src/components/parts/AnimationTrigger"
+import Video from "src/components/parts/Video"
+import CircleBackground from "src/components/parts/CircleBackground"
 
 const setDiscountId = 'setDiscount'
 
@@ -236,6 +238,14 @@ const LPOrderPlanPage = () => {
           </div>
         </LPFV>
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
+          <Container className="relative py-12">
+            <CircleBackground position={{top: '3rem', left: '-3rem'}} />
+            <CircleBackground position={{bottom: '-3rem', right: '-3rem'}} />
+            <LPTitle>まずはムービーをご覧ください</LPTitle>
+            <Video src="https://www.youtube.com/embed/9waTBoguAk4"></Video>
+          </Container>
+        </AnimationTrigger>
+        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
           <Container className="py-12">
             <LPTitle>こんなお悩み・ご希望ありませんか？</LPTitle>
             <div className="md:flex flex-wrap">
@@ -307,7 +317,7 @@ const LPOrderPlanPage = () => {
               <LPTitle>多くのお客様から素敵なコメントをいただいています</LPTitle>
               <div className="mt-20">
                 {LPVoices && LPVoices.map((item, index) => (
-                  <div key={item.id} className="mb-16 relative md:p-4">
+                  <div key={item.id} className="mb-20 relative md:p-4">
                     <TextAndImageRotation src={item.src} alt={item.title}>
                       <div className="whitespace-pre-wrap">
                         <h3 className="title-border">{item.title}</h3>
@@ -321,6 +331,9 @@ const LPOrderPlanPage = () => {
                         撮影場所: {item.person.location}<br />
                       </div>
                     </TextAndImageRotation>
+                    <div className="mt-12">
+                      <Video src={item.videoSrc} />
+                    </div>
                   </div>
                 ))}
               </div>
