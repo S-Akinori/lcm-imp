@@ -345,7 +345,7 @@ const LPOrderPlanPage = () => {
             <LPTitle>わたしたちの想い</LPTitle>
             <div className="text-center mb-8">
               <Image
-                src="/images/image-members.jpg"
+                src="/images/image-members.JPG"
                 width={1280}
                 height={720}
               />
