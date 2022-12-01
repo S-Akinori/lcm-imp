@@ -26,7 +26,7 @@ import MenuDetail from "src/components/templates/Menu/MenuDetail"
 import MenuSummary from "src/components/templates/Menu/MenuSummary"
 import MenuForm from "src/components/templates/MenuForm"
 import { subConceptMessages, subConceptText } from "src/contents/concept"
-import { discountOptions, locationDetail, menuCategories, menuLocations, menuLocationsOptions, menuMovies, menuOptions, menuPackages, menus, movieDetails, movieIntroductions, optionDetails, subMenuText } from "src/contents/menu"
+import { discountOptions, locationDetail, menuCategories, menuCostNotes, menuLocations, menuLocationsOptions, menuMovies, menuNotes, menuOptions, menuPackages, menus, movieDetails, movieIntroductions, optionDetails, subMenuText } from "src/contents/menu"
 import { MenuObjectProp, MenuProp } from "src/types/MenuProp"
 
 const setDiscountId = 'setDiscount'
@@ -97,14 +97,23 @@ const MenuPage = () => {
       <Container>
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
           <Menu />
+          <Box>
+            <ul className="text-sm">
+              {menuNotes.map((note, index) => (
+                <li key={index}>{note}</li>
+              ))}
+            </ul>
+          </Box>
         </AnimationTrigger>
       </Container>
-      <Container className="py-12">
-        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
-          <Title h2="メニューの詳細" />
-          <MenuDetail />
-        </AnimationTrigger>
-      </Container>
+      <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
+        <Container className="my-24">
+          <CircleBackground md={{position: {right: '0', left: 'auto'}, width: 400}}>
+            <Title h2="メニューの詳細" />
+            <MenuDetail />
+          </CircleBackground>
+        </Container>
+      </AnimationTrigger>
       {/* <Container>
         <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
           <Title h2="自分にあったプランを作成しましょう！" / >
@@ -114,18 +123,15 @@ const MenuPage = () => {
       <Container>
         <MenuSummary menu={menus} total={total} isButton={true} />
       </Container> */}
-      <Container className="py-12">
+      <Container className="my-24">
         <div className="text-sm">
           <h3>注意事項</h3>
           <div>
-            <p>次の内容は、現地ロケ撮影プランに含まれません。希望される場合はお客様自身で行っていただきます。</p>
+            <p>次の内容はお客様でご負担いただきます。</p>
             <ul>
-              <li>お客様の移動にかかる交通費</li>
-              <li>撮影場所や撮影対象物の使用許可手続き及び使用料のお支払い</li>
-              <li>飲食費のお支払い</li>
-              <li>衣装類や撮影小道具のご準備及びそれに伴う経費のお支払い</li>
-              <li>自動車等の移動手段のレンタル及びレンタル費のお支払い</li>
-              <li>ヘアメイクやスタイリスト等の外部スタッフのご依頼及び依頼費のお支払い</li>
+              {menuCostNotes.map((note, index) => (
+                <li key={index}>{note}</li>
+              ))}
             </ul>
           </div>
         </div>

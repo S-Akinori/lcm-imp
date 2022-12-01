@@ -70,11 +70,11 @@ const Home = ({reviews}: Props) => {
       <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
         <Container className='my-24'>
           <section>
-            <CircleBackground width={250} md={{position: {right: '0'}, width: 400}}>
+            <CircleBackground width={250} md={{position: {right: '0', left: 'auto'}, width: 400}}>
               <Title en={topMenuText.en} h2={topMenuText.h2} />
               <div className='text'>{topMenuText.text}</div>
               <Menu isButton={false} />
-              <div><Button href={topMenuText.href}>{topMenuText.linkText}</Button></div>
+              <div className='text-center'><Button href={topMenuText.href}>{topMenuText.linkText}</Button></div>
             </CircleBackground>
           </section>
         </Container>
@@ -149,7 +149,7 @@ const Home = ({reviews}: Props) => {
       </AnimationTrigger>
       <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
         <Container className='my-24'>
-          <CircleBackground threshold={0}>
+          <CircleBackground threshold={0.1} width={250} md={{position: {right: '0', left: 'auto'}, width: 400}}>
             <section>
               <div>
                 <Title en={topFlowText.en} h2={topFlowText.h2} />

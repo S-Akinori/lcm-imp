@@ -18,17 +18,25 @@ interface Props {
     width?: number
   }
 }
+
+const defaultPosition = {
+  top:'-50px', 
+  left:'-50px', 
+  bottom: 'auto', 
+  right: 'auto'
+}
 const CircleBackground = ({
   children, 
   position = {top:'-50px', left:'-50px'}, 
   threshold = 0.25, 
   width = 250, 
-  md = {position: {top:'-50px', left:'-50px'}, width: 250}
+  md = {position: defaultPosition, width: 250}
 }: Props) => {
   const { ref, inView } = useInView({
     threshold: threshold,
     triggerOnce: true,
   });
+  const newPosition = {...defaultPosition, ...position}
   return (
     <>
       <style jsx>{`
@@ -40,10 +48,10 @@ const CircleBackground = ({
           display: block;
           position: absolute;
           transform: scale(0);
-          top: ${position.top ?? 'auto'};
-          right: ${position.right ?? 'auto'};
-          bottom: ${position.bottom ?? 'auto'};
-          left: ${position.left ?? 'auto'};
+          top: ${newPosition.top};
+          right: ${newPosition.right};
+          bottom: ${newPosition.bottom};
+          left: ${newPosition.left};
           width: ${width}px;
           aspect-ratio: 1 / 1;
           border: 4px solid var(--main-color);
@@ -54,11 +62,11 @@ const CircleBackground = ({
         }
         @media(min-width: 768px) {
           .CircleBackground::before {
-            top: ${md?.position?.top ?? 'auto'};
-            right: ${md?.position?.right ?? 'auto'};
-            bottom: ${md?.position?.bottom ?? 'auto'};
-            left: ${md?.position?.left ?? 'auto'};
-            width: ${md.width ?? 250}px
+            top: ${md?.position?.top ?? newPosition.top};
+            right: ${md?.position?.right ?? newPosition.right};
+            bottom: ${md?.position?.bottom ?? newPosition.bottom};
+            left: ${md?.position?.left ?? newPosition.left};
+            width: ${md.width ?? width}px
           }
         }
         @keyframes circleChange {

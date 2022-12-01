@@ -71,7 +71,7 @@ export const memberContents = [
   {
     id: 'member3',
     name: '佐保田 晃功\nSahoda Akinori',
-    role: '前撮りカメラマン',
+    role: '前撮りカメラマン / Webエンジニア',
     text: dedent`
       「大学を中退して留学するつもりがコロナで行けなくなって、Webプログラマーとして個人事業主になる」
       というごく普通の人間です。
