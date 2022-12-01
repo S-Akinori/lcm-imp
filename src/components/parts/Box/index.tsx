@@ -27,7 +27,8 @@ export const BoxShift = ({children, color = 'main', className, style}: Props) =>
   const colorClassObj = {
     none: '',
     base: 'before:bg-base',
-    main: 'before:bg-main'
+    main: 'before:bg-main',
+    accent: 'bg-accent text-accent-cont'
   }
   return (
     <div
