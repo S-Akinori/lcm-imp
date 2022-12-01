@@ -2,6 +2,7 @@ import { RootQueryToPostReviewConnection } from "lib/generated/client"
 import sdk from "lib/wpSdk"
 import { GetStaticProps } from "next"
 import Layout from "src/components/Layout"
+import CircleBackground from "src/components/parts/Animation/CircleBackground"
 import AnimationTrigger from "src/components/parts/AnimationTrigger"
 import Box from "src/components/parts/Box"
 import Container from "src/components/parts/Container"
@@ -25,14 +26,14 @@ const ReviewPage = ({posts}: Props) => {
       pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/concept`}
     >
       <FV en="REVIEW" title="お客様の声" src="/images/hero-review.jpg" />
-      <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-150px' triggerOnce>
-        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
-          <Container>
-            <section className="py-14">
+      <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
+        <Container className="my-24">
+          <CircleBackground width={200}>
+            <section>
               <TitleAndText h2={reviewText.title}>{reviewText.text}</TitleAndText>
             </section>
-          </Container>
-        </AnimationTrigger>
+          </CircleBackground>
+        </Container>
       </AnimationTrigger>
       <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
         <Container>

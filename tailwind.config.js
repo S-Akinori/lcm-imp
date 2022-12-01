@@ -12,7 +12,7 @@ module.exports = {
         'base-cont': '#080D1B',
         'base-color-dark': '#F7EBE7',
         'main': '#fbe5e7',
-        'main-cont': '#FFF',
+        'main-cont': '#080D1B',
         'accent': '#A69463',
         'accent-cont': '#FFF',
         'lp-base': '#F6F6F6',

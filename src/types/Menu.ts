@@ -5,3 +5,10 @@ export interface MenuTop {
   href: string
   linkText: string
 }
+
+export interface MenuPackage {
+  id: string
+  title: string
+  price: number
+  includes: string[]
+}

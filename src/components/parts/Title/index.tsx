@@ -29,11 +29,11 @@ const Title = ({en, h2, h3, type = 'default', children}: Props) => {
           background: var(--accent-color);
         }
         .wrapper.default::before {
-          top: .75rem;
+          top: 0;
           left: 0;
           width: 1px;
-          height: 50%;
-          max-height: 2rem;
+          height: 100%;
+          {/* max-height: 2rem; */}
         }
         .wrapper.x-border::before {
           top: 50%;

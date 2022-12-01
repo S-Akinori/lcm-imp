@@ -20,7 +20,7 @@ export interface CommonContent {
 }
 
 export interface ImageObject {
-  path: string
+  path?: string
   url: string
   width: number
   height: number

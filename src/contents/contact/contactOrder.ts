@@ -1,3 +1,5 @@
+import dedent from "dedent"
+import { MenuPackage } from "src/types/Menu"
 import { MenuObjectProp } from "src/types/MenuProp"
 
 export const contactOrderText = {
@@ -7,7 +9,7 @@ export const contactOrderText = {
 
 interface OrderFormInputs {
   id: string
-  name: 'name' | 'kana' | 'email' | 'email_confirmation' | 'menus' | 'tel' | 'date' | 'place' | 'meeting' | 'body'
+  name: 'name' | 'kana' | 'email' | 'email_confirmation' | 'menu' | 'tel' | 'date' | 'place' | 'meeting' | 'body'
   type: string
   title: string
   placeholder?: string
@@ -18,8 +20,8 @@ interface OrderFormInputs {
 }
 
 export const contactOrderFormInputs: OrderFormInputs[] = [
-   {
-    id: 'input1',
+  {
+    id: 'name',
     type: 'text',
     name: 'name',
     title: 'お名前',
@@ -29,7 +31,7 @@ export const contactOrderFormInputs: OrderFormInputs[] = [
     }
   },
   {
-    id: 'input2',
+    id: 'kana',
     type: 'text',
     name: 'kana',
     title: 'フリガナ',
@@ -39,7 +41,7 @@ export const contactOrderFormInputs: OrderFormInputs[] = [
     }
   },
   {
-    id: 'input3',
+    id: 'email',
     type: 'email',
     name: 'email',
     title: 'メールアドレス',
@@ -53,7 +55,7 @@ export const contactOrderFormInputs: OrderFormInputs[] = [
     }
   },
   {
-    id: 'input3_1',
+    id: 'tel',
     type: 'text',
     name: 'tel',
     title: '電話番号',
@@ -62,83 +64,22 @@ export const contactOrderFormInputs: OrderFormInputs[] = [
       required: '入力してください'
     }
   },
-  // {
-  //   id: 'input4',
-  //   type: 'checkbox',
-  //   name: 'menus',
-  //   title: 'メニュー',
-  //   placeholder: '',
-  //   validation: {
-  //     required: '入力してください',
-  //   },
-  //   inputs: [
-  //     {
-  //       id: 'menuArticle1',
-  //       name: 'menus',
-  //       type: 'checkbox',
-  //       title: '前撮りプラン',
-  //       placeholder: '',
-  //     },
-  //     {
-  //       id: 'menuArticle2',
-  //       name: 'menus',
-  //       type: 'checkbox',
-  //       title: 'ウェディングムービー制作',
-  //       placeholder: '',
-  //     },
-  //     {
-  //       id: 'menuArticle3',
-  //       name: 'menus',
-  //       type: 'checkbox',
-  //       title: '取って出しエンドロールムービー制作',
-  //       placeholder: '',
-  //     },
-  //     {
-  //       id: 'menuArticle4',
-  //       name: 'menus',
-  //       type: 'checkbox',
-  //       title: '当日記録写真・動画撮影',
-  //       placeholder: '',
-  //     },
-  //     {
-  //       id: 'menuArticle5',
-  //       name: 'menus',
-  //       type: 'checkbox',
-  //       title: 'オーダーメイド編集',
-  //       placeholder: '',
-  //     },
-  //     {
-  //       id: 'menuArticle6',
-  //       name: 'menus',
-  //       type: 'checkbox',
-  //       title: 'ウェディングムービー2本制作',
-  //       placeholder: '',
-  //     },
-  //     {
-  //       id: 'menuArticle7',
-  //       name: 'menus',
-  //       type: 'checkbox',
-  //       title: '結婚式１日密着撮影',
-  //       placeholder: '',
-  //     },
-  //   ]
-  // },
   {
-    id: 'input5',
+    id: 'date',
     type: 'text',
     name: 'date',
     title: '挙式日（予定日でも可）',
     placeholder: '2022年1月1日',
   },
   {
-    id: 'input6',
+    id: 'place',
     type: 'text',
     name: 'place',
     title: '式場（予定場所でも可）',
     placeholder: '東京都 アニヴェルセル表参道',
   },
   {
-    id: 'input7',
+    id: 'meeting',
     type: 'textarea',
     name: 'meeting',
     title: 'ヒアリング希望日時',
@@ -148,7 +89,7 @@ export const contactOrderFormInputs: OrderFormInputs[] = [
     },
   },
   {
-    id: 'input8',
+    id: 'body',
     type: 'textarea',
     name: 'body',
     title: 'ご質問',
@@ -192,7 +133,9 @@ export const generateOrderNotification = (orderData: OrderInputData) => {
   const header = '注文がありました';
   const text = `
   ========ご予定プラン==========
+
   ${menuText}
+  
   ============================
 
   ========ご注文控え===========
@@ -215,24 +158,14 @@ const generateOrderDataText = (orderData: OrderInputData) => {
     meeting: 'ヒアリング希望日時',
     body: 'ご質問',
   }
-  const menuText = `
-  【ムービーの種類】
-  ${orderData.menu.movies.map(item => (item.title))}
+  const menuText = dedent`
+    「${orderData.menu.title}」
 
-  【ロケーション】
-  ${orderData.menu.locations.map(item => (item.title))}
+    【料金】
+    ${orderData.menu.price.toLocaleString()}円
 
-  【ロケーションの数】
-  ${orderData.menu.locationOptions.map(item => (item.title))}
-
-  【オプション】
-  ${orderData.menu.options.map(item => (item.title))}
-
-  【割引】
-  ${orderData.menu.discounts.map(item => (item.title))}
-
-  合計費用: ${orderData.price.toLocaleString()}円
-
+    【プランに含まれるもの】
+    ${orderData.menu.includes.map(item => (item))}
   `;
   
   let orderText = '';
@@ -248,12 +181,58 @@ const generateOrderDataText = (orderData: OrderInputData) => {
   return {menuText, orderText};
 }
 
+// const generateOrderDataText = (orderData: OrderInputData) => {
+//   const orderDataTitleObj = {
+//     name: 'お名前',
+//     kana: 'フリガナ',
+//     email: 'メールアドレス',
+//     tel: '電話番号',
+//     menu: 'メニュー',
+//     price: '料金',
+//     date: '挙式日',
+//     place: '式場',
+//     meeting: 'ヒアリング希望日時',
+//     body: 'ご質問',
+//   }
+//   const menuText = `
+//   【ムービーの種類】
+//   ${orderData.menu.movies.map(item => (item.title))}
+
+//   【ロケーション】
+//   ${orderData.menu.locations.map(item => (item.title))}
+
+//   【ロケーションの数】
+//   ${orderData.menu.locationOptions.map(item => (item.title))}
+
+//   【オプション】
+//   ${orderData.menu.options.map(item => (item.title))}
+
+//   【割引】
+//   ${orderData.menu.discounts.map(item => (item.title))}
+
+//   合計費用: ${orderData.price.toLocaleString()}円
+
+//   `;
+  
+//   let orderText = '';
+//   const keys = Object.keys(orderData) as (keyof typeof orderData)[]
+//   keys.forEach(key => {
+//     if(key !== 'menu' && key !== 'price') {
+//       orderText += `
+//         【${orderDataTitleObj[key]}】
+//         ${orderData[key]}
+//       `
+//     }
+//   })
+//   return {menuText, orderText};
+// }
+
 export interface OrderInputData {
   name: string
   kana: string
   email: string
   tel: string
-  menu: MenuObjectProp
+  menu: MenuPackage
   price: number
   date?: string
   place?: string

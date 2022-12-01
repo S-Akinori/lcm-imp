@@ -1,20 +1,17 @@
 import { fetchAPI } from "lib/fetchAPI"
 import { GetStaticProps } from "next"
 import Layout from "src/components/Layout"
+import CircleBackground from "src/components/parts/Animation/CircleBackground"
 import AnimationTrigger from "src/components/parts/AnimationTrigger"
 import Container from "src/components/parts/Container"
 import FV from "src/components/parts/FV"
 import TitleAndText from "src/components/parts/TitleAndText"
 import MemberBox, { MemberBoxInfo, MemberBoxText } from "src/components/templates/MemberBox"
+import { memberContents, subMemberText } from "src/contents/member"
 import { TitleTextContentType } from "src/types/CommonProps"
 import { MemberContent } from "src/types/Member"
 
-interface Props {
-  memberTop: TitleTextContentType
-  member: MemberContent
-}
-
-const MemberPage = ({memberTop, member}: Props) => {
+const MemberPage = () => {
   return (
     <Layout
       pageTitle="結婚式ムービー制作メンバー"
@@ -24,19 +21,19 @@ const MemberPage = ({memberTop, member}: Props) => {
       pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/flow`}
     >
       <FV en="MEMBER" title="メンバー紹介" src="/images/members.jpg" objectPosition="center 20%" />
-      <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-150px' triggerOnce>
-        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
-          <Container>
-            <section className="py-14">
-              <TitleAndText h2={memberTop.title}>{memberTop.text}</TitleAndText>
+      <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
+        <Container className="my-24">
+          <CircleBackground width={200}>
+            <section>
+              <TitleAndText h2={subMemberText.h2}>{subMemberText.text}</TitleAndText>
             </section>
-          </Container>
-        </AnimationTrigger>
+          </CircleBackground>
+        </Container>
       </AnimationTrigger>
       <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
         <Container>
           <section className="py-14">
-            {member.fieldset && member.fieldset.map((item, index) => (
+            {memberContents && memberContents.map((item, index) => (
               <MemberBox key={index} name={item.name} role={item.role} image={item.image}>
                 <MemberBoxText>{item.text}</MemberBoxText>
                 <MemberBoxInfo className="mt-4 pt-4 border-t border-t-accent border-dashed">{item.info}</MemberBoxInfo>
@@ -47,18 +44,6 @@ const MemberPage = ({memberTop, member}: Props) => {
       </AnimationTrigger>
     </Layout>
   )
-}
-
-
-export const getStaticProps: GetStaticProps = async () => {
-  const memberTop = await fetchAPI<TitleTextContentType>('admin/content/573yXG2Ev4RSy29MdGcX');
-  const member = await fetchAPI<MemberContent>('admin/content/5yPfH6rBp68OP2Be58JQ');
-  return {
-    props: {
-      memberTop,
-      member
-    }
-  }
 }
 
 export default MemberPage

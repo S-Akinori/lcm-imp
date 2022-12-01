@@ -1,19 +1,16 @@
 import { fetchAPI } from "lib/fetchAPI"
 import { GetStaticProps } from "next"
 import Layout from "src/components/Layout"
+import CircleBackground from "src/components/parts/Animation/CircleBackground"
 import AnimationTrigger from "src/components/parts/AnimationTrigger"
 import Container from "src/components/parts/Container"
 import FV from "src/components/parts/FV"
 import TextAndImage from "src/components/parts/TextAndImage"
 import TitleAndText from "src/components/parts/TitleAndText"
+import { subConceptMessages, subConceptText } from "src/contents/concept"
 import { ConceptMain, ConceptText } from "src/types/ConceptText"
 
-interface Props {
-  conceptText: ConceptText
-  conceptMain: ConceptMain
-}
-
-const ConceptPage = ({conceptText, conceptMain}: Props) => {
+const ConceptPage = () => {
   return (
     <>
       <Layout
@@ -24,17 +21,17 @@ const ConceptPage = ({conceptText, conceptMain}: Props) => {
         pagePath={`${process.env.NEXT_PUBLIC_HOME_URL}/concept`}
       >
         <FV en="CONCEPT" title="コンセプト" src="/images/concept.jpg" />
-        <AnimationTrigger animation='bg-rect bg-rect--left active' rootMargin='-150px' triggerOnce>
-          <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
-            <Container>
-              <section className="py-14">
-                <TitleAndText h2={conceptText.title}>{conceptText.text}</TitleAndText>
+        <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
+          <Container className="my-24">
+            <CircleBackground width={200}>
+              <section>
+                <TitleAndText h2={subConceptText.h2}>{subConceptText.text}</TitleAndText>
               </section>
-            </Container>
-          </AnimationTrigger>
+            </CircleBackground>
+          </Container>
         </AnimationTrigger>
         <Container>
-          {conceptMain.fieldset && conceptMain.fieldset.map((item, index)=> (
+          {subConceptMessages && subConceptMessages.map((item, index)=> (
             <AnimationTrigger key={index} animation='fadeInBottom' startClass='opacity-0' rootMargin='-100px' triggerOnce>
               <section className="py-4 md:py-12">
                 <TextAndImage
@@ -57,17 +54,6 @@ const ConceptPage = ({conceptText, conceptMain}: Props) => {
       </Layout>
     </>
   )
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-  const conceptText = await fetchAPI<ConceptText>('admin/content/bMQvHyXN94cEQWR7Kkm2');
-  const conceptMain = await fetchAPI<ConceptMain>('admin/content/GMD6gBKHF3rM2NCxgU3D');
-  return {
-    props: {
-      conceptText,
-      conceptMain
-    }
-  }
 }
 
 export default ConceptPage

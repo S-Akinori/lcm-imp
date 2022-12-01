@@ -169,6 +169,12 @@ iframe {
 .bg-rect--left.active::before {
   animation: growLeft 600ms cubic-bezier(.29,.7,.52,.99) both;
 }
+
+.bg-circle > * {
+  position: relative;
+  z-index: 1;
+}
+
 @media screen and (max-width: 768px) {
   html, body {
     font-size: 14px;

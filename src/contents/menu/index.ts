@@ -8,15 +8,27 @@ export const topMenuText = {
   linkText: 'メニューへ'
 }
 
+export const subMenuText = {
+  h2: 'お客様に合ったシンプルなプランをご案内',
+  text: '「前撮りのみ」、「前撮り+ムービー」などお客様が行いたい内容に合ったプランをお選びいただけます。選んだプランの中で内容の追加・削除も可能です。お客様の「やりたい」を叶えられるプランを選びましょう。'
+}
+
+export const menuPackages = [
+  {
+    id: 'package1',
+    title: '前撮りプラン',
+    price: 130000,
+    includes: ['前撮り', 'ロケーション1カ所', 'ドレス', 'ヘアメイク']
+  },
+  {
+    id: 'package2',
+    title: 'ムービー+前撮りプラン',
+    price: 230000,
+    includes: ['ウェディングムービー1種', '前撮り', 'ドローン空撮', 'ロケーション1カ所', 'ドレス', 'ヘアメイク']
+  },
+]
+
 export const menuMovies : MenuProp[] = [
-  // {
-  //   id: 'prePhoto',
-  //   title: '前撮り',
-  //   priceText: '79,800円',
-  //   price: 79800,
-  //   category: 'movies',
-  //   disabled: false,
-  // },
   {
     id: 'profileMovie',
     name: 'profileMovie',

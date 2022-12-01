@@ -27,7 +27,7 @@ const MenuDetail = () => {
         <h3 className="title-border-b">{locationDetail.title}</h3>
         <p className="whitespace-pre-wrap">{locationDetail.content}</p>
       </div>
-      <div className="mt-12">
+      {/* <div className="mt-12">
         <h3 className="title-border-b">オプションについて</h3>
         {optionDetails && optionDetails.map(item => (
           <div className="mb-6" key={item.id}>
@@ -35,7 +35,7 @@ const MenuDetail = () => {
             <p>{item.content}</p>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   )
 }

@@ -24,6 +24,7 @@ const FV = ({en, title, text, src, objectPosition = 'center center'}: Props) => 
       <style jsx>{`
         .fv-container {
           position: relative;
+          z-index: 20;
           height: 50vh;
           overflow: hidden;
         }

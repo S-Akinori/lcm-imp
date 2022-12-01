@@ -15,10 +15,13 @@ import InputLabel from "src/components/parts/Form/InputGroup/InputLabel"
 import FV from "src/components/parts/FV"
 import Title from "src/components/parts/Title"
 import TitleAndText from "src/components/parts/TitleAndText"
+import Menu, { MenuItem } from "src/components/templates/Menu"
 import MenuSummary from "src/components/templates/Menu/MenuSummary"
 import SNSList from "src/components/templates/SNSList"
 import { contactFormInputs, subContactText } from "src/contents/contact"
 import { contactOrderFormInputs, contactOrderText } from "src/contents/contact/contactOrder"
+import { menuPackages } from "src/contents/menu"
+import { MenuPackage } from "src/types/Menu"
 import { MenuObjectProp } from "src/types/MenuProp"
 
 interface InputData {
@@ -26,7 +29,7 @@ interface InputData {
   kana: string
   email: string
   tel: string
-  menu: MenuObjectProp
+  menu: MenuPackage
   price: number
   date?: string
   place?: string
@@ -39,7 +42,7 @@ const ContactOrderPage = () => {
   const [submimtMessage, setSubmitMessage] = useState('')
   const [loading, setLoading] = useState(false)
   const [total, setTotal] = useState(0);
-  const [menu, setMenu] = useState<MenuObjectProp | null>(null)
+  const [menu, setMenu] = useState<MenuPackage | null>(null)
   const router = useRouter();
   const { menuId } = router.query
 
@@ -49,9 +52,7 @@ const ContactOrderPage = () => {
     const modifiedData = {
       ...data, 
       menu: menu,
-      price: total
     }
-    console.log(modifiedData);
     try {
       const res = await fetch('/api/orderMail', {
         method: 'POST',
@@ -73,22 +74,13 @@ const ContactOrderPage = () => {
     ムービー作成のご依頼
     
     =======予定プラン=======
-    【ムービーの種類】
-    ${menu?.movies.map(item => item.title)}
+    ${menu?.title}
 
-    【ロケーション】
-    ${menu?.locations.map(item => item.title)}
+    【料金】
+    ${menu?.price.toLocaleString()}円
 
-    【ロケーションの数】
-    ${menu?.locationOptions.map(item => (item.title))}
-
-    【オプション】
-    ${menu?.options.map(item => item.title)}
-
-    【割引】
-    ${menu?.discounts.map(item => item.title)}
-
-    費用: ${total.toLocaleString()}円
+    【プランに含まれるもの】
+    ${menu?.includes.map(item => (item))}
     =======================
 
     =======お客様情報=======
@@ -118,22 +110,25 @@ const ContactOrderPage = () => {
     .catch(() => {
       alert("コピーに失敗しました")
     })
-    // if(navigator.clipboard) {
-    //   navigator.clipboard.writeText(text);
-    // } else {
-
-    // }
   }
 
   useEffect(() => {
-    const menuJson = sessionStorage.getItem('menus');
-    const total = sessionStorage.getItem('total');
-    if(menuJson && total) {
-      const menu = JSON.parse(menuJson);
-      setTotal(parseInt(total))
-      setMenu(menu);
+    const menuId = sessionStorage.getItem('menuId');
+    if(menuId) {
+      const menu = menuPackages.find(menu => menu.id === menuId);
+      if(menu) setMenu(menu);
     }
   }, [])
+
+  // useEffect(() => {
+  //   const menuJson = sessionStorage.getItem('menus');
+  //   const total = sessionStorage.getItem('total');
+  //   if(menuJson && total) {
+  //     const menu = JSON.parse(menuJson);
+  //     setTotal(parseInt(total))
+  //     setMenu(menu);
+  //   }
+  // }, [])
 
   return (
     <Layout
@@ -149,23 +144,33 @@ const ContactOrderPage = () => {
           <TitleAndText h2={contactOrderText.h2}>{contactOrderText.text}</TitleAndText>
         </section>
         {!menu && (<Box className="p-4 mb-8">
-          <h2 className="mb-4">まずはご自身に合うプランをお選びください！</h2>
-          <p className="mb-8">わたしたちはお客様にお好きなオプションを追加していただき、お客様に合うプランをご提供しております。メニューページよりプランをお選びいただきお申込みください！</p>
+          <div className="mb-4 text-center text-xl">まずはご自身に合うプランをお選びください！</div>
           <div className="text-center">
             <Button href="/menu" color="accent">メニューページへ</Button>
           </div>
         </Box>)
         }
-        {menu && (<MenuSummary menu={menu} total={total} />)}
+        {menu && (
+          <div className="mb-4">
+            <div className="mb-8">
+              <div className="text-center mb-4">選択中のプラン</div>
+              <MenuItem isButton={false} menu={menu} />
+            </div>
+            <div className="text-center">
+              <Button href="/menu" color="accent">プランの変更はこちら</Button>
+            </div>
+          </div>
+        )}
+        {/* {menu && (<MenuSummary menu={menu} total={total} />)} */}
         {/* <div className="mb-12">
           <div className="text-center mb-4">ご相談などはお問い合わせフォームより受け付けております。</div>
           <div className="text-center"><Button href="/contact">お問い合わせはこちら</Button></div>
         </div> */}
         <div className="text-center mb-12">
           <div className="mb-4">LINEやインスタグラムでのお申込み、お問い合わせ受け付けております。</div>
-          <div className="mb-4">LINE、インスタグラムでお申込みの際は、以下のボタンよりプラン内容をコピーしていただき、そのままペーストしてください。次に「お客様情報」の欄をご入力いただき送信してください</div>
+          {/* <div className="mb-4">LINE、インスタグラムでお申込みの際は、以下のボタンよりプラン内容をコピーしていただき、そのままペーストしてください。次に「お客様情報」の欄をご入力いただき送信してください</div>
           
-          <ButtonRounded onClick={onClickCopyText} className="mb-8">プラン内容をコピー</ButtonRounded>
+          <ButtonRounded onClick={onClickCopyText} className="mb-8">プラン内容をコピー</ButtonRounded> */}
           <div className="w-max mx-auto"><SNSList /></div>
         </div>
         <div>
