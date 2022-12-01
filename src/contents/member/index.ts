@@ -5,7 +5,7 @@ export const topMemberText = {
   h2: 'わたしたちの軌跡を結婚式ムービーに',
   text: `人生の一大イベント。\n一生の思い出をカタチにしたい。\n\n結婚式に出席するすべての人が\n感動するムービーを制作します。`,
   image: {
-    url: '/images/image-member1.jpg',
+    url: '/images/image-member1.JPG',
     width: 1280,
     height: 886,
   },
@@ -38,7 +38,7 @@ export const memberContents = [
       似ている芸能人 : 竹内涼真
     `,
     image: {
-      url: '/images/image-member1.jpg',
+      url: '/images/image-member1.JPG',
       width: 1280,
       height: 720
     },
@@ -63,7 +63,7 @@ export const memberContents = [
       似ている芸能人 : 風間俊介
     `,
     image: {
-      url: '/images/image-member2.jpg',
+      url: '/images/image-member2.JPG',
       width: 1280,
       height: 720
     },
