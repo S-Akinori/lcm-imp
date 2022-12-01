@@ -88,7 +88,7 @@ export const memberContents = [
       似ている芸能人: ワンオクtaka
     `,
     image: {
-      url: '/images/image-member3.jpg',
+      url: '/images/image-member3.JPG',
       width: 1280,
       height: 720
     },
