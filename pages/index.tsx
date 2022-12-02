@@ -17,7 +17,7 @@ import { newsContents, topNewsText } from 'src/contents/news'
 import Link from 'next/link'
 import { contactContents, topContactText } from 'src/contents/contact'
 import AnimationTrigger from 'src/components/parts/AnimationTrigger'
-import PageLoading from 'src/components/parts/PageLoading'
+import PageLoading, { PageLoadingWithImages } from 'src/components/parts/PageLoading'
 import Box from 'src/components/parts/Box'
 import GalleryBox from 'src/components/parts/Gallery/GalleryBox'
 import { Autoplay, Navigation, Pagination } from 'swiper'
@@ -46,7 +46,7 @@ const Home = ({reviews}: Props) => {
     <Layout
       h1={process.env.NEXT_PUBLIC_SITE_NAME}
     >
-      <PageLoading />
+      <PageLoadingWithImages />
       <MV src='/videos/top.mp4' title={`世界にたったひとつの\nウェディングムービー`} text="結婚式ムービーの「Ring Ring」" />
       <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
         <Container className='my-24'>
