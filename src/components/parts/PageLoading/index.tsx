@@ -54,6 +54,8 @@ export const PageLoadingWithImages = () => {
     if(state == 2) {
       setTimeout(() => {
         setShow(false)
+        localStorage.setItem('visited', 'true');
+        if(setVisited) setVisited(true)
       }, 700);
     }
   }, [state])
@@ -71,8 +73,6 @@ export const PageLoadingWithImages = () => {
   const onAnimationEnd : AnimationEventHandler<SVGCircleElement> = () => {
       setState(2)
       console.log('done')
-      localStorage.setItem('visited', 'true');
-      if(setVisited) setVisited(true)
   }
 
   return (
@@ -106,7 +106,7 @@ export const PageLoadingWithImages = () => {
       {show && !visited && (
         <div className="fixed top-0 left-0 z-50 w-full h-full">
           <div className={clsx(['absolute top-0 left-0 bg-main w-full duration-700', state >= 2 ? 'h-0' : 'h-full'])}></div>
-          <div className={clsx(['w-full h-full', state >= 2 ? 'hidden' : ''])}>
+          <div className={clsx(['relative w-full h-full mx-auto max-w-screen-lg', state >= 2 ? 'hidden' : ''])}>
             <div className='absolute z-10 flex items-center justify-center h-full w-full'>
               <svg viewBox="0, 0, 200, 200" xmlns="http://www.w3.org/2000/svg">
                 <circle onAnimationEnd={onAnimationEnd} className={state >= 1 ? 'animation' : ''} cx="100" cy="100" r="90" stroke="#A69463" fill="none" />
