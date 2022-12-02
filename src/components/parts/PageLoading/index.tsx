@@ -38,8 +38,8 @@ export const PageLoadingWithImages = () => {
   const {visited, setVisited} = useContext(visitContext);
   const images = [
     '/images/image-loading1.JPG',
-    '/images/image-loading2.JPG',
-    '/images/image-loading3.JPG',
+    '/images/image-loading2.jpg',
+    '/images/image-loading3.jpg',
     '/images/image-loading4.JPG',
   ]
   const imageDelay = 450;
