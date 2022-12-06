@@ -36,12 +36,15 @@ import { topReviewText } from 'src/contents/review'
 import sdk from 'lib/wpSdk'
 import { RootQueryToPostReviewConnection } from 'lib/generated/client'
 import ReviewPostBox from 'src/components/templates/ReviewPostBox'
+import { useContext } from 'react'
+import { visitContext } from './_app'
 
 interface Props {
   reviews: RootQueryToPostReviewConnection
 }
 
 const Home = ({reviews}: Props) => {
+  const {visited, setVisited} = useContext(visitContext);
   return (
     <Layout
       h1={process.env.NEXT_PUBLIC_SITE_NAME}

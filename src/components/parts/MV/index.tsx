@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import validateImage from 'lib/functions/validateImage';
 import validateVideo from 'lib/functions/validareVideo';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import styles from './index.module.css'
 import { visitContext } from 'pages/_app';
 
@@ -9,10 +9,13 @@ interface Props {
   title: string
   text?: string
   src: string
+  autoPlay?: boolean
 }
 
-const MV = ({title, text, src}: Props) => {
+const MV = ({title, text, src, autoPlay = false}: Props) => {
   const {visited} = useContext(visitContext);
+  const videoRef = useRef(null)
+
   let fileType = '';
   if(validateImage(src)) {
     fileType = 'image'
@@ -21,6 +24,11 @@ const MV = ({title, text, src}: Props) => {
   }
 
   const titleSplit = title.split('\n')
+  useEffect(() => {
+    if(videoRef.current && visited) {
+      (videoRef.current as HTMLVideoElement).play();
+    }
+  }, [visited]);
 
   return (
       <div className={`${styles.mv_container} relative`}>
@@ -33,7 +41,7 @@ const MV = ({title, text, src}: Props) => {
           }
         `}</style>
         {fileType == 'image' && <Image src={src} width={1920} height={1080} />}
-        {fileType == 'video' && <video src={src} autoPlay loop muted className={`md:h-screen object-cover object-center ${styles.mv_video}`}></video>}
+        {fileType == 'video' && <video ref={videoRef} src={src} autoPlay={autoPlay} loop muted className={`md:h-screen object-cover object-center ${styles.mv_video}`}></video>}
         <div className="absolute top-1/4 left-6 md:left-12">
           {titleSplit && (
             <h2 className={`relative text-2xl whitespace-pre-wrap text-base-color leading-loose md:text-3xl ${styles.mv_title}`}>

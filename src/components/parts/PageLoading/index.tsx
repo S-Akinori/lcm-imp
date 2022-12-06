@@ -36,13 +36,13 @@ export const PageLoadingWithImages = () => {
   const [show, setShow] = useState(true)
   const [state, setState] = useState(-1)
   const {visited, setVisited} = useContext(visitContext);
+  const imageDelay = 450;
   const images = [
     '/images/image-loading1.JPG',
     '/images/image-loading2.jpg',
     '/images/image-loading3.jpg',
     '/images/image-loading4.JPG',
   ]
-  const imageDelay = 450;
 
   useEffect(() => {
     setTimeout(() => {
@@ -50,15 +50,19 @@ export const PageLoadingWithImages = () => {
     }, 300);
   }, [])
 
+  console.log(show)
+
   useEffect(() => {
     if(state == 2) {
       setTimeout(() => {
-        setShow(false)
         localStorage.setItem('visited', 'true');
         if(setVisited) setVisited(true)
+        setShow(false)
+        console.log('done')
       }, 700);
     }
   }, [state])
+
   const imageClasses = [
     'top-1/4 right-0 md:top-0 md:left-1/2 md:-translate-x-1/2',
     'bottom-1/4 right-0 md:top-1/2 md:right-0 md:-translate-y-1/2',
@@ -71,8 +75,8 @@ export const PageLoadingWithImages = () => {
     console.log('imageAnim')
   }
   const onAnimationEnd : AnimationEventHandler<SVGCircleElement> = () => {
-      setState(2)
-      console.log('done')
+    setState(2)
+    console.log('bgAnim')
   }
 
   return (
@@ -103,7 +107,7 @@ export const PageLoadingWithImages = () => {
           }
         }
       `}</style>
-      {show && !visited && (
+      {(show && !visited) && (
         <div className="fixed top-0 left-0 z-50 w-full h-full">
           <div className={clsx(['absolute top-0 left-0 bg-main w-full duration-700', state >= 2 ? 'h-0' : 'h-full'])}></div>
           <div className={clsx(['relative w-full h-full mx-auto max-w-screen-lg', state >= 2 ? 'hidden' : ''])}>
