@@ -50,7 +50,7 @@ const Home = ({reviews}: Props) => {
       h1={process.env.NEXT_PUBLIC_SITE_NAME}
     >
       <PageLoadingWithImages />
-      <MV src='/videos/top.mp4' title={`世界にたったひとつの\nウェディングムービー`} text="結婚式ムービーの「Ring Ring」" />
+      <MV src='/videos/top.webm' title={`世界にたったひとつの\nウェディングムービー`} text="結婚式ムービーの「Ring Ring」" />
       <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
         <Container className='my-24'>
           <CircleBackground>

@@ -1,5 +1,5 @@
 const validateVideo = (src: string) => {
-  const videoExts = new Array('mp4','avi','fiv','mov','wmv');
+  const videoExts = new Array('mp4','avi','fiv','mov','wmv','webm');
   const pos = src.lastIndexOf('.');
 	if (pos === -1) return false;
 
