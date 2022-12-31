@@ -17,7 +17,7 @@ const DressSwiper = ({images}: Props) => {
       pagination
       slidesPerView={1}
       centeredSlides
-      className="w-1/2 mx-auto"
+      className="md:w-1/2 mx-auto"
     >
       {images.map((image, index) => (
         <SwiperSlide key={index} className="text-center"><Image src={image.url} width={image.width} height={image.height} /></SwiperSlide>

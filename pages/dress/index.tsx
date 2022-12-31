@@ -65,7 +65,7 @@ const DressPage = () => {
                 {dressFeature.contents.map(content => (
                   <div key={content.id} className="md:w-1/3 py-4 md:px-4">
                     <Box key={content.id} className="h-full">
-                      <h3>{content.title}</h3>
+                      <h3 className="text-accent">{content.title}</h3>
                       <p className="whitespace-pre-wrap">{content.text}</p>
                     </Box>
                   </div>
