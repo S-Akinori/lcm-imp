@@ -16,7 +16,7 @@ import Title from "src/components/parts/Title"
 import TitleAndText from "src/components/parts/TitleAndText"
 import DressSwiper from "src/components/templates/DressSwiper"
 import { subConceptMessages, subConceptText } from "src/contents/concept"
-import { dressFAQ, dressFeature, dressFlow, dressGallery, earringGallery, headAccessoriesGallery, subDressText, volumeDressGallery } from "src/contents/dress"
+import { baseDressSize, blouseSize, dressFAQ, dressFeature, dressFlow, dressGallery, earringGallery, headAccessoriesGallery, skirtSize, subDressText, tuxedoGallery, volumeDressGallery } from "src/contents/dress"
 import { ConceptMain, ConceptText } from "src/types/ConceptText"
 
 interface DressGalleryContentProps {
@@ -109,6 +109,57 @@ const DressPage = () => {
       <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
         <Container className="my-24">
           <section>
+            <Title h2="ドレスの対応サイズについて" />
+            <div className="mb-8">
+              <div>ベースドレスの対応サイズ</div>
+              <div className="md:flex">
+                <div className="border flex items-center justify-center shrink-0 p-4 whitespace-pre-wrap text-center">{baseDressSize.title}</div>
+                <div className="flex w-full">
+                  {baseDressSize.contents.map(content => (
+                    <div key={content.id} className="border w-1/3 md:w-auto">
+                      <div className="bg-main p-2 text-center">{content.title}</div>
+                      <div className="p-2 text-center">{content.text}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="mb-8">
+              <div>ブラウスの対応サイズ</div>
+              <div className="text-xs">＊デザインにより詳細サイズは異なります</div>
+              <div className="md:flex">
+                <div className="border flex items-center justify-center shrink-0 p-4 whitespace-pre-wrap text-center">{blouseSize.title}</div>
+                <div className="flex flex-wrap w-full">
+                  {blouseSize.contents.map(content => (
+                    <div key={content.id} className="border w-1/3 md:w-auto">
+                      <div className="bg-main p-2 text-center">{content.title}</div>
+                      <div className="p-2 text-center">{content.text}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div>
+              <div>スカートの対応サイズ</div>
+              <div className="text-xs">＊デザインにより詳細サイズは異なります</div>
+              <div className="md:flex">
+                <div className="border flex items-center justify-center shrink-0 p-4 whitespace-pre-wrap text-center">{skirtSize.title}</div>
+                <div className="flex flex-wrap w-full">
+                  {skirtSize.contents.map(content => (
+                    <div key={content.id} className="border w-1/2 md:w-auto">
+                      <div className="bg-main p-2 text-center">{content.title}</div>
+                      <div className="p-2 text-center">{content.text}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        </Container>
+      </AnimationTrigger>
+      <AnimationTrigger animation='fadeInBottom' startClass='opacity-0' rootMargin='-150px' triggerOnce>
+        <Container className="my-24">
+          <section>
             <Title h2={dressGallery.title} />
             <div className="text-sm">クリックすると画像が拡大表示されます。</div>
             <div className="my-12">
@@ -154,6 +205,19 @@ const DressPage = () => {
               <h3>{earringGallery.title}</h3>
               <div className="flex flex-wrap">
                 {earringGallery.contents.map(content => (
+                  <div key={content.id} className="w-1/2 md:w-1/3 p-4">
+                    <div>{content.title}</div>
+                    <div className="cursor-pointer duration-300 hover:opacity-80" onClick={(e) => onClick(content)}>
+                      <Image src={content.images[0].url} width={content.images[0].width} height={content.images[0].height} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="my-12">
+              <h3>{tuxedoGallery.title}</h3>
+              <div className="flex flex-wrap">
+                {tuxedoGallery.contents.map(content => (
                   <div key={content.id} className="w-1/2 md:w-1/3 p-4">
                     <div>{content.title}</div>
                     <div className="cursor-pointer duration-300 hover:opacity-80" onClick={(e) => onClick(content)}>

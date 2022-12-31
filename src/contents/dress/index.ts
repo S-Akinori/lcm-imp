@@ -1432,3 +1432,305 @@ export const earringGallery = {
     },
   ],
 }
+
+export const tuxedoGallery = {
+  title: 'タキシード',
+  contents: [
+    {
+      id: "TX-001",
+      title: 'TX-001',
+      images: [
+        {
+          id: 'TX-001-0',
+          url: '/images/dress/TX-001.jpg',
+          width: 477,
+          height: 605,
+        },
+      ]
+    },
+    {
+      id: "TX-002",
+      title: 'TX-002',
+      images: [
+        {
+          id: 'TX-002-0',
+          url: '/images/dress/TX-002.jpg',
+          width: 477,
+          height: 605,
+        },
+      ]
+    },
+    {
+      id: "TX-003",
+      title: 'TX-003',
+      images: [
+        {
+          id: 'TX-003-0',
+          url: '/images/dress/TX-003.jpg',
+          width: 477,
+          height: 605,
+        },
+      ]
+    },
+    {
+      id: "TX-004",
+      title: 'TX-004',
+      images: [
+        {
+          id: 'TX-004-0',
+          url: '/images/dress/TX-004.jpg',
+          width: 477,
+          height: 605,
+        },
+      ]
+    },
+    {
+      id: "TX-005",
+      title: 'TX-005',
+      images: [
+        {
+          id: 'TX-005-0',
+          url: '/images/dress/TX-005.jpg',
+          width: 477,
+          height: 605,
+        },
+      ]
+    },
+    {
+      id: "TX-006",
+      title: 'TX-006',
+      images: [
+        {
+          id: 'TX-006-0',
+          url: '/images/dress/TX-006.jpg',
+          width: 477,
+          height: 605,
+        },
+      ]
+    },
+    {
+      id: "TX-007",
+      title: 'TX-007',
+      images: [
+        {
+          id: 'TX-007-0',
+          url: '/images/dress/TX-007.jpg',
+          width: 477,
+          height: 605,
+        },
+      ]
+    },
+    {
+      id: "TX-008",
+      title: 'TX-008',
+      images: [
+        {
+          id: 'TX-008-0',
+          url: '/images/dress/TX-008.jpg',
+          width: 477,
+          height: 605,
+        },
+      ]
+    },
+    {
+      id: "TX-009",
+      title: 'TX-009',
+      images: [
+        {
+          id: 'TX-009-0',
+          url: '/images/dress/TX-009.jpg',
+          width: 477,
+          height: 605,
+        },
+      ]
+    },
+    {
+      id: "TX-010",
+      title: 'TX-010',
+      images: [
+        {
+          id: 'TX-010-0',
+          url: '/images/dress/TX-010.jpg',
+          width: 477,
+          height: 605,
+        },
+      ]
+    },
+    {
+      id: "TX-012",
+      title: 'TX-012',
+      images: [
+        {
+          id: 'TX-012-0',
+          url: '/images/dress/TX-001.jpg',
+          width: 477,
+          height: 605,
+        },
+      ]
+    },
+    {
+      id: "TX-013",
+      title: 'TX-013',
+      images: [
+        {
+          id: 'TX-013-0',
+          url: '/images/dress/TX-013.jpg',
+          width: 477,
+          height: 605,
+        },
+      ]
+    },
+    {
+      id: "TX-015",
+      title: 'TX-015',
+      images: [
+        {
+          id: 'TX-015-0',
+          url: '/images/dress/TX-015.jpg',
+          width: 477,
+          height: 605,
+        },
+      ]
+    },
+    {
+      id: "TX-016",
+      title: 'TX-016',
+      images: [
+        {
+          id: 'TX-016-0',
+          url: '/images/dress/TX-016.jpg',
+          width: 477,
+          height: 605,
+        },
+      ]
+    },
+    {
+      id: "TX-017",
+      title: 'TX-017',
+      images: [
+        {
+          id: 'TX-017-0',
+          url: '/images/dress/TX-017.jpg',
+          width: 477,
+          height: 605,
+        },
+      ]
+    },
+    {
+      id: "TX-019",
+      title: 'TX-019',
+      images: [
+        {
+          id: 'TX-019-0',
+          url: '/images/dress/TX-019.jpg',
+          width: 477,
+          height: 605,
+        },
+      ]
+    },
+    {
+      id: "TX-020",
+      title: 'TX-020',
+      images: [
+        {
+          id: 'TX-020-0',
+          url: '/images/dress/TX-020.jpg',
+          width: 477,
+          height: 605,
+        },
+      ]
+    },
+    {
+      id: "TX-021",
+      title: 'TX-021',
+      images: [
+        {
+          id: 'TX-021-0',
+          url: '/images/dress/TX-021.jpg',
+          width: 477,
+          height: 605,
+        },
+      ]
+    },
+  ],
+}
+
+export const baseDressSize = {
+  title: dedent`
+    Free
+    (7～13号)
+  `,
+  contents: [
+    {
+      id: 'baseDressSize1',
+      title: 'バスト',
+      text: '80～93cm'
+    },
+    {
+      id: 'baseDressSize2',
+      title: 'ウエスト',
+      text: '60～75cm'
+    },
+    {
+      id: 'baseDressSize3',
+      title: 'スカート丈',
+      text: '113cm'
+    },
+  ]
+}
+export const blouseSize = {
+  title: dedent`
+    Free
+    (7～13号)
+  `,
+  contents: [
+    {
+      id: 'blouseSize1',
+      title: 'バスト',
+      text: '80～93cm'
+    },
+    {
+      id: 'blouseSize2',
+      title: 'ウエスト',
+      text: '60～75cm'
+    },
+    {
+      id: 'blouseSize3',
+      title: '背丈',
+      text: '35～50cm'
+    },
+    {
+      id: 'blouseSize4',
+      title: '袖丈',
+      text: '50～57cm'
+    },
+    {
+      id: 'blouseSize5',
+      title: 'アームホール',
+      text: '40～45cm'
+    },
+    {
+      id: 'blouseSize6',
+      title: '腕まわり',
+      text: '30～35cm'
+    },
+  ]
+}
+export const skirtSize = {
+  title: dedent`
+    Free
+    (7～13号)
+  `,
+  contents: [
+    {
+      id: 'skirtSize1',
+      title: 'ウエスト',
+      text: '60～75cm'
+    },
+    {
+      id: 'skirtSize2',
+      title: 'スカート丈',
+      text: '115～125cm'
+    },
+  ]
+}
