@@ -10,6 +10,11 @@ export const gnav = [
     linkText: 'MENU',
   },
   {
+    id: 'navDress',
+    href: '/dress',
+    linkText: 'DRESS',
+  },
+  {
     id: 'navFlow',
     href: '/flow',
     linkText: 'FLOW',
