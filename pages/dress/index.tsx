@@ -16,7 +16,7 @@ import Title from "src/components/parts/Title"
 import TitleAndText from "src/components/parts/TitleAndText"
 import DressSwiper from "src/components/templates/DressSwiper"
 import { subConceptMessages, subConceptText } from "src/contents/concept"
-import { baseDressSize, blouseSize, dressFAQ, dressFeature, dressFlow, dressGallery, earringGallery, headAccessoriesGallery, skirtSize, subDressText, tuxedoGallery, volumeDressGallery } from "src/contents/dress"
+import { baseDressSize, blouseSize, colorKimonoGallery, dressFAQ, dressFeature, dressFlow, dressGallery, earringGallery, headAccessoriesGallery, kimonoAccessoriesGallery, mensKimonoGallery, skirtSize, subDressText, tuxedoGallery, volumeDressGallery, whiteKimonoGallery } from "src/contents/dress"
 import { ConceptMain, ConceptText } from "src/types/ConceptText"
 
 interface DressGalleryContentProps {
@@ -218,6 +218,58 @@ const DressPage = () => {
               <h3>{tuxedoGallery.title}</h3>
               <div className="flex flex-wrap">
                 {tuxedoGallery.contents.map(content => (
+                  <div key={content.id} className="w-1/2 md:w-1/3 p-4">
+                    <div>{content.title}</div>
+                    <div className="cursor-pointer duration-300 hover:opacity-80" onClick={(e) => onClick(content)}>
+                      <Image src={content.images[0].url} width={content.images[0].width} height={content.images[0].height} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="my-12">
+              <h3>{whiteKimonoGallery.title}</h3>
+              <div className="flex flex-wrap">
+                {whiteKimonoGallery.contents.map(content => (
+                  <div key={content.id} className="w-1/2 md:w-1/3 p-4">
+                    <div>{content.title}</div>
+                    <div className="cursor-pointer duration-300 hover:opacity-80" onClick={(e) => onClick(content)}>
+                      <Image src={content.images[0].url} width={content.images[0].width} height={content.images[0].height} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="my-12">
+              <h3>{colorKimonoGallery.title}</h3>
+              <div className="flex flex-wrap">
+                {colorKimonoGallery.contents.map(content => (
+                  <div key={content.id} className="w-1/2 md:w-1/3 p-4">
+                    <div>{content.title}</div>
+                    <div className="cursor-pointer duration-300 hover:opacity-80" onClick={(e) => onClick(content)}>
+                      <Image src={content.images[0].url} width={content.images[0].width} height={content.images[0].height} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="my-12">
+              <h3>{mensKimonoGallery.title}</h3>
+              <div className="flex flex-wrap">
+                {mensKimonoGallery.contents.map(content => (
+                  <div key={content.id} className="w-1/2 md:w-1/3 p-4">
+                    <div>{content.title}</div>
+                    <div className="cursor-pointer duration-300 hover:opacity-80" onClick={(e) => onClick(content)}>
+                      <Image src={content.images[0].url} width={content.images[0].width} height={content.images[0].height} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="my-12">
+              <h3>{kimonoAccessoriesGallery.title}</h3>
+              <div className="flex flex-wrap">
+                {kimonoAccessoriesGallery.contents.map(content => (
                   <div key={content.id} className="w-1/2 md:w-1/3 p-4">
                     <div>{content.title}</div>
                     <div className="cursor-pointer duration-300 hover:opacity-80" onClick={(e) => onClick(content)}>

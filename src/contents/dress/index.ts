@@ -1655,6 +1655,312 @@ export const tuxedoGallery = {
   ],
 }
 
+export const whiteKimonoGallery = {
+  title: '和装（白無垢）',
+  contents: [
+    {
+      id: "W-101",
+      title: 'W-101(鶴)',
+      images: [
+        {
+          id: 'W-101-0',
+          url: '/images/dress/W-101-0.jpg',
+          width: 379,
+          height: 405,
+        },
+        {
+          id: 'W-101-1',
+          url: '/images/dress/W-101-1.jpg',
+          width: 379,
+          height: 405,
+        },
+      ]
+    },
+    {
+      id: "W-103",
+      title: 'W-103(熨斗目)',
+      images: [
+        {
+          id: 'W-103-0',
+          url: '/images/dress/W-103-0.jpg',
+          width: 379,
+          height: 405,
+        },
+        {
+          id: 'W-103-1',
+          url: '/images/dress/W-103-1.jpg',
+          width: 379,
+          height: 405,
+        },
+      ]
+    },
+    {
+      id: "W-104",
+      title: 'W-104(鶴・花刺繍)',
+      images: [
+        {
+          id: 'W-104-0',
+          url: '/images/dress/W-104-0.jpg',
+          width: 379,
+          height: 405,
+        },
+        {
+          id: 'W-104-1',
+          url: '/images/dress/W-104-1.jpg',
+          width: 379,
+          height: 405,
+        },
+      ]
+    },
+  ]
+}
+
+export const colorKimonoGallery = {
+  title: '和装（色打掛）',
+  contents: [
+    {
+      id: "G-101",
+      title: 'G-101',
+      images: [
+        {
+          id: 'G-101-0',
+          url: '/images/dress/G-101.jpg',
+          width: 293,
+          height: 329,
+        },
+      ]
+    },
+    {
+      id: "G-102",
+      title: 'G-102',
+      images: [
+        {
+          id: 'G-102-0',
+          url: '/images/dress/G-102.jpg',
+          width: 293,
+          height: 329,
+        },
+      ]
+    },
+    {
+      id: "G-103",
+      title: 'G-103',
+      images: [
+        {
+          id: 'G-103-0',
+          url: '/images/dress/G-103.jpg',
+          width: 293,
+          height: 329,
+        },
+      ]
+    },
+    {
+      id: "G-104",
+      title: 'G-104',
+      images: [
+        {
+          id: 'G-104-0',
+          url: '/images/dress/G-104.jpg',
+          width: 293,
+          height: 329,
+        },
+      ]
+    },
+    {
+      id: "G-105",
+      title: 'G-105',
+      images: [
+        {
+          id: 'G-105-0',
+          url: '/images/dress/G-105.jpg',
+          width: 293,
+          height: 329,
+        },
+      ]
+    },
+    {
+      id: "G-106",
+      title: 'G-106',
+      images: [
+        {
+          id: 'G-106-0',
+          url: '/images/dress/G-106.jpg',
+          width: 293,
+          height: 329,
+        },
+      ]
+    },
+    {
+      id: "G-107",
+      title: 'G-107',
+      images: [
+        {
+          id: 'G-107-0',
+          url: '/images/dress/G-107.jpg',
+          width: 293,
+          height: 329,
+        },
+      ]
+    },
+    {
+      id: "G-108",
+      title: 'G-108',
+      images: [
+        {
+          id: 'G-108-0',
+          url: '/images/dress/G-108.jpg',
+          width: 293,
+          height: 329,
+        },
+      ]
+    },
+    {
+      id: "G-109",
+      title: 'G-109',
+      images: [
+        {
+          id: 'G-109-0',
+          url: '/images/dress/G-109.jpg',
+          width: 293,
+          height: 329,
+        },
+      ]
+    },
+    {
+      id: "G-110",
+      title: 'G-110',
+      images: [
+        {
+          id: 'G-110-0',
+          url: '/images/dress/G-110.jpg',
+          width: 293,
+          height: 329,
+        },
+      ]
+    },
+    {
+      id: "G-111",
+      title: 'G-111',
+      images: [
+        {
+          id: 'G-111-0',
+          url: '/images/dress/G-111.jpg',
+          width: 293,
+          height: 329,
+        },
+      ]
+    },
+  ]
+}
+
+export const mensKimonoGallery = {
+  title: '和装（紋付袴）',
+  contents: [
+    {
+      id: "MH-1",
+      title: '金地袴',
+      images: [
+        {
+          id: 'MH-1-0',
+          url: '/images/dress/MH-1.jpg',
+          width: 396,
+          height: 386,
+        },
+      ]
+    },
+    {
+      id: "MH-2",
+      title: '紺羽二重',
+      images: [
+        {
+          id: 'MH-2-0',
+          url: '/images/dress/MH-2.jpg',
+          width: 396,
+          height: 386,
+        },
+      ]
+    },
+    {
+      id: "MH-3",
+      title: '青金地袴',
+      images: [
+        {
+          id: 'MH-3-0',
+          url: '/images/dress/MH-3.jpg',
+          width: 396,
+          height: 386,
+        },
+      ]
+    },
+    {
+      id: "MH-4",
+      title: '黒地金箔',
+      images: [
+        {
+          id: 'MH-4-0',
+          url: '/images/dress/MH-4.jpg',
+          width: 396,
+          height: 386,
+        },
+      ]
+    },
+    {
+      id: "MH-5",
+      title: '黒羽二重',
+      images: [
+        {
+          id: 'MH-5-0',
+          url: '/images/dress/MH-5.jpg',
+          width: 396,
+          height: 386,
+        },
+      ]
+    },
+  ]
+}
+
+export const kimonoAccessoriesGallery = {
+  title: '和装小物',
+  contents: [
+    {
+      id: "WA-1",
+      title: '小物(red)',
+      images: [
+        {
+          id: 'WA-1-0',
+          url: '/images/dress/WA-1.jpg',
+          width: 396,
+          height: 305,
+        },
+      ]
+    },
+    {
+      id: "WA-2",
+      title: '小物(green)',
+      images: [
+        {
+          id: 'WA-2-0',
+          url: '/images/dress/WA-2.jpg',
+          width: 396,
+          height: 305,
+        },
+      ]
+    },
+    {
+      id: "WA-3",
+      title: '小物(blue)',
+      images: [
+        {
+          id: 'WA-3-0',
+          url: '/images/dress/WA-3.jpg',
+          width: 396,
+          height: 305,
+        },
+      ]
+    },
+  ]
+}
+
 export const baseDressSize = {
   title: dedent`
     Free
