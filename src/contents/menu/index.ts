@@ -42,7 +42,6 @@ export const menuCostNotes = [
   '飲食費のお支払い',
   '衣装類や撮影小道具のご準備及びそれに伴う経費のお支払い',
   '自動車等の移動手段のレンタル及びレンタル費のお支払い',
-  'ヘアメイクやスタイリスト等の外部スタッフのご依頼及び依頼費のお支払い'
 ]
 
 export const menuMovies : MenuProp[] = [
@@ -246,24 +245,14 @@ export const movieIntroductions = [
     title: 'プロフィールムービー',
     content: '披露宴途中でお二人の生い立ちを紹介するムービーです。演出 + インタビュー動画でゲストを楽しませましょう！'
   },
-  {
-    id: 'movieDetail3',
-    title: 'エンドロールムービー',
-    content: '披露宴の最後に流れるムービーです。スタッフロール風に1人1人感謝のコメントを流し、全体に感謝の気持ちを伝えましょう！'
-  },
 ]
 
 
 export const movieDetails = [
   {
-    id: 'movieDetail1',
-    title: '上映時間',
-    content: '3～5分'
-  },
-  {
     id: 'movieDetail2',
     title: '納品形式',
-    content: 'データ + DVD'
+    content: 'データ + DVDまたはBlu-ray'
   },
   // {
   //   id: 'movieDetail3',
