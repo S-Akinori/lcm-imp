@@ -8,6 +8,8 @@ import Accordion, { AccordionItem } from "src/components/parts/Accordion"
 import CircleBackground from "src/components/parts/Animation/CircleBackground"
 import AnimationTrigger from "src/components/parts/AnimationTrigger"
 import Box from "src/components/parts/Box"
+import Button from "src/components/parts/Button"
+import ButtonRounded from "src/components/parts/Button/ButtonRounded"
 import Container from "src/components/parts/Container"
 import Flow, { FlowItem } from "src/components/parts/Flow"
 import FV from "src/components/parts/FV"
@@ -16,7 +18,7 @@ import Title from "src/components/parts/Title"
 import TitleAndText from "src/components/parts/TitleAndText"
 import DressSwiper from "src/components/templates/DressSwiper"
 import { subConceptMessages, subConceptText } from "src/contents/concept"
-import { baseDressSize, blouseSize, colorKimonoGallery, dressFAQ, dressFeature, dressFlow, dressGallery, earringGallery, headAccessoriesGallery, kimonoAccessoriesGallery, mensKimonoGallery, skirtSize, subDressText, tuxedoGallery, volumeDressGallery, whiteKimonoGallery } from "src/contents/dress"
+import { baseDressSize, blouseSize, colorKimonoGallery, dressFAQ, dressFeature, dressFlow, dressGallery, earringGallery, headAccessoriesGallery, kimonoAccessoriesGallery, mensKimonoGallery, simpleDressGallery, skirtSize, subDressText, tuxedoGallery, volumeDressGallery, whiteKimonoGallery } from "src/contents/dress"
 import { ConceptMain, ConceptText } from "src/types/ConceptText"
 
 interface DressGalleryContentProps {
@@ -161,12 +163,22 @@ const DressPage = () => {
         <Container className="my-24">
           <section>
             <Title h2={dressGallery.title} />
-            <div className="text-sm">クリックすると画像が拡大表示されます。</div>
-            <div className="my-12">
-              <h3>シンプルドレス</h3>
+            <div>{dressGallery.text}</div>
+            <div className="flex flex-wrap">
+              <div className="p-4 w-full md:w-1/3"><ButtonRounded className="w-full" href="#headAccessoriesGallery">{headAccessoriesGallery.title}</ButtonRounded></div>
+              <div className="p-4 w-full md:w-1/3"><ButtonRounded className="w-full" href="#earringGallery">{earringGallery.title}</ButtonRounded></div>
+              <div className="p-4 w-full md:w-1/3"><ButtonRounded className="w-full" href="#tuxedoGallery">{tuxedoGallery.title}</ButtonRounded></div>
+              <div className="p-4 w-full md:w-1/3"><ButtonRounded className="w-full" href="#whiteKimonoGallery">{whiteKimonoGallery.title}</ButtonRounded></div>
+              <div className="p-4 w-full md:w-1/3"><ButtonRounded className="w-full" href="#colorKimonoGallery">{colorKimonoGallery.title}</ButtonRounded></div>
+              <div className="p-4 w-full md:w-1/3"><ButtonRounded className="w-full" href="#mensKimonoGallery">{mensKimonoGallery.title}</ButtonRounded></div>
+              <div className="p-4 w-full md:w-1/3"><ButtonRounded className="w-full" href="#kimonoAccessoriesGallery">{kimonoAccessoriesGallery.title}</ButtonRounded></div>
+            </div>
+            <div id="simpleDressGallery" className="my-12">
+              <h3 className="mb-0">{simpleDressGallery.title}</h3>
+              <div className="text-sm mb-4">写真をクリックすると拡大表示されます</div>
               <div className="flex flex-wrap">
-                {dressGallery.contents.map(content => (
-                  <div key={content.id} className="w-1/2 md:w-1/3 p-4">
+                {simpleDressGallery.contents.map(content => (
+                  <div key={content.id} className="w-1/2 md:w-1/3 p-2 md:p-4">
                     <div>{content.title}</div>
                     <div className="cursor-pointer duration-300 hover:opacity-80" onClick={(e) => onClick(content)}>
                       <Image src={content.images[0].url} width={content.images[0].width} height={content.images[0].height} />
@@ -175,11 +187,12 @@ const DressPage = () => {
                 ))}
               </div>
             </div>
-            <div className="my-12">
-              <h3>{volumeDressGallery.title}</h3>
+            <div id="volumeDressGallery" className="my-12">
+              <h3 className="mb-0">{volumeDressGallery.title}</h3>
+              <div className="text-sm mb-4">写真をクリックすると拡大表示されます</div>
               <div className="flex flex-wrap">
                 {volumeDressGallery.contents.map(content => (
-                  <div key={content.id} className="w-1/2 md:w-1/3 p-4">
+                  <div key={content.id} className="w-1/2 md:w-1/3 p-2 md:p-4">
                     <div>{content.title}</div>
                     <div className="cursor-pointer duration-300 hover:opacity-80" onClick={(e) => onClick(content)}>
                       <Image src={content.images[0].url} width={content.images[0].width} height={content.images[0].height} />
@@ -188,11 +201,12 @@ const DressPage = () => {
                 ))}
               </div>
             </div>
-            <div className="my-12">
-              <h3>{headAccessoriesGallery.title}</h3>
+            <div id="headAccessoriesGallery" className="my-12">
+              <h3 className="mb-0">{headAccessoriesGallery.title}</h3>
+              <div className="text-sm mb-4">写真をクリックすると拡大表示されます</div>
               <div className="flex flex-wrap">
                 {headAccessoriesGallery.contents.map(content => (
-                  <div key={content.id} className="w-1/2 md:w-1/3 p-4">
+                  <div key={content.id} className="w-1/2 md:w-1/3 p-2 md:p-4">
                     <div>{content.title}</div>
                     <div className="cursor-pointer duration-300 hover:opacity-80" onClick={(e) => onClick(content)}>
                       <Image src={content.images[0].url} width={content.images[0].width} height={content.images[0].height} />
@@ -201,11 +215,12 @@ const DressPage = () => {
                 ))}
               </div>
             </div>
-            <div className="my-12">
-              <h3>{earringGallery.title}</h3>
+            <div id="earringGallery" className="my-12">
+              <h3 className="mb-0">{earringGallery.title}</h3>
+              <div className="text-sm mb-4">写真をクリックすると拡大表示されます</div>
               <div className="flex flex-wrap">
                 {earringGallery.contents.map(content => (
-                  <div key={content.id} className="w-1/2 md:w-1/3 p-4">
+                  <div key={content.id} className="w-1/2 md:w-1/3 p-2 md:p-4">
                     <div>{content.title}</div>
                     <div className="cursor-pointer duration-300 hover:opacity-80" onClick={(e) => onClick(content)}>
                       <Image src={content.images[0].url} width={content.images[0].width} height={content.images[0].height} />
@@ -214,11 +229,12 @@ const DressPage = () => {
                 ))}
               </div>
             </div>
-            <div className="my-12">
-              <h3>{tuxedoGallery.title}</h3>
+            <div id="tuxedoGallery" className="my-12">
+              <h3 className="mb-0">{tuxedoGallery.title}</h3>
+              <div className="text-sm mb-4">写真をクリックすると拡大表示されます</div>
               <div className="flex flex-wrap">
                 {tuxedoGallery.contents.map(content => (
-                  <div key={content.id} className="w-1/2 md:w-1/3 p-4">
+                  <div key={content.id} className="w-1/2 md:w-1/3 p-2 md:p-4">
                     <div>{content.title}</div>
                     <div className="cursor-pointer duration-300 hover:opacity-80" onClick={(e) => onClick(content)}>
                       <Image src={content.images[0].url} width={content.images[0].width} height={content.images[0].height} />
@@ -227,11 +243,12 @@ const DressPage = () => {
                 ))}
               </div>
             </div>
-            <div className="my-12">
-              <h3>{whiteKimonoGallery.title}</h3>
+            <div id="whiteKimonoGallery" className="my-12">
+              <h3 className="mb-0">{whiteKimonoGallery.title}</h3>
+              <div className="text-sm mb-4">写真をクリックすると拡大表示されます</div>
               <div className="flex flex-wrap">
                 {whiteKimonoGallery.contents.map(content => (
-                  <div key={content.id} className="w-1/2 md:w-1/3 p-4">
+                  <div key={content.id} className="w-1/2 md:w-1/3 p-2 md:p-4">
                     <div>{content.title}</div>
                     <div className="cursor-pointer duration-300 hover:opacity-80" onClick={(e) => onClick(content)}>
                       <Image src={content.images[0].url} width={content.images[0].width} height={content.images[0].height} />
@@ -240,11 +257,12 @@ const DressPage = () => {
                 ))}
               </div>
             </div>
-            <div className="my-12">
-              <h3>{colorKimonoGallery.title}</h3>
+            <div id="colorKimonoGallery" className="my-12">
+              <h3 className="mb-0">{colorKimonoGallery.title}</h3>
+              <div className="text-sm mb-4">写真をクリックすると拡大表示されます</div>
               <div className="flex flex-wrap">
                 {colorKimonoGallery.contents.map(content => (
-                  <div key={content.id} className="w-1/2 md:w-1/3 p-4">
+                  <div key={content.id} className="w-1/2 md:w-1/3 p-2 md:p-4">
                     <div>{content.title}</div>
                     <div className="cursor-pointer duration-300 hover:opacity-80" onClick={(e) => onClick(content)}>
                       <Image src={content.images[0].url} width={content.images[0].width} height={content.images[0].height} />
@@ -253,11 +271,12 @@ const DressPage = () => {
                 ))}
               </div>
             </div>
-            <div className="my-12">
-              <h3>{mensKimonoGallery.title}</h3>
+            <div id="mensKimonoGallery" className="my-12">
+              <h3 className="mb-0">{mensKimonoGallery.title}</h3>
+              <div className="text-sm mb-4">写真をクリックすると拡大表示されます</div>
               <div className="flex flex-wrap">
                 {mensKimonoGallery.contents.map(content => (
-                  <div key={content.id} className="w-1/2 md:w-1/3 p-4">
+                  <div key={content.id} className="w-1/2 md:w-1/3 p-2 md:p-4">
                     <div>{content.title}</div>
                     <div className="cursor-pointer duration-300 hover:opacity-80" onClick={(e) => onClick(content)}>
                       <Image src={content.images[0].url} width={content.images[0].width} height={content.images[0].height} />
@@ -266,11 +285,12 @@ const DressPage = () => {
                 ))}
               </div>
             </div>
-            <div className="my-12">
-              <h3>{kimonoAccessoriesGallery.title}</h3>
+            <div id="kimonoAccessoriesGallery" className="my-12">
+              <h3 className="mb-0">{kimonoAccessoriesGallery.title}</h3>
+              <div className="text-sm mb-4">写真をクリックすると拡大表示されます</div>
               <div className="flex flex-wrap">
                 {kimonoAccessoriesGallery.contents.map(content => (
-                  <div key={content.id} className="w-1/2 md:w-1/3 p-4">
+                  <div key={content.id} className="w-1/2 md:w-1/3 p-2 md:p-4">
                     <div>{content.title}</div>
                     <div className="cursor-pointer duration-300 hover:opacity-80" onClick={(e) => onClick(content)}>
                       <Image src={content.images[0].url} width={content.images[0].width} height={content.images[0].height} />

@@ -126,7 +126,12 @@ export const dressFAQ = {
 }
 
 export const dressGallery = {
-  title: 'ドレスカタログ',
+  title: "ドレスカタログ",
+  text: "以下のボタンよりご覧になりたいカタログに飛びます。"
+}
+
+export const simpleDressGallery = {
+  title: 'シンプルドレス',
   contents: [
     {
       id: "dressGallery1",
