@@ -165,6 +165,8 @@ const DressPage = () => {
             <Title h2={dressGallery.title} />
             <div>{dressGallery.text}</div>
             <div className="flex flex-wrap">
+              <div className="p-4 w-full md:w-1/3"><ButtonRounded className="w-full" href="#simpleDressGallery">{simpleDressGallery.title}</ButtonRounded></div>
+              <div className="p-4 w-full md:w-1/3"><ButtonRounded className="w-full" href="#volumeDressGallery">{volumeDressGallery.title}</ButtonRounded></div>
               <div className="p-4 w-full md:w-1/3"><ButtonRounded className="w-full" href="#headAccessoriesGallery">{headAccessoriesGallery.title}</ButtonRounded></div>
               <div className="p-4 w-full md:w-1/3"><ButtonRounded className="w-full" href="#earringGallery">{earringGallery.title}</ButtonRounded></div>
               <div className="p-4 w-full md:w-1/3"><ButtonRounded className="w-full" href="#tuxedoGallery">{tuxedoGallery.title}</ButtonRounded></div>
@@ -173,7 +175,7 @@ const DressPage = () => {
               <div className="p-4 w-full md:w-1/3"><ButtonRounded className="w-full" href="#mensKimonoGallery">{mensKimonoGallery.title}</ButtonRounded></div>
               <div className="p-4 w-full md:w-1/3"><ButtonRounded className="w-full" href="#kimonoAccessoriesGallery">{kimonoAccessoriesGallery.title}</ButtonRounded></div>
             </div>
-            <div id="simpleDressGallery" className="my-12">
+            <div id="simpleDressGallery" className="py-6">
               <h3 className="mb-0">{simpleDressGallery.title}</h3>
               <div className="text-sm mb-4">写真をクリックすると拡大表示されます</div>
               <div className="flex flex-wrap">
@@ -187,7 +189,7 @@ const DressPage = () => {
                 ))}
               </div>
             </div>
-            <div id="volumeDressGallery" className="my-12">
+            <div id="volumeDressGallery" className="py-6">
               <h3 className="mb-0">{volumeDressGallery.title}</h3>
               <div className="text-sm mb-4">写真をクリックすると拡大表示されます</div>
               <div className="flex flex-wrap">
@@ -201,7 +203,7 @@ const DressPage = () => {
                 ))}
               </div>
             </div>
-            <div id="headAccessoriesGallery" className="my-12">
+            <div id="headAccessoriesGallery" className="py-6">
               <h3 className="mb-0">{headAccessoriesGallery.title}</h3>
               <div className="text-sm mb-4">写真をクリックすると拡大表示されます</div>
               <div className="flex flex-wrap">
@@ -215,7 +217,7 @@ const DressPage = () => {
                 ))}
               </div>
             </div>
-            <div id="earringGallery" className="my-12">
+            <div id="earringGallery" className="py-6">
               <h3 className="mb-0">{earringGallery.title}</h3>
               <div className="text-sm mb-4">写真をクリックすると拡大表示されます</div>
               <div className="flex flex-wrap">
@@ -229,7 +231,7 @@ const DressPage = () => {
                 ))}
               </div>
             </div>
-            <div id="tuxedoGallery" className="my-12">
+            <div id="tuxedoGallery" className="py-6">
               <h3 className="mb-0">{tuxedoGallery.title}</h3>
               <div className="text-sm mb-4">写真をクリックすると拡大表示されます</div>
               <div className="flex flex-wrap">
@@ -243,7 +245,7 @@ const DressPage = () => {
                 ))}
               </div>
             </div>
-            <div id="whiteKimonoGallery" className="my-12">
+            <div id="whiteKimonoGallery" className="py-6">
               <h3 className="mb-0">{whiteKimonoGallery.title}</h3>
               <div className="text-sm mb-4">写真をクリックすると拡大表示されます</div>
               <div className="flex flex-wrap">
@@ -257,7 +259,7 @@ const DressPage = () => {
                 ))}
               </div>
             </div>
-            <div id="colorKimonoGallery" className="my-12">
+            <div id="colorKimonoGallery" className="py-6">
               <h3 className="mb-0">{colorKimonoGallery.title}</h3>
               <div className="text-sm mb-4">写真をクリックすると拡大表示されます</div>
               <div className="flex flex-wrap">
@@ -271,7 +273,7 @@ const DressPage = () => {
                 ))}
               </div>
             </div>
-            <div id="mensKimonoGallery" className="my-12">
+            <div id="mensKimonoGallery" className="py-6">
               <h3 className="mb-0">{mensKimonoGallery.title}</h3>
               <div className="text-sm mb-4">写真をクリックすると拡大表示されます</div>
               <div className="flex flex-wrap">
@@ -285,7 +287,7 @@ const DressPage = () => {
                 ))}
               </div>
             </div>
-            <div id="kimonoAccessoriesGallery" className="my-12">
+            <div id="kimonoAccessoriesGallery" className="py-6">
               <h3 className="mb-0">{kimonoAccessoriesGallery.title}</h3>
               <div className="text-sm mb-4">写真をクリックすると拡大表示されます</div>
               <div className="flex flex-wrap">
