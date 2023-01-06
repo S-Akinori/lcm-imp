@@ -297,6 +297,30 @@ export const dressGallery = {
       ]
     },
     {
+      id: "CO-014",
+      title: 'CO-014',
+      images: [
+        {
+          id: 'CO-014-0',
+          url: '/images/dress/CO-014-0.jpg',
+          width: 394,
+          height: 541,
+        },
+        {
+          id: 'CO-014-1',
+          url: '/images/dress/CO-014-1.jpg',
+          width: 394,
+          height: 541,
+        },
+        {
+          id: 'CO-014-2',
+          url: '/images/dress/CO-014-2.jpg',
+          width: 394,
+          height: 541,
+        },
+      ]
+    },
+    {
       id: "CO-017",
       title: 'CO-017',
       images: [
@@ -387,6 +411,78 @@ export const dressGallery = {
         {
           id: 'CO-029-2',
           url: '/images/dress/CO-029-2.jpg',
+          width: 394,
+          height: 541,
+        },
+      ]
+    },
+    {
+      id: "CO-030",
+      title: 'CO-030',
+      images: [
+        {
+          id: 'CO-030-0',
+          url: '/images/dress/CO-030-0.jpg',
+          width: 394,
+          height: 541,
+        },
+        {
+          id: 'CO-030-1',
+          url: '/images/dress/CO-030-1.jpg',
+          width: 394,
+          height: 541,
+        },
+        {
+          id: 'CO-030-2',
+          url: '/images/dress/CO-030-2.jpg',
+          width: 394,
+          height: 541,
+        },
+      ]
+    },
+    {
+      id: "CO-031",
+      title: 'CO-031',
+      images: [
+        {
+          id: 'CO-031-0',
+          url: '/images/dress/CO-031-0.jpg',
+          width: 394,
+          height: 541,
+        },
+        {
+          id: 'CO-031-1',
+          url: '/images/dress/CO-031-1.jpg',
+          width: 394,
+          height: 541,
+        },
+        {
+          id: 'CO-031-2',
+          url: '/images/dress/CO-031-2.jpg',
+          width: 394,
+          height: 541,
+        },
+      ]
+    },
+    {
+      id: "CO-032",
+      title: 'CO-032',
+      images: [
+        {
+          id: 'CO-032-0',
+          url: '/images/dress/CO-032-0.jpg',
+          width: 394,
+          height: 541,
+        },
+        {
+          id: 'CO-032-1',
+          url: '/images/dress/CO-032-1.jpg',
+          width: 394,
+          height: 541,
+        },
+        {
+          id: 'CO-031-2',
+          url: '/images/dress/CO-031-2.jpg',
           width: 394,
           height: 541,
         },
