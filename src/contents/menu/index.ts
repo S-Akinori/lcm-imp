@@ -17,13 +17,13 @@ export const menuPackages = [
   {
     id: 'package1',
     title: '前撮りプラン',
-    price: 130000,
+    price: 149000,
     includes: ['前撮り', 'ロケーション1カ所', 'ドレス', 'ヘアメイク']
   },
   {
     id: 'package2',
     title: 'ムービー+前撮りプラン',
-    price: 230000,
+    price: 248000,
     includes: ['ウェディングムービー1種', '前撮り', 'ドローン空撮', 'ロケーション1カ所', 'ドレス', 'ヘアメイク']
   },
 ]
