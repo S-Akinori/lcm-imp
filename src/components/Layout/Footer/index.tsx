@@ -4,7 +4,7 @@ import ButtonRounded from "src/components/parts/Button/ButtonRounded";
 import Container from "src/components/parts/Container";
 import Flex from "src/components/parts/Flex";
 import Nav from "src/components/parts/Nav";
-import { company, SNS } from "src/contents/common";
+import { company, FooterSNS } from "src/contents/common";
 import { fnav } from "src/contents/footer";
 
 const Footer = () => {
@@ -16,7 +16,7 @@ const Footer = () => {
           <div>
             <div className="mb-4">{company.address}</div>
             <div className="flex justify-center mb-4 md:justify-start">
-              {SNS && SNS.map(item => (
+              {FooterSNS && FooterSNS.map(item => (
                 <div key={item.id} className="pr-4"><a href={item.href} target="_blank" rel="noreferrer">
                   <Image
                     src={item.src}

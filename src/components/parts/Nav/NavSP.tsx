@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
-import { SNS } from "src/contents/common"
+import { HeaderSNS } from "src/contents/common"
 import { CommonProps } from "src/types/CommonProps"
 import ButtonRounded from "../Button/ButtonRounded"
 import CloseIcon from "../Icons/Close"
@@ -44,7 +44,7 @@ const NavSP = ({nav, open, setOpen, className = '', style}: Props) => {
         <div className='pr-2 mb-4 text-center'><ButtonRounded href="/contact">お問い合わせ</ButtonRounded></div>
         <div className='pr-2 mb-4 text-center'><ButtonRounded href="/contact/order">お申込み</ButtonRounded></div>
         <div className="flex justify-center mb-4">
-          {SNS && SNS.map(item => (
+          {HeaderSNS && HeaderSNS.map(item => (
             <div key={item.id} className="pr-4"><a href={item.href} target="_blank" rel="noreferrer">
               <Image
                 src={item.src}
