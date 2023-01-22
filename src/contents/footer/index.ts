@@ -30,6 +30,11 @@ export const fnav = [
     linkText: 'REVIEW',
   },
   {
+    id: 'navFAQ',
+    href: '/faq',
+    linkText: 'FAQ',
+  },
+  {
     id: 'navBlog',
     href: '/blog',
     linkText: 'BLOG',
