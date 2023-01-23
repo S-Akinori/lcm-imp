@@ -10,11 +10,12 @@ interface Props {
   text?: string
   src: string
   autoPlay?: boolean
+  delay?: number
 }
 
-const MV = ({title, text, src, autoPlay = false}: Props) => {
+const MV = ({title, text, src, autoPlay = false, delay = 0}: Props) => {
   const {visited} = useContext(visitContext);
-  const videoRef = useRef(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   let fileType = '';
   if(validateImage(src)) {
@@ -25,10 +26,12 @@ const MV = ({title, text, src, autoPlay = false}: Props) => {
 
   const titleSplit = title.split('\n')
   useEffect(() => {
-    if(videoRef.current && visited) {
-      (videoRef.current as HTMLVideoElement).play();
+    if(videoRef.current) {
+      setTimeout(() => {
+        videoRef.current?.play();
+      }, delay)
     }
-  }, [visited]);
+  }, []);
 
   return (
       <div className={`${styles.mv_container} relative`}>
