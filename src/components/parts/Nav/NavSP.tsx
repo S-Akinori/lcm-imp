@@ -11,6 +11,7 @@ interface Props extends CommonProps {
     id: string
     href: string
     linkText: string
+    subText: string
   }[]
   open? : boolean
   setOpen?: React.Dispatch<React.SetStateAction<boolean | undefined>>
@@ -37,7 +38,7 @@ const NavSP = ({nav, open, setOpen, className = '', style}: Props) => {
         <nav className="mb-4" style={style}>
           <ul className="w-max mx-auto">
             {nav && nav.map(navItem => (
-              <li key={navItem.id} className="px-4"><Link href={navItem.href}>{navItem.linkText}</Link></li>
+              <li key={navItem.id} className="px-4"><Link href={navItem.href}>{navItem.subText}</Link></li>
             ))}
           </ul>
         </nav>
